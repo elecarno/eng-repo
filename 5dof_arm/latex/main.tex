@@ -1,0 +1,227 @@
+\documentclass[a4paper,11pt]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{svg} % Standard package, simpler than svg-extract
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{fancyhdr}
+
+% --- Configuration ---
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\sisetup{
+    output-decimal-marker = {,},
+    group-digits = true,
+    per-mode = symbol
+}
+
+% SVG Settings
+% DO NOT use \svgsetup{convert=true} with the standard 'svg' package.
+% Just ensure Inkscape is in PATH and compile with --shell-escape.
+% The 'svg' package will automatically call Inkscape to convert .svg to .pdf.
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={5-DOF Robotic Arm Documentation},
+    pdfauthor={Benjamin McEwan}
+}
+
+% --- DOCUMENT -------------------------------------------------------------------------------------
+\begin{document}
+
+\title{\textbf{5-DOF Robotic Arm}}
+\author{Benjamin McEwan}
+\date{\today}
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+% --- 1: INTRODUCTION ------------------------------------------------------------------------------
+\section{Introduction}
+\begin{figure}[h!]
+    \centering
+    % NO 'crop' option here. Just the filename.
+    % Ensure you cropped the SVG in Inkscape first!
+    \includesvg[width=0.5\linewidth]{svg/arm.svg} 
+    \caption{Full arm assembly}
+    \label{fig:arm}
+\end{figure}
+
+This project is a simple yet modular and easily modifiable 5-DOF robotic arm intended to be a platform for the teaching and learning of basic robotics control systems. The project uses five MG996R servo motors as they are a common hobbyist robotics component. Figure \ref{fig:arm} shows the final assembled arm in a resting position.
+
+The arm does not possess an actuated gripper as it has been designed with each servo placed directly within the arm's joints in order to avoid the complexities of gearboxes or belt drives. This allows for the stated focus on control systems and means that any issues encountered in actuation of the arm can be immediately attributed to the servos themselves, streamlining the physical troubleshooting process.
+
+
+% --- 2: DRAWINGS ----------------------------------------------------------------------------------
+\section{Drawings}
+The arm is comprised of six assemblies. As can be seen in Figure \ref{fig:assembly}, this includes the base of the arm, four link pieces, and a plate at the end of the arm to visualise actuation of the final servo.
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=0.7\linewidth]{svg/arm_exp.svg}
+    \caption{Exploded arm assembly}
+    \label{fig:assembly}
+\end{figure}
+
+% --- Base ---
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/base.svg} 
+        \caption{Base assembly}
+        \label{fig:base}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/base_exp.svg} 
+        \caption{Base exploded view}
+        \label{fig:base_exp}
+    \end{minipage}
+\end{figure}
+
+% --- Segment 1 ---
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg1.svg} 
+        \caption{Segment 1 assembly}
+        \label{fig:seg1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg1_exp.svg} 
+        \caption{Segment 1 exploded view}
+        \label{fig:seg1_exp}
+    \end{minipage}
+\end{figure}
+
+% --- Segment 2 ---
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg2.svg} 
+        \caption{Segment 2 assembly}
+        \label{fig:seg2}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg2_exp.svg} 
+        \caption{Segment 2 exploded view}
+        \label{fig:seg2_exp}
+    \end{minipage}
+\end{figure}
+
+% --- Segment 3 ---
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg3.svg} 
+        \caption{Segment 3 assembly}
+        \label{fig:seg3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg3_exp.svg} 
+        \caption{Segment 3 exploded view}
+        \label{fig:seg3_exp}
+    \end{minipage}
+\end{figure}
+
+% --- Segment 4 ---
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg4.svg} 
+        \caption{Segment 4 assembly}
+        \label{fig:seg4}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includesvg[width=\linewidth]{svg/seg4_exp.svg} 
+        \caption{Segment 4 exploded view}
+        \label{fig:seg4_exp}
+    \end{minipage}
+\end{figure}
+
+% --- Segment 5 ---
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=0.2\linewidth]{svg/seg5.svg} 
+    \caption{Exploded arm assembly}
+    \label{fig:seg5}
+\end{figure}
+
+% --- 3: BILL OF MATERIALS -------------------------------------------------------------------------
+\section{Bill of Materials (BOM)}
+% \begin{table}[h!]
+%     \centering
+%     \caption{Primary Component List}
+%     \label{tab:bom}
+%     \begin{tabularx}{\textwidth}{@{} l X c r @{}}
+%         \toprule
+%         \textbf{Part ID} & \textbf{Description} & \textbf{Qty} & \textbf{Unit Price (\$)} \\
+%         \midrule
+%         P-001 & High-strength steel bracket (Grade 8) & 4 & 12.50 \\
+%         P-002 & M6 x 20mm Hex Bolt (Stainless) & 16 & 0.45 \\
+%         P-003 & Aluminum Housing (Anodized) & 1 & 45.00 \\
+%         P-004 & Sealing Gasket (Nitrile) & 2 & 3.20 \\
+%         \midrule
+%         \multicolumn{3}{r}{\textbf{Total Estimated Cost}} & \textbf{\$106.40} \\
+%         \bottomrule
+%     \end{tabularx}
+% \end{table}
+
+% \subsection{Material Properties}
+% \begin{table}[h!]
+%     \centering
+%     \caption{Material Specifications}
+%     \label{tab:materials}
+%     \begin{tabular}{lccc}
+%         \toprule
+%         Material & Density (\si{\kg\per\cubic\meter}) & Yield Strength (\si{\mega\pascal}) & Young's Modulus (\si{\giga\pascal}) \\
+%         \midrule
+%         Steel 1045 & 7850 & 530 & 210 \\
+%         Aluminum 6061 & 2700 & 276 & 69 \\
+%         Nitrile Rubber & 1150 & 20 & 0.01 \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+
+
+% --- 4: CALCULATIONS ------------------------------------------------------------------------------
+\section{Calculations}
+% \subsection{Load Analysis}
+% Using the dimensions from Figure \ref{fig:assembly}, the moment of inertia $I$ is calculated as:
+% \[
+%     I = \frac{bh^3}{12}
+% \]
+% Substituting the values $b = \SI{20}{\milli\meter}$ and $h = \SI{5}{\milli\meter}$:
+% \[
+%     I = \frac{20 \times 5^3}{12} = \SI{208.33}{\milli\meter\squared}
+% \]
+
+\end{document}
