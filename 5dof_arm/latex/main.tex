@@ -5,7 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
 \usepackage{graphicx}
-\usepackage{svg} % Standard package, simpler than svg-extract
+\usepackage{svg}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{siunitx}
@@ -14,6 +14,8 @@
 \usepackage{hyperref}
 \usepackage{caption}
 \usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{float}
 
 % --- Configuration ---
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
@@ -47,10 +49,10 @@
 \maketitle
 
 \tableofcontents
-\newpage
 
 
 % --- 1: INTRODUCTION ------------------------------------------------------------------------------
+\newpage
 \section{Introduction}
 \begin{figure}[h!]
     \centering
@@ -67,153 +69,198 @@ The arm does not possess an actuated gripper as it has been designed with each s
 
 
 % --- 2: DRAWINGS ----------------------------------------------------------------------------------
+\newpage
 \section{Drawings}
-The arm is comprised of six assemblies. As can be seen in Figure \ref{fig:assembly}, this includes the base of the arm, four link pieces, and a plate at the end of the arm to visualise actuation of the final servo.
-
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    \includesvg[width=0.7\linewidth]{svg/arm_exp.svg}
+    \includesvg[width=0.6\linewidth]{svg/arm_exp.svg}
     \caption{Exploded arm assembly}
     \label{fig:assembly}
 \end{figure}
 
+The arm is comprised of six assemblies. As can be seen in Figure \ref{fig:assembly}, this includes the base of the arm, four link pieces, and a plate at the end of the arm to visualise actuation of the final servo.
+
+The base, shown in Figures \ref{fig:base} is designed to hold the arm's ESP32 microcontroller, power and servo control boards, and any weights that may want to be added in order to hold the arm in place during movement.
+
+Figures \ref{fig:seg1}, \ref{fig:seg2}, \ref{fig:seg3}, and \ref{fig:seg4} show the construction of each link of the arm, and figure \ref{fig:seg5} shows the construction of the final "plate" link.
+
 % --- Base ---
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
-        \includesvg[width=\linewidth]{svg/base.svg} 
-        \caption{Base assembly}
-        \label{fig:base}
-    \end{minipage}
+        \includesvg[width=0.8\linewidth]{svg/base.svg} 
+        \subcaption{Base assembly}
+        \label{fig:base_a}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
         \includesvg[width=\linewidth]{svg/base_exp.svg} 
-        \caption{Base exploded view}
-        \label{fig:base_exp}
-    \end{minipage}
+        \subcaption{Base exploded view}
+        \label{fig:base_b}
+    \end{subfigure}
+    \caption{Base views}
+    \label{fig:base}
 \end{figure}
 
 % --- Segment 1 ---
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
-        \includesvg[width=\linewidth]{svg/seg1.svg} 
-        \caption{Segment 1 assembly}
-        \label{fig:seg1}
-    \end{minipage}
+        \includesvg[width=0.4\linewidth]{svg/seg1.svg} 
+        \subcaption{Segment 1 assembly}
+        \label{fig:seg1_a}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
         \includesvg[width=\linewidth]{svg/seg1_exp.svg} 
-        \caption{Segment 1 exploded view}
-        \label{fig:seg1_exp}
-    \end{minipage}
+        \subcaption{Segment 1 exploded}
+        \label{fig:seg1_b}
+    \end{subfigure}
+    \caption{Segment 1 views}
+    \label{fig:seg1}
 \end{figure}
 
 % --- Segment 2 ---
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
-        \includesvg[width=\linewidth]{svg/seg2.svg} 
-        \caption{Segment 2 assembly}
-        \label{fig:seg2}
-    \end{minipage}
+        \includesvg[width=0.4\linewidth]{svg/seg2.svg} 
+        \subcaption{Segment 2 assembly}
+        \label{fig:seg2_a}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
         \includesvg[width=\linewidth]{svg/seg2_exp.svg} 
-        \caption{Segment 2 exploded view}
-        \label{fig:seg2_exp}
-    \end{minipage}
+        \subcaption{Segment 2 exploded}
+        \label{fig:seg2_b}
+    \end{subfigure}
+    \caption{Segment 2 views}
+    \label{fig:seg2}
 \end{figure}
 
 % --- Segment 3 ---
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
-        \includesvg[width=\linewidth]{svg/seg3.svg} 
-        \caption{Segment 3 assembly}
-        \label{fig:seg3}
-    \end{minipage}
+        \includesvg[width=0.4\linewidth]{svg/seg3.svg} 
+        \subcaption{Segment 3 assembly}
+        \label{fig:seg3_a}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
         \includesvg[width=\linewidth]{svg/seg3_exp.svg} 
-        \caption{Segment 3 exploded view}
-        \label{fig:seg3_exp}
-    \end{minipage}
+        \subcaption{Segment 3 exploded}
+        \label{fig:seg3_b}
+    \end{subfigure}
+    \caption{Segment 3 views}
+    \label{fig:seg3}
 \end{figure}
 
 % --- Segment 4 ---
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
-        \includesvg[width=\linewidth]{svg/seg4.svg} 
-        \caption{Segment 4 assembly}
-        \label{fig:seg4}
-    \end{minipage}
+        \includesvg[width=0.4\linewidth]{svg/seg4.svg} 
+        \subcaption{Segment 4 assembly}
+        \label{fig:seg4_a}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\linewidth}
+    \begin{subfigure}{0.48\linewidth}
         \centering
         \includesvg[width=\linewidth]{svg/seg4_exp.svg} 
-        \caption{Segment 4 exploded view}
-        \label{fig:seg4_exp}
-    \end{minipage}
+        \subcaption{Segment 4 exploded}
+        \label{fig:seg4_b}
+    \end{subfigure}
+    \caption{Segment 4 views}
+    \label{fig:seg4}
 \end{figure}
 
 % --- Segment 5 ---
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includesvg[width=0.2\linewidth]{svg/seg5.svg} 
-    \caption{Exploded arm assembly}
+    \caption{Segment 5 views}
     \label{fig:seg5}
 \end{figure}
 
-% --- 3: BILL OF MATERIALS -------------------------------------------------------------------------
-\section{Bill of Materials (BOM)}
-% \begin{table}[h!]
-%     \centering
-%     \caption{Primary Component List}
-%     \label{tab:bom}
-%     \begin{tabularx}{\textwidth}{@{} l X c r @{}}
-%         \toprule
-%         \textbf{Part ID} & \textbf{Description} & \textbf{Qty} & \textbf{Unit Price (\$)} \\
-%         \midrule
-%         P-001 & High-strength steel bracket (Grade 8) & 4 & 12.50 \\
-%         P-002 & M6 x 20mm Hex Bolt (Stainless) & 16 & 0.45 \\
-%         P-003 & Aluminum Housing (Anodized) & 1 & 45.00 \\
-%         P-004 & Sealing Gasket (Nitrile) & 2 & 3.20 \\
-%         \midrule
-%         \multicolumn{3}{r}{\textbf{Total Estimated Cost}} & \textbf{\$106.40} \\
-%         \bottomrule
-%     \end{tabularx}
-% \end{table}
 
-% \subsection{Material Properties}
-% \begin{table}[h!]
-%     \centering
-%     \caption{Material Specifications}
-%     \label{tab:materials}
-%     \begin{tabular}{lccc}
-%         \toprule
-%         Material & Density (\si{\kg\per\cubic\meter}) & Yield Strength (\si{\mega\pascal}) & Young's Modulus (\si{\giga\pascal}) \\
-%         \midrule
-%         Steel 1045 & 7850 & 530 & 210 \\
-%         Aluminum 6061 & 2700 & 276 & 69 \\
-%         Nitrile Rubber & 1150 & 20 & 0.01 \\
-%         \bottomrule
-%     \end{tabular}
-% \end{table}
+% --- 3: BILL OF MATERIALS -------------------------------------------------------------------------
+\newpage
+\section{Bill of Materials (BOM)}
+\begin{table}[H]
+    \centering
+    \caption{Purchased Parts}
+    \label{tab:bom_pp}
+    \begin{tabularx}{\textwidth}{@{} l X r @{}}
+        \toprule
+        \textbf{Description} & \textbf{Qty} \\
+        \midrule
+        MG996R Servo                                              & 5 \\
+        ESP32 Devkit Type-C                                       & 1 \\
+        PCA9685 16-Channel 12-Bit PWM Driver                      & 1 \\
+        DC5525 to Screw Terminal Connector DC Power Jack (Female) & 1 \\
+        10A Adjustable DC-DC Step Down Converter                  & 1 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Manufactured Parts}
+    \label{tab:bom_manufactured}
+    \begin{tabularx}{\textwidth}{@{} l X r @{}}
+        \toprule
+        \textbf{Part} & \textbf{Material} & \textbf{Qty} \\
+        \midrule
+        \texttt{base}                   & PLA - White & 1 \\
+        \texttt{seg1}                   & PLA - White & 1 \\
+        \texttt{seg2a}                  & PLA - White & 1 \\
+        \texttt{seg2b}                  & PLA - White & 1 \\
+        \texttt{seg3a}                  & PLA - White & 1 \\
+        \texttt{seg3b}                  & PLA - White & 1 \\
+        \texttt{seg4a}                  & PLA - White & 1 \\
+        \texttt{seg4b}                  & PLA - White & 1 \\
+        \texttt{seg5}                   & PLA - White & 1 \\
+        \texttt{seg1\_shell-side\_l}    & PLA - White & 1 \\
+        \texttt{seg1\_shell-side\_r}    & PLA - White & 1 \\
+        \texttt{seg2\_shell-side\_r}    & PLA - White & 1 \\
+        \texttt{seg3\_shell-side\_l}    & PLA - White & 1 \\
+        \texttt{seg4\_shell-side\_r}    & PLA - White & 1 \\
+        \texttt{seg2\_strut}            & PLA - White & 2 \\
+        \texttt{seg3\_strut}            & PLA - White & 1 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Standard Parts}
+    \label{tab:bom_fasteners}
+    \begin{tabularx}{\textwidth}{@{} l X r @{}}
+        \toprule
+        \textbf{Description} & \textbf{Qty} \\
+        \midrule
+        M3x6 Pan Head Screw  & 9  \\
+        M3x10 Pan Head Screw & 22 \\
+        M3x14 Pan Head Screw & 1  \\
+        M3 Nut               & 3  \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 
 % --- 4: CALCULATIONS ------------------------------------------------------------------------------
-\section{Calculations}
+% \newpage
+% \section{Calculations}
 % \subsection{Load Analysis}
 % Using the dimensions from Figure \ref{fig:assembly}, the moment of inertia $I$ is calculated as:
 % \[

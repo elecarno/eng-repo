@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  17 MAY 2026 00:00
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  17 MAY 2026 19:30
  system commands enabled.
  file:line:error style messages enabled.
 **d:/1_repos/eng-repo/5dof_arm/latex/main.tex
@@ -574,43 +574,58 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthR=\skip70
 \@temptokenb=\toks36
 )
+("C:/Program Files/MiKTeX/tex/latex/caption/subcaption.sty"
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count339
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count340
+)
+("C:/Program Files/MiKTeX/tex/latex/float/float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count341
+\float@exts=\toks37
+\float@box=\box67
+\@float@everytoks=\toks38
+\@floatcapt=\box68
+)
 
 Package siunitx Info: Option "group-digits = true" has been deprecated in this
 (siunitx)             release.
 (siunitx)             
 (siunitx)             Use "group-digits = all" as a replacement.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 39.
+Package hyperref Info: Option `colorlinks' set `true' on input line 41.
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 42.
+h' as default language. on input line 44.
 
 ("C:/Program Files/MiKTeX/tex/latex/l3backend/l3backend-luatex.def"
 File: l3backend-luatex.def 2025-10-09 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count339
+\l__color_backend_stack_int=\count342
 Inserting `l3color' in `luaotfload.parse_color'.)
 (./main.aux)
 \openout1 = main.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -648,17 +663,17 @@ LaTeX Font Info:    ... okay on input line 42.
 
 ("C:/Program Files/MiKTeX/tex/context/base/mkii/supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count340
+\scratchcounter=\count343
 \scratchdimen=\dimen272
-\scratchbox=\box67
-\nofMPsegments=\count341
-\nofMParguments=\count342
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count343
+\scratchbox=\box69
+\nofMPsegments=\count344
+\nofMParguments=\count345
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count346
 \MPscratchDim=\dimen273
-\MPnumerator=\count344
-\makeMPintoPDFobject=\count345
-\everyMPtoPDFconversion=\toks38
+\MPnumerator=\count347
+\makeMPintoPDFobject=\count348
+\everyMPtoPDFconversion=\toks40
 ) ("C:/Program Files/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty"
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -673,21 +688,22 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 42.
-Package hyperref Info: Link coloring ON on input line 42.
+or `english'. on input line 44.
+Package hyperref Info: Link coloring ON on input line 44.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 
 \openout4 = main.out
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
 
 
 ("C:/Program Files/MiKTeX/tex/latex/amsfonts/umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
 
 
 ("C:/Program Files/MiKTeX/tex/latex/amsfonts/umsb.fd"
@@ -700,67 +716,64 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 Package svg Info: Last page of `./svg-inkscape/arm_svg-tex.pdf' is 1 on input l
-ine 59.
+ine 61.
 
 (./svg-inkscape/arm_svg-tex.pdf_tex
-<./svg-inkscape/arm_svg-tex.pdf, id=38, page=1, 256.53593pt x 342.63152pt>
+<./svg-inkscape/arm_svg-tex.pdf, id=33, page=1, 256.53593pt x 342.63152pt>
 File: ./svg-inkscape/arm_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/arm_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/arm_svg-tex.pdf , page1 used on input l
 ine 56.
 (luatex.def)             Requested size: 227.62206pt x 304.0157pt.
-)
+) [2<./svg-inkscape/arm_svg-tex.pdf>]
 Package svg Info: Last page of `./svg-inkscape/arm_exp_svg-tex.pdf' is 1 on inp
-ut line 75.
- (./svg-inkscape/arm_exp_svg-tex.pdf_tex
+ut line 76.
+
+(./svg-inkscape/arm_exp_svg-tex.pdf_tex
 <./svg-inkscape/arm_exp_svg-tex.pdf, id=42, page=1, 389.30695pt x 681.80493pt>
 File: ./svg-inkscape/arm_exp_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/arm_exp_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/arm_exp_svg-tex.pdf , page1 used on inp
 ut line 56.
-(luatex.def)             Requested size: 318.66948pt x 558.12653pt.
+(luatex.def)             Requested size: 273.14923pt x 478.40457pt.
 )
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 Package svg Info: Last page of `./svg-inkscape/base_svg-tex.pdf' is 1 on input 
-line 85.
-(./svg-inkscape/base_svg-tex.pdf_tex
-<./svg-inkscape/base_svg-tex.pdf, id=44, page=1, 219.11772pt x 178.12117pt>
+line 92.
+ (./svg-inkscape/base_svg-tex.pdf_tex
+<./svg-inkscape/base_svg-tex.pdf, id=51, page=1, 219.11772pt x 178.12117pt>
 File: ./svg-inkscape/base_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/base_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/base_svg-tex.pdf , page1 used on input 
 line 56.
-(luatex.def)             Requested size: 218.51521pt x 177.63693pt.
+(luatex.def)             Requested size: 174.81284pt x 142.10846pt.
 )
 Package svg Info: Last page of `./svg-inkscape/base_exp_svg-tex.pdf' is 1 on in
-put line 92.
- (./svg-inkscape/base_exp_svg-tex.pdf_tex
-<./svg-inkscape/base_exp_svg-tex.pdf, id=46, page=1, 278.27182pt x 383.63963pt>
+put line 99.
+
+(./svg-inkscape/base_exp_svg-tex.pdf_tex
+<./svg-inkscape/base_exp_svg-tex.pdf, id=53, page=1, 278.27182pt x 383.63963pt>
 
 File: ./svg-inkscape/base_exp_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/base_exp_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/base_exp_svg-tex.pdf , page1 used on in
 put line 56.
 (luatex.def)             Requested size: 218.51521pt x 301.25728pt.
-)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+) [3<./svg-inkscape/arm_exp_svg-tex.pdf>]
 Package svg Info: Last page of `./svg-inkscape/seg1_svg-tex.pdf' is 1 on input 
-line 103.
-(./svg-inkscape/seg1_svg-tex.pdf_tex
-<./svg-inkscape/seg1_svg-tex.pdf, id=48, page=1, 184.21835pt x 128.1031pt>
+line 112.
+ (./svg-inkscape/seg1_svg-tex.pdf_tex
+<./svg-inkscape/seg1_svg-tex.pdf, id=67, page=1, 184.21835pt x 128.1031pt>
 File: ./svg-inkscape/seg1_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg1_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/seg1_svg-tex.pdf , page1 used on input 
 line 56.
-(luatex.def)             Requested size: 218.51521pt x 151.9637pt.
+(luatex.def)             Requested size: 87.40474pt x 60.78117pt.
 )
 Package svg Info: Last page of `./svg-inkscape/seg1_exp_svg-tex.pdf' is 1 on in
-put line 110.
- (./svg-inkscape/seg1_exp_svg-tex.pdf_tex
-<./svg-inkscape/seg1_exp_svg-tex.pdf, id=50, page=1, 473.08975pt x 378.91003pt>
+put line 119.
+
+(./svg-inkscape/seg1_exp_svg-tex.pdf_tex
+<./svg-inkscape/seg1_exp_svg-tex.pdf, id=69, page=1, 473.08975pt x 378.91003pt>
 
 File: ./svg-inkscape/seg1_exp_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg1_exp_svg-tex.pdf, page 1>
@@ -768,47 +781,43 @@ Package luatex.def Info: ./svg-inkscape/seg1_exp_svg-tex.pdf , page1 used on in
 put line 56.
 (luatex.def)             Requested size: 218.51521pt x 175.01765pt.
 )
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 Package svg Info: Last page of `./svg-inkscape/seg2_svg-tex.pdf' is 1 on input 
-line 121.
-(./svg-inkscape/seg2_svg-tex.pdf_tex
-<./svg-inkscape/seg2_svg-tex.pdf, id=52, page=1, 131.8263pt x 239.24931pt>
+line 132.
+ (./svg-inkscape/seg2_svg-tex.pdf_tex
+<./svg-inkscape/seg2_svg-tex.pdf, id=71, page=1, 131.8263pt x 239.24931pt>
 File: ./svg-inkscape/seg2_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg2_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/seg2_svg-tex.pdf , page1 used on input 
 line 56.
-(luatex.def)             Requested size: 218.51521pt x 396.6171pt.
+(luatex.def)             Requested size: 87.40474pt x 158.63515pt.
 )
 Package svg Info: Last page of `./svg-inkscape/seg2_exp_svg-tex.pdf' is 1 on in
-put line 128.
- (./svg-inkscape/seg2_exp_svg-tex.pdf_tex
-<./svg-inkscape/seg2_exp_svg-tex.pdf, id=54, page=1, 437.46768pt x 367.27551pt>
+put line 139.
+(./svg-inkscape/seg2_exp_svg-tex.pdf_tex
+<./svg-inkscape/seg2_exp_svg-tex.pdf, id=73, page=1, 437.46768pt x 367.27551pt>
 
 File: ./svg-inkscape/seg2_exp_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg2_exp_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/seg2_exp_svg-tex.pdf , page1 used on in
 put line 56.
 (luatex.def)             Requested size: 218.51521pt x 183.45796pt.
-)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+) [4<./svg-inkscape/base_svg-tex.pdf><./svg-inkscape/base_exp_svg-tex.pdf><./svg
+-inkscape/seg1_svg-tex.pdf><./svg-inkscape/seg1_exp_svg-tex.pdf>]
 Package svg Info: Last page of `./svg-inkscape/seg3_svg-tex.pdf' is 1 on input 
-line 139.
-(./svg-inkscape/seg3_svg-tex.pdf_tex
-<./svg-inkscape/seg3_svg-tex.pdf, id=56, page=1, 96.55739pt x 255.42337pt>
+line 152.
+ (./svg-inkscape/seg3_svg-tex.pdf_tex
+<./svg-inkscape/seg3_svg-tex.pdf, id=79, page=1, 96.55739pt x 255.42337pt>
 File: ./svg-inkscape/seg3_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg3_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/seg3_svg-tex.pdf , page1 used on input 
 line 56.
-(luatex.def)             Requested size: 218.51521pt x 578.09973pt.
+(luatex.def)             Requested size: 87.40474pt x 231.21573pt.
 )
 Package svg Info: Last page of `./svg-inkscape/seg3_exp_svg-tex.pdf' is 1 on in
-put line 146.
- (./svg-inkscape/seg3_exp_svg-tex.pdf_tex
-<./svg-inkscape/seg3_exp_svg-tex.pdf, id=58, page=1, 389.80762pt x 353.27403pt>
+put line 159.
+
+(./svg-inkscape/seg3_exp_svg-tex.pdf_tex
+<./svg-inkscape/seg3_exp_svg-tex.pdf, id=81, page=1, 389.80762pt x 353.27403pt>
 
 File: ./svg-inkscape/seg3_exp_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg3_exp_svg-tex.pdf, page 1>
@@ -816,78 +825,66 @@ Package luatex.def Info: ./svg-inkscape/seg3_exp_svg-tex.pdf , page1 used on in
 put line 56.
 (luatex.def)             Requested size: 218.51521pt x 198.03694pt.
 )
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 Package svg Info: Last page of `./svg-inkscape/seg4_svg-tex.pdf' is 1 on input 
-line 157.
-(./svg-inkscape/seg4_svg-tex.pdf_tex
-<./svg-inkscape/seg4_svg-tex.pdf, id=60, page=1, 110.18027pt x 174.09572pt>
+line 172.
+ (./svg-inkscape/seg4_svg-tex.pdf_tex
+<./svg-inkscape/seg4_svg-tex.pdf, id=83, page=1, 110.18027pt x 174.09572pt>
 File: ./svg-inkscape/seg4_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg4_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/seg4_svg-tex.pdf , page1 used on input 
 line 56.
-(luatex.def)             Requested size: 218.51521pt x 345.3003pt.
+(luatex.def)             Requested size: 87.40474pt x 138.1079pt.
 )
 Package svg Info: Last page of `./svg-inkscape/seg4_exp_svg-tex.pdf' is 1 on in
-put line 164.
- (./svg-inkscape/seg4_exp_svg-tex.pdf_tex
-<./svg-inkscape/seg4_exp_svg-tex.pdf, id=62, page=1, 407.13387pt x 258.38167pt>
+put line 179.
+(./svg-inkscape/seg4_exp_svg-tex.pdf_tex
+<./svg-inkscape/seg4_exp_svg-tex.pdf, id=85, page=1, 407.13387pt x 258.38167pt>
 
 File: ./svg-inkscape/seg4_exp_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg4_exp_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/seg4_exp_svg-tex.pdf , page1 used on in
 put line 56.
 (luatex.def)             Requested size: 218.51521pt x 138.67636pt.
-)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+) [5<./svg-inkscape/seg2_svg-tex.pdf><./svg-inkscape/seg2_exp_svg-tex.pdf><./svg
+-inkscape/seg3_svg-tex.pdf><./svg-inkscape/seg3_exp_svg-tex.pdf>]
 Package svg Info: Last page of `./svg-inkscape/seg5_svg-tex.pdf' is 1 on input 
-line 173.
-(./svg-inkscape/seg5_svg-tex.pdf_tex
-<./svg-inkscape/seg5_svg-tex.pdf, id=64, page=1, 112.79402pt x 87.03221pt>
+line 190.
+ (./svg-inkscape/seg5_svg-tex.pdf_tex
+<./svg-inkscape/seg5_svg-tex.pdf, id=91, page=1, 112.79402pt x 87.03221pt>
 File: ./svg-inkscape/seg5_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/seg5_svg-tex.pdf, page 1>
 Package luatex.def Info: ./svg-inkscape/seg5_svg-tex.pdf , page1 used on input 
 line 56.
 (luatex.def)             Requested size: 91.04742pt x 70.25533pt.
-)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2<./svg-inkscape/arm_svg-tex.pdf>] [3<./svg-inkscape/arm_exp_svg-tex.pdf>]
-[4<./svg-inkscape/base_svg-tex.pdf><./svg-inkscape/base_exp_svg-tex.pdf><./svg-i
-nkscape/seg1_svg-tex.pdf><./svg-inkscape/seg1_exp_svg-tex.pdf>] [5<./svg-inkscap
-e/seg2_svg-tex.pdf><./svg-inkscape/seg2_exp_svg-tex.pdf>] [6<./svg-inkscape/seg3
-_svg-tex.pdf><./svg-inkscape/seg3_exp_svg-tex.pdf>] [7<./svg-inkscape/seg4_svg-t
-ex.pdf><./svg-inkscape/seg4_exp_svg-tex.pdf><./svg-inkscape/seg5_svg-tex.pdf>] 
+) [6<./svg-inkscape/seg4_svg-tex.pdf><./svg-inkscape/seg4_exp_svg-tex.pdf><./svg
+-inkscape/seg5_svg-tex.pdf>] ("C:/Program Files/MiKTeX/tex/latex/lm/t1lmtt.fd") [7]
 (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 12D2B2A17031561CEE2170F74D2F0985;462.
+(rerunfilecheck)             Checksum: 13B76BEB188AAA9A3EC68DE46B9A5F90;359.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19497 strings out of 476076
+ 19738 strings out of 476076
  100000,794899 words of node,token memory allocated
  520 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 57 glue_spec,
  8 attribute_list, 2 write nodes
-   avail lists: 1:1,2:1060,3:310,4:92,5:184,6:63,7:3176,8:1,9:458,10:4,11:214
- 41422 multiletter control sequences out of 65536+600000
- 46 fonts using 2790863 bytes
+   avail lists: 1:1,2:953,3:191,4:70,5:134,6:76,7:2538,8:1,9:694,10:4,11:136
+ 41646 multiletter control sequences out of 65536+600000
+ 48 fonts using 2955007 bytes
  94i,11n,88p,475b,935s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files/MiKTeX/f
 onts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/l
 mbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program F
-iles/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
-Output written on main.pdf (7 pages, 1223205 bytes).
+iles/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/lm/lmtt10.pfb>
+Output written on main.pdf (7 pages, 1250912 bytes).
 
-PDF statistics: 115 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 1048576)
- 48 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 124 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 1048576)
+ 40 words of extra memory for PDF output out of 10000 (max. 100000000)
 
