@@ -1,4 +1,6 @@
 // MG996R CUSTOM REST CONFIGURATION CODE
+// SDA -> GPIO 21
+// SCL -> GPIO 22
 
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
