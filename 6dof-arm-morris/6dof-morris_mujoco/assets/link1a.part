@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "e32a851a09a92e97b19c3418",
-    "elementId": "80ce15f447962857bcde504b",
+    "documentMicroversion": "495651eb88ca030b6715b049",
+    "elementId": "6f99ac0cc849ec3944028a64",
     "fullConfiguration": "default",
-    "id": "MsaWx+2yZ8mdLJrda",
+    "id": "MJ9FyOIXUd1SA8kHx",
     "isStandardContent": false,
-    "name": "LQFP_32_5x5mm_P05mm <1>",
-    "partId": "JFL",
+    "name": "link1a <1>",
+    "partId": "JeD",
     "suppressed": false,
     "type": "Part"
 }

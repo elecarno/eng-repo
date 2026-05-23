@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "e32a851a09a92e97b19c3418",
+    "documentMicroversion": "495651eb88ca030b6715b049",
     "elementId": "80ce15f447962857bcde504b",
     "fullConfiguration": "default",
-    "id": "MuQe4/zAFubAy9FuX",
+    "id": "MrvIIsfHkYyMyQg32",
     "isStandardContent": false,
-    "name": "PinHeader_1x15_P254mm_Vertical_1 <1>",
-    "partId": "JFT",
+    "name": "ESP32-30pin PCB <1>",
+    "partId": "JFX",
     "suppressed": false,
     "type": "Part"
 }

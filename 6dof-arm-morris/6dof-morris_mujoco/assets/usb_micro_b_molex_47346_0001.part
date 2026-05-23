@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "e32a851a09a92e97b19c3418",
+    "documentMicroversion": "495651eb88ca030b6715b049",
     "elementId": "80ce15f447962857bcde504b",
     "fullConfiguration": "default",
-    "id": "MGPY/3ThgUa8N3BaS",
+    "id": "Mrqg6XjNTV0uQOawM",
     "isStandardContent": false,
-    "name": "LQFP_52_14x14mm_P1mm <1>",
-    "partId": "JFD",
+    "name": "USB_Micro-B_Molex_47346-0001 <1>",
+    "partId": "JFH",
     "suppressed": false,
     "type": "Part"
 }
