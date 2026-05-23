@@ -13,9 +13,9 @@ model.opt.disableflags |= mujoco.mjtDisableBit.mjDSBL_CONTACT
 # target frame
 target_mocap_id = model.body('target_frame').mocapid[0]
 # target position vector
-target_pos = np.array([0.1, 0.1, 0.1])
+t_pos = np.array([0.1, -0.2, 0.1])
 # target orientation quaternion [w,x,y,z] (mujoco format)
-target_quat = np.array([1.0, 0.0, 0.0, 0.0])
+t_quat = np.array([1.0, 0.0, 0.0, 0.0])
 
 # get joints
 joint1 = model.actuator("joint1").id
@@ -24,7 +24,7 @@ joint3 = model.actuator("joint3").id
 joint4 = model.actuator("joint4").id
 joint5 = model.actuator("joint5").id
 
-# set joint positions (radians for rotation, meters for linear)
+# joint rest positions (radians for rotation, meters for linear)
 rest = [ # resting position of joints
     90,
     180,
@@ -33,19 +33,26 @@ rest = [ # resting position of joints
     90
 ]
 
+# ik solver
+theta1 = -np.arctan2(t_pos[1], t_pos[0])
+
+
+# set joint targets
 joints = [ # position to set joints to
-    90,
-    180,
-    180,
+    theta1,
+    np.radians(180),
+    np.radians(180),
     0,
-    90
+    np.radians(90)
 ]
 
-data.ctrl[joint1] = np.radians(joints[0] - rest[0])
-data.ctrl[joint2] = np.radians(joints[1] - rest[1])
-data.ctrl[joint3] = np.radians(joints[2] - rest[2])
-data.ctrl[joint4] = np.radians(joints[3] - rest[3])
-data.ctrl[joint5] = np.radians(joints[4] - rest[4])
+print(joints)
+
+data.ctrl[joint1] = joints[0] - np.radians(rest[0])
+data.ctrl[joint2] = joints[1] - np.radians(rest[1])
+data.ctrl[joint3] = joints[2] - np.radians(rest[2])
+data.ctrl[joint4] = joints[3] - np.radians(rest[3])
+data.ctrl[joint5] = joints[4] - np.radians(rest[4])
 
 # open interactive visualizer
 with mujoco.viewer.launch_passive(model, data) as viewer:
@@ -53,8 +60,8 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
         step_start = time.time()
 
         # apply target transforms
-        data.mocap_pos[target_mocap_id] = target_pos
-        data.mocap_quat[target_mocap_id] = target_quat
+        data.mocap_pos[target_mocap_id] = t_pos
+        data.mocap_quat[target_mocap_id] = t_quat
 
         # step physics forward
         mujoco.mj_step(model, data)
