@@ -1,0 +1,6 @@
+<body name="target_frame" mocap="true" pos="0.5 0 0.5">
+    <site name="target_center" type="sphere" size="0.015" rgba="1 1 1 1"/>
+    <geom type="capsule" size="0.005 0.05" pos="0.05 0 0" euler="0 90 0" rgba="1 0 0 1" contype="0" conaffinity="0"/>
+    <geom type="capsule" size="0.005 0.05" pos="0 0.05 0" euler="90 0 0" rgba="0 1 0 1" contype="0" conaffinity="0"/>
+    <geom type="capsule" size="0.005 0.05" pos="0 0 0.05" euler="0 0 0" rgba="0 0 1 1" contype="0" conaffinity="0"/>
+</body>
