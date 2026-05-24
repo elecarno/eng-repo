@@ -100,7 +100,7 @@
         <body name="a_v3_link2" pos="0 -0.03 -0.04" quat="0.5 0.5 -0.5 0.5">
           <!-- Joint from a_v3_link1 to a_v3_link2 -->
           <joint axis="0 0 1" name="joint2" type="hinge" range="-3.141592653589762 3.108624468950438e-14"/>
-          <inertial pos="-0.0151761 -0.0499954 -0.0253039" mass="0.142056" fullinertia="0.000277572 5.60517e-05 0.00030103 -8.82035e-05 3.15291e-07 1.179e-09"/>
+          <inertial pos="-0.015217 -0.0500018 -0.0252914" mass="0.141744" fullinertia="0.000277529 5.59038e-05 0.000300885 -8.81695e-05 2.82232e-07 -3.996e-09"/>
           <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_5 -->
           <geom type="mesh" class="visual" pos="-0.03 -0.1213 -0.0136" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
           <geom type="mesh" class="collision" pos="-0.03 -0.1213 -0.0136" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
@@ -135,7 +135,7 @@
           <body name="a_v3_link3" pos="-0.032 -0.1 -0" quat="0 -0 -1 0">
             <!-- Joint from a_v3_link2 to a_v3_link3 -->
             <joint axis="0 0 1" name="joint3" type="hinge" range="-3.141592653589793 0.0"/>
-            <inertial pos="-0.000970033 0.0622226 -0.00957229" mass="0.0898963" fullinertia="0.000135066 1.41825e-05 0.000128725 -1.24489e-06 -1.863e-07 -1.95926e-06"/>
+            <inertial pos="-0.000954682 0.0622512 -0.00956564" mass="0.0897863" fullinertia="0.000134998 1.41575e-05 0.000128647 -1.21264e-06 -1.7881e-07 -1.94529e-06"/>
             <!-- Part link3_shell -->
             <geom type="mesh" class="visual" pos="-0 0.08 -0" quat="0.707107 -0 0.707107 0" mesh="link3_shell" material="link3_shell_material"/>
             <geom type="mesh" class="collision" pos="-0 0.08 -0" quat="0.707107 -0 0.707107 0" mesh="link3_shell" material="link3_shell_material"/>
@@ -199,7 +199,7 @@
               <body name="mg996r_straight" pos="0 -0.062 -0.014" quat="0.5 -0.5 0.5 0.5">
                 <!-- Joint from a_v3_link4 to mg996r_straight -->
                 <joint axis="0 0 1" name="joint5" type="hinge" range="-1.570796326794894 1.5707963267948992"/>
-                <inertial pos="0 0 -0.000657539" mass="0.000866123" fullinertia="6.6112e-08 7.262e-09 7.0424e-08 0 -0 0"/>
+                <inertial pos="0 -0 -0.000657539" mass="0.000866123" fullinertia="6.6112e-08 7.262e-09 7.0424e-08 0 -0 0"/>
                 <!-- Part mg996r_straight_5 -->
                 <geom type="mesh" class="visual" pos="0 0 -0.00235" quat="0.707107 0.707107 0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
                 <geom type="mesh" class="collision" pos="0 0 -0.00235" quat="0.707107 0.707107 0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
@@ -211,27 +211,27 @@
     </body>
   </worldbody>
   <asset>
-    <mesh file="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545.stl"/>
-    <mesh file="mg996r.stl"/>
-    <mesh file="lqfp_32_5x5mm_p05mm.stl"/>
-    <mesh file="link4_shell.stl"/>
-    <mesh file="pca9685_generic.stl"/>
-    <mesh file="lqfp_52_14x14mm_p1mm.stl"/>
-    <mesh file="pinheader_1x15_p254mm_vertical_1.stl"/>
-    <mesh file="link2_shell.stl"/>
     <mesh file="usb_micro_b_molex_47346_0001.stl"/>
-    <mesh file="mg996r_straight.stl"/>
-    <mesh file="link2.stl"/>
+    <mesh file="pca9685_generic.stl"/>
     <mesh file="link4.stl"/>
-    <mesh file="ph_pan_head_screw_m3x0_50_x_6__b32648e3119e9bfb9d9baf1e22451401.stl"/>
-    <mesh file="link3.stl"/>
-    <mesh file="link1b.stl"/>
-    <mesh file="pinheader_1x15_p254mm_vertical.stl"/>
+    <mesh file="link2.stl"/>
+    <mesh file="lqfp_32_5x5mm_p05mm.stl"/>
+    <mesh file="pinheader_1x15_p254mm_vertical_1.stl"/>
+    <mesh file="mg996r_straight.stl"/>
+    <mesh file="mg996r.stl"/>
     <mesh file="esp32_30pin_pcb.stl"/>
+    <mesh file="lqfp_52_14x14mm_p1mm.stl"/>
     <mesh file="attach.stl"/>
+    <mesh file="link3.stl"/>
     <mesh file="link3_shell.stl"/>
-    <mesh file="base.stl"/>
     <mesh file="link1a.stl"/>
+    <mesh file="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545.stl"/>
+    <mesh file="pinheader_1x15_p254mm_vertical.stl"/>
+    <mesh file="link4_shell.stl"/>
+    <mesh file="base.stl"/>
+    <mesh file="link2_shell.stl"/>
+    <mesh file="link1b.stl"/>
+    <mesh file="ph_pan_head_screw_m3x0_50_x_6__b32648e3119e9bfb9d9baf1e22451401.stl"/>
     <material name="ph_pan_head_screw_m3x0_50_x_6__b32648e3119e9bfb9d9baf1e22451401_material" rgba="0.603922 0.647059 0.686275 1"/>
     <material name="base_material" rgba="0.972549 0.529412 0.00392157 1"/>
     <material name="pca9685_generic_material" rgba="0.231373 0.380392 0.705882 1"/>
