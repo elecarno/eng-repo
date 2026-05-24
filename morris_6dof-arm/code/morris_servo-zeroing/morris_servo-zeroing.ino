@@ -20,10 +20,9 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 const uint16_t robotRestPose[6] = {
   USMID,  // Channel 0 (joint 1 / base)
   USMAX,  // Channel 1 (joint 2 / shoulder)
-  USMIN,  // Channel 2 (joint 3 / elbow1)
-  USMAX,  // Channel 3 (joint 4 / elbow2)
-  USMID,  // Channel 4 (joint 5 / wrist1)
-  USMID   // Channel 5 (joint 6 / wrist2)
+  USMIN,  // Channel 2 (joint 3 / elbow)
+  USMID,  // Channel 3 (joint 4 / wrist)
+  USMID,  // Channel 4 (joint 5 / cuff)
 };
 
 void setup() {

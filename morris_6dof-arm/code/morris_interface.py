@@ -4,7 +4,6 @@ import serial
 import time
 
 # --- SERIAL SETUP ---
-# REMEMBER: Change 'COM3' to match your actual ESP32 port!
 try:
     ser = serial.Serial('COM4', 115200, timeout=1)
     time.sleep(2)  # Wait for ESP32 serial pipeline to stabilize
@@ -15,14 +14,19 @@ except Exception as e:
 
 def send_pulse_widths(*args):
     """Packages and transmits the raw microsecond values to the PCA9685."""
-    if ser and ser.is_open:
-        msg = f"C0:{slider0.get()},C1:{slider1.get()},C2:{slider2.get()},C3:{slider3.get()},C4:{slider4.get()},C5:{slider5.get()}\n"
-        ser.write(msg.encode('utf-8'))
+    # Adjusted to ensure exactly 5 sliders exist before sending data
+    if ser and ser.is_open and len(sliders) == 5:
+        try:
+            # Generates format: "C0:1500,C1:2500,C2:500,C3:1500,C4:1500\n"
+            msg = ",".join([f"C{i}:{int(slider.get())}" for i, slider in enumerate(sliders)]) + "\n"
+            ser.write(msg.encode('utf-8'))
+        except NameError:
+            pass  # Protection during initialization
 
 # --- GUI WINDOW SETUP ---
 root = tk.Tk()
-root.title("6DoF Microsecond Arm Controller")
-root.geometry("450x550")
+root.title("5-Axis Microsecond Arm Controller")
+root.geometry("450x480")  # Made the window slightly shorter since there are 5 sliders
 
 def create_us_slider(label_text, default_us):
     frame = ttk.Frame(root)
@@ -31,7 +35,6 @@ def create_us_slider(label_text, default_us):
     label = ttk.Label(frame, text=label_text, width=22)
     label.pack(side='left')
     
-    # Range scaled perfectly from 500us (0°) to 2500us (180°)
     slider = ttk.Scale(frame, from_=500, to=2500, orient='horizontal', command=send_pulse_widths)
     slider.set(default_us)
     slider.pack(side='right', expand=True, fill='x')
@@ -39,26 +42,34 @@ def create_us_slider(label_text, default_us):
 
 ttk.Label(root, text="PCA9685 Servo Controller (μs)", font=("Arial", 14, "bold")).pack(pady=15)
 
-# Sliders set explicitly to your hardware's exact rest configurations
-slider0 = create_us_slider("Channel 0 - Base:", 1500)
-slider1 = create_us_slider("Channel 1 - Shoulder:", 500)
-slider2 = create_us_slider("Channel 2 - Elbow 1:", 500)
-slider3 = create_us_slider("Channel 3 - Elbow 2:", 2500)
-slider4 = create_us_slider("Channel 4 - Wrist 1:", 1500)
-slider5 = create_us_slider("Channel 5 - Wrist 2:", 1500)
+# Array to hold slider references
+sliders = []
 
-# Safety Home function returning everything instantly to your custom rest pose
+# --- CONFIGURATIONS FOR 5 SERVOS ---
+configs = [
+    ("Channel 0 - Base (J1):", 1500),      # USMID
+    ("Channel 1 - Shoulder (J2):", 500),   # USMIN
+    ("Channel 2 - Elbow (J3):", 500),      # USMIN
+    ("Channel 3 - Wrist (J4):", 1500),     # USMID
+    ("Channel 4 - Cuff (J5):", 1500)       # USMID
+]
+
+# Build the 5 sliders
+for label_text, default_val in configs:
+    sliders.append(create_us_slider(label_text, default_val))
+
+# Safety Home function for 5 servos
 def reset_to_rest_pose():
-    slider0.set(1500)
-    slider1.set(500)
-    slider2.set(500)
-    slider3.set(2500)
-    slider4.set(1500)
-    slider5.set(1500)
+    rest_poses = [1500, 500, 500, 1500, 1500]
+    for slider, pose in zip(sliders, rest_poses):
+        slider.set(pose)
     send_pulse_widths()
 
 home_btn = ttk.Button(root, text="Return to Rest Pose", command=reset_to_rest_pose)
 home_btn.pack(pady=25)
+
+# Initial push to ensure hardware syncs with GUI on startup
+send_pulse_widths()
 
 root.mainloop()
 
