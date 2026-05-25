@@ -26,7 +26,7 @@
     per-mode = symbol
 }
 
-\setlength{\parskip}{8pt}
+\setlength{\parskip}{4pt}
 
 % SVG Settings
 % DO NOT use \svgsetup{convert=true} with the standard 'svg' package.
@@ -130,12 +130,16 @@ Morris
 % --- 4: ANALYSIS ----------------------------------------------------------------------------------
 \newpage
 \section{Analysis}
+
+\subsection{Forward Kinematics}
+///
+
 \subsection{Inverse Kinematics}
 When calculating the inverse kinematics (IK) of the Morris robot we will consider the robot's spatial frame $\{\mathrm{s}\}$ to be placed at the center of the base of the robot and aligned such that the $-\mathrm{y}$ direction faces forward, the $-\mathrm{x}$ direction faces right, and the $+\mathrm{z}$ direction faces upwards. 
 
 The $n$ links of the robot are taken as $L_n$ with joints $J_n$. As link 2 has an L-shaped structure it is more specifically denoted by the horizontal and vertical offsets between the joints $J_{2}$ and $J_{3}$, notated as $L_{2x}$ and ${L_2y}$
 
-The following will cover the IK required to position the robot's end-effector at a point $\vec{p} = (p_{x},p_{y},p_{z})$ in 3D space and an orientation $\phi$ in the 2D space of the robot's wrist. The robot is kinematically decoupled into three independent systems. The base pivot $J_{1}$, the main arm $J_{2}$ and $J_{3}$, and the wrist $J_{4}$.
+The following covers the IK required to position the robot's end-effector at a point $\vec{p} = (p_{x},p_{y},p_{z})$ in 3D space and an orientation $\phi$ in the 2D space of the robot's wrist. The robot is kinematically decoupled into three independent systems. The base pivot $J_{1}$, the main arm $J_{2}$ and $J_{3}$, and the wrist $J_{4}$.
 
 $J_{1}$ is considered a 1R mechanism that acts in the $\mathrm{x}\mathrm{-}\mathrm{y}$ plane that only needs to point towards the target point $\vec{p}$, as such the IK angle for $J_{1}$ is found via
 \begin{align*}
@@ -152,14 +156,36 @@ $J_{2}$ and $J_{3}$ form a 2R mechanism that is decoupled from $J_{4}$. The IK e
     P_{x} &= p'_{x} - L_{4}\cos(\phi) \\
     P_{y} &= p'_{y} - L_{4}\sin(\phi) - h
 \end{align*}
-where $h$ is the vertical offset of $J_{1}$ from the origin of $\{\mathrm{s}\}$.
-
-As link 2 posssesses an L-shaped structure, an "offset angle" $\theta_{0}$ is established, and the length of the effective link $L_{2}$ is calculated from its components,
+where $h$ is the vertical offset of $J_{1}$ from the origin of $\{\mathrm{s}\}$. Link 2 posssesses an L-shaped structure, as such an "offset angle" $\theta_{0}$ is established, and the length of the effective link $L_{2}$ is calculated from its components,
 \begin{align*}
     \theta_0 &= \mathrm{atan2}(L_{2y}, L_{2x}) \\
     L_{2} &= \sqrt{ L_{2x}^2 + L_{2y}^2 }
 \end{align*}
+The distance between $J_2$ and the target position $\vec{P}$ is denoted $d$ and calculated as
+\begin{align*}
+    d = \sqrt{P_{x}^2 + P_{y}^2}
+\end{align*}
+Using the above variables, $\theta_{2}$ and $\theta_{3}$ can then be seen via the law of cosines to be
+\begin{align*}
+    \theta_{2} &= \theta_{0} + \mathrm{atam2}(P_{y}, P_{x}) + \arccos \left( \frac{L_{2}^2 + d^2 - L_{3}^2}{2L_{2}d} \right) \\
+    \theta_{3} &= \arccos \left( \frac{L_{2}^2 + L_{3}^2 - d^2}{2L_{2}L_{3}} \right) - \theta_{0} - \frac{\pi}{2}
+\end{align*}
+From which the angle $\theta_{4}$ is defined as
+\begin{align*}
+    \phi - (\theta_{2} + \theta_{3}) + \frac{\pi}{2}
+\end{align*}
 
+\subsubsection{Implementation of Inverse Kinematics}
+The calculated angles $\theta_{1}$, $\theta_{2}$, $\theta_{3}$, and $\theta_{4}$ are the angles between each link and as such they cannot be directly inputted into the robot's servo joints. For this task the auxilliary angles $\alpha_{n}$ are defined as
+\begin{align*}
+    \alpha_{1} &= \pi + \theta_{1} \\
+    \alpha_{2} &= \pi + \theta_{2} \\
+    \alpha_{3} &= \theta_{3} - \frac{\pi}{2} \\
+    \alpha_{4} &= \frac{\pi}{2} - \theta_{4}
+\end{align*}
+It is also recommended that a clamping function is introduced into any implementation of these angles to prevent damagining the servo motors.
 
+\subsubsection{Workspace Analysis}
+The arm has a limited range and as such if a target point $\vec{p}$ is outside of this range the $\theta_{n}$ functions may fail to produce values. For a point to be in the workspace of the robot the expression ///
 
 \end{document}

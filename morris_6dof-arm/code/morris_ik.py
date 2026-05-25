@@ -92,6 +92,7 @@ if __name__ == "__main__":
 
     print(f"\ntheta_0: {theta_0}\nd: {d}\nL2: {L2}")
 
+    # TODO: improve workspace analysis
     target_distance = np.sqrt(target_2d_x**2 + target_2d_y**2)
     max_distance = L2+L3
     if target_distance > max_distance:

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  25 MAY 2026 05:00
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  25 MAY 2026 05:32
  system commands enabled.
  file:line:error style messages enabled.
 **d:/1_repos/eng-repo/morris_6dof-arm/latex/main.tex
@@ -716,25 +716,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] 
 [4]
-(./main.aux)
+[5] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 64EAD1464288215F948021AEF6A294DD;509.
+(rerunfilecheck)             Checksum: 080A549D8E6CBFDBAF9215AAEFFE4123;1075.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19347 strings out of 476076
+ 19354 strings out of 476076
  100000,794899 words of node,token memory allocated
  529 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 57 glue_spec,
  8 attribute_list, 2 write nodes
-   avail lists: 1:1,2:500,3:111,4:55,5:288,6:28,7:4564,8:18,9:500,10:5,11:226
- 41389 multiletter control sequences out of 65536+600000
+   avail lists: 1:1,2:654,3:144,4:91,5:339,6:40,7:5124,8:38,9:647,10:5,11:252
+ 41392 multiletter control sequences out of 65536+600000
  47 fonts using 2873607 bytes
- 94i,10n,88p,471b,935s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,11n,88p,471b,943s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
@@ -745,9 +745,9 @@ ts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
 c/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Pr
 ogram Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/font
 s/type1/public/lm/lmr12.pfb>
-Output written on main.pdf (4 pages, 183475 bytes).
+Output written on main.pdf (5 pages, 192164 bytes).
 
-PDF statistics: 95 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 1048576)
- 48 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 114 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 1048576)
+ 72 words of extra memory for PDF output out of 10000 (max. 100000000)
 
