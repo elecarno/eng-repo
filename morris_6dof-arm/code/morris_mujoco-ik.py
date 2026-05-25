@@ -13,7 +13,7 @@ model.opt.disableflags |= mujoco.mjtDisableBit.mjDSBL_CONTACT
 # target frame
 target_mocap_id = model.body('target_frame').mocapid[0]
 # target position vector
-t_pos = np.array([-0.1, -0.1, 0.15])
+t_pos = np.array([0.0, -0.1, 0.15])
 # target orientation quaternion [w,x,y,z] (mujoco format)
 t_quat = np.array([1.0, 0.0, 0.0, 0.0])
 
@@ -46,7 +46,7 @@ L4  = 0.062
 phi = np.radians(0)
 
 target_x = np.sqrt( t_pos[0]**2 + t_pos[1]**2 )
-target_y = np.sqrt( t_pos[0]**2 + t_pos[1]**2 + (t_pos[2] - h)**2 )
+target_y = t_pos[2]
 
 target = np.array([target_x, target_y])
 target_offset = ([
@@ -71,10 +71,9 @@ theta_2 = np.arctan2(target_offset[1], target_offset[0]) + np.arccos( (L2**2 + d
 theta_3 = np.arccos( (L2**2 + L3**2 - d**2) / (2*L2*L3) ) - theta_0 - np.pi/2
 theta_4 = phi - (theta_2 + theta_3) + np.pi/2
 
-print(f"\ntheta_2: {theta_2}\ntheta_3: {theta_3}\ntheta_4: {theta_4}\n")
-
 theta_1 = -np.arctan2(t_pos[1], t_pos[0])
 
+print(f"\ntheta_1: {theta_1}\ntheta_2: {theta_2}\ntheta_3: {theta_3}\ntheta_4: {theta_4}\n")
 
 # set joint targets
 joints = [ # position to set joints to
