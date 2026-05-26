@@ -18,7 +18,6 @@ except Exception as e:
     ser = None
 
 
-# --- FUNCTIONS ------------------------------------------------------------------------------------
 def send_pulse_widths(pulse_widths):
     """
     Packages and transmits raw microsecond values to the PCA9685.
@@ -47,6 +46,7 @@ def send_pulse_widths(pulse_widths):
         print(f"Failed to send data: {e}")
 
 
+# --- IK SOLVER ------------------------------------------------------------------------------------
 def reset_to_rest_pose():
     """
         Defines and sets the robot to its resting, or zero, position.
