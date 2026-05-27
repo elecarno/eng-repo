@@ -13,7 +13,7 @@ import time
 # --- SERIAL ---------------------------------------------------------------------------------------
 try:
     ser = serial.Serial('COM4', 115200, timeout=1)
-    time.sleep(2)  # Wait for ESP32 serial pipeline to stabilize
+    time.sleep(2)  # wait for ESP32 serial pipeline to stabilize
     print("Connected to PCA9685/ESP32 Controller!")
 except Exception as e:
     print(f"Connection Error: {e}")

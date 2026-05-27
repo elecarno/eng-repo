@@ -1,6 +1,6 @@
-# MORRIS ROBOT DIRECT CONTROL INTERFACE
-# This script is used to connect to the Morris robot and provides a basic GUI that allows the user
-# to direct control the position of each joint using sliders
+# MORRIS ROBOT INVERSE KINEMATICS CONTROL INTERFACE
+# This script is used to connect to the Morris via IK kinematics
+# targeted towards a point in 3D space.
 
 
 # --- IMPORTS --------------------------------------------------------------------------------------
@@ -14,7 +14,7 @@ import numpy as np
 # --- SERIAL ---------------------------------------------------------------------------------------
 try:
     ser = serial.Serial('COM4', 115200, timeout=1)
-    time.sleep(2)  # Wait for ESP32 serial pipeline to stabilize
+    time.sleep(2)  # wait for ESP32 serial pipeline to stabilize
     print("Connected to PCA9685/ESP32 Controller!")
 except Exception as e:
     print(f"Connection Error: {e}")
@@ -24,6 +24,9 @@ except Exception as e:
 def send_pulse_widths(pulse_widths):
     """
     Packages and transmits raw microsecond values to the PCA9685.
+
+    Args:
+        pulse_widths: An array of 5 integers between 500 and 2500 repesenting microsecond values.
     """
     if not ser or not ser.is_open:
         print("Error: Serial port is not open.")
@@ -39,6 +42,7 @@ def send_pulse_widths(pulse_widths):
         print(f"Sent Pulse Widths: {msg.strip()}")
     except Exception as e:
         print(f"Failed to send data: {e}")
+
 
 # --- IK SOLVER ------------------------------------------------------------------------------------
 def ik_solver(robot_desc, target_3d, phi):
@@ -125,32 +129,39 @@ def radians_to_us(rad, rad_min=0.0, rad_max=np.pi, us_min=500, us_max=2500):
 
 
 # --- GUI ------------------------------------------------------------------------------------------
-def apply_rest_pose():
+def reset_to_rest_pose():
     """
-    Directly commands the precise hardware microsecond rest configurations.
-    [J1/base, J2/shoulder, J3/elbow, J4/wrist, J5/cuff]
+        Defines and sets the robot to its resting, or zero, position.
     """
-    rest_poses = [1500, 500, 500, 1500, 1500]
-    print("Enforcing hardware-based Rest Position...")
+
+    # [J1/base, J2/shoulder, J3/elbow, J4/wrist, J5/cuff]
+    rest_poses = [
+        1500, 
+        500, 
+        500, 
+        1500, 
+        1500
+    ]
+    print("Resetting to rest position...")
     send_pulse_widths(rest_poses)
 
 
 def on_slider_move(_=None):
     """
-    Fires on slider interaction. Only updates hardware if Mode is set to 'IK Target'.
+    Called on slider interaction and only updates hardware if set to 'IK Target' mode.
     """
     x_val = float(slider_x.get())
     y_val = float(slider_y.get())
     z_val = float(slider_z.get())
     phi_val = float(slider_phi.get())
     
-    # Keep the digital readouts updating dynamically regardless of mode
+    # update values regardless of mode
     lbl_x_val.config(text=f"{x_val:.1f}")
     lbl_y_val.config(text=f"{y_val:.1f}")
     lbl_z_val.config(text=f"{z_val:.1f}")
     lbl_phi_val.config(text=f"{phi_val:.1f}°")
     
-    # Only transmit commands if we are actively in IK mode
+    # check if in IK mode
     if current_mode.get() == "IK":
         # define robot and run ik solver
         robot_desc = {
@@ -180,47 +191,47 @@ def on_slider_move(_=None):
 
 def toggle_control_mode():
     """
-    Switches system state behavior between raw hardware rest constraints and operational IK tracking.
+    Switches controller between rest position mode and ik targeting mode.
     """
     if current_mode.get() == "REST":
-        # Transitioning to Rest Mode
-        btn_toggle.config(text="Mode: REST POSITION (Hardware Guarded)", style="Rest.TButton")
-        # Visual cue to user: disable workspace sliders
+        # change to rest mode
+        btn_toggle.config(text="Mode: REST POSITION", style="Rest.TButton")
+        # disable sliders when in rest mode
         for s in [slider_x, slider_y, slider_z, slider_phi]:
             s.config(state="disabled")
-        apply_rest_pose()
+        reset_to_rest_pose()
     else:
-        # Transitioning to IK Mode
-        btn_toggle.config(text="Mode: ACTIVE IK TARGETING", style="IK.TButton")
-        # Re-enable workspace sliders
+        # change to IK mode
+        btn_toggle.config(text="Mode: IK TARGETING", style="IK.TButton")
+        # enable sliders
         for s in [slider_x, slider_y, slider_z, slider_phi]:
             s.config(state="normal")
-        # Instantly update to match current slider targets
+        # call data update when sliders are moved
         on_slider_move()
 
 
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("Morris 5-DOF Hybrid Controller")
-    root.geometry("500x500")
+    root.geometry("512x512")
 
-    # Custom styling for the mode toggle button states
+    # styling for toggle button
     style = ttk.Style()
     style.configure("Rest.TButton", font=("Arial", 11, "bold"), foreground="red")
     style.configure("IK.TButton", font=("Arial", 11, "bold"), foreground="green")
 
     ttk.Label(root, text="Morris 5-DOF Cartesian Controller", font=("Arial", 14, "bold")).pack(pady=15)
 
-    # Mode Selector Frame
+    # mode selector frame
     mode_frame = ttk.Frame(root)
     mode_frame.pack(fill='x', padx=25, pady=5)
     
     current_mode = tk.StringVar(value="REST")
     
-    # Toggle Radiobuttons disguised as a clean, structured selector block
+    # toggle button
     btn_toggle = ttk.Checkbutton(
         mode_frame, 
-        text="Mode: REST POSITION (Hardware Guarded)", 
+        text="Mode: REST POSITION", 
         variable=current_mode, 
         onvalue="IK", 
         offvalue="REST", 
@@ -231,7 +242,7 @@ if __name__ == "__main__":
 
     ttk.Separator(root, orient='horizontal').pack(fill='x', padx=25, pady=15)
 
-    # Container frame for target coordinates
+    # target coordinates frame
     slider_frame = ttk.Frame(root)
     slider_frame.pack(fill='both', expand=True, padx=25)
 
@@ -249,17 +260,17 @@ if __name__ == "__main__":
         parent.grid_columnconfigure(1, weight=1)
         return slider, val_lbl
 
-    # Building Cartesian Controllers
+    # create sliders
     slider_x,   lbl_x_val   = create_cartesian_slider(slider_frame, "Target X (mm):", -150,  150,  0.0,   0)
     slider_y,   lbl_y_val   = create_cartesian_slider(slider_frame, "Target Y (mm):", -150, -50,  -100.0, 1)
     slider_z,   lbl_z_val   = create_cartesian_slider(slider_frame, "Target Z (mm):",  10,   300,  150,  2)
     slider_phi, lbl_phi_val = create_cartesian_slider(slider_frame, "Orientation φ (°):", -90, 90, 0.0,   3)
 
-    # Initialize the default state (Locks UI elements and pushes raw rest pulses down serial)
+    # initialise in rest mode by default
     toggle_control_mode()
 
     root.mainloop()
 
     if ser:
-        apply_rest_pose()
+        reset_to_rest_pose()
         ser.close()

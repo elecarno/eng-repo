@@ -1,36 +1,48 @@
-// MG996R 5-Axis PC SERIAL CONTROLLER
+// MORRIS SERVO INTERFACE CODE
+// This is the code that is uploaded to Morris' ESP32 microcontroller. The code allows for
+// Morris to take in serial inputs in a specified format and set each servo to the positions
+// specified in that input.
+
+// PCA9685 to ESP32 wiring
 // SDA -> GPIO 21
 // SCL -> GPIO 22
 
+
+// --- INCLUDES -------------------------------------------------------------------------------
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
+
+// --- GLOBALS --------------------------------------------------------------------------------
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-#define SERVO_FREQ  50   // Analog servos run at ~50 Hz updates
-#define USMIN       500  // Absolute minimum safe limit
-#define USMAX      2500  // Absolute maximum safe limit
-#define USMID      1500  // 90 degrees reference
+// servo definitions
+#define SERVO_FREQ  50   // analog servo ~50 Hz updates
+#define USMIN       500  // minimum safe limit
+#define USMAX      2500  // maximum safe limit
+#define USMID      1500  // 90 degrees midpoint
 
-// --- ROBOT REST CONFIGURATION ---
-// Set to exactly 5 elements
+// robot rest position definition
+// SEE BELOW FOR MG996R TO PCA9685 WIRING \/\/\/
 const uint16_t robotRestPose[5] = {
-  USMID,  // Channel 0 (joint 1 / base)
-  USMIN,  // Channel 1 (joint 2 / shoulder)
-  USMIN,  // Channel 2 (joint 3 / elbow)
-  USMID,  // Channel 3 (joint 4 / wrist)
-  USMID   // Channel 4 (joint 5 / cuff)
+  USMID,  // channel 0 (joint 1 / base)
+  USMIN,  // channel 1 (joint 2 / shoulder)
+  USMIN,  // channel 2 (joint 3 / elbow)
+  USMID,  // channel 3 (joint 4 / wrist)
+  USMID   // channel 4 (joint 5 / cuff)
 };
 
-// Array to track current positions in memory
+// array to track current configuration in memory
 uint16_t currentPose[5];
 
+
+// --- CODE -----------------------------------------------------------------------------------
 void setup() {
   Serial.begin(115200); 
   delay(1000); 
 
   Serial.println("Initializing PCA9685 on ESP32...");
-  Wire.begin(); 
+  Wire.begin();
 
   pwm.begin();
   pwm.setOscillatorFrequency(25000000);
@@ -39,7 +51,6 @@ void setup() {
 
   Serial.println("Moving robot to its custom resting pose...");
   
-  // Changed loop condition to i < 5
   for (uint8_t i = 0; i < 5; i++) {
     currentPose[i] = robotRestPose[i];
     pwm.writeMicroseconds(i, currentPose[i]);
@@ -52,7 +63,6 @@ void loop() {
     parseAndMove(data);
   }
   
-  // Changed loop condition to i < 5
   for (uint8_t i = 0; i < 5; i++) {
     pwm.writeMicroseconds(i, currentPose[i]);
   }
@@ -66,15 +76,13 @@ void parseAndMove(String data) {
   int idx3 = data.indexOf("C3:");
   int idx4 = data.indexOf("C4:");
 
-  // Removed non-existent idx5 check from the conditional statement
   if (idx0 != -1 && idx1 != -1 && idx2 != -1 && idx3 != -1 && idx4 != -1) {
     
-    // Adjusted substring boundaries since C4 is now the last value in the packet
     int val0 = data.substring(idx0 + 3, idx1).toInt();
     int val1 = data.substring(idx1 + 3, idx2).toInt();
     int val2 = data.substring(idx2 + 3, idx3).toInt();
     int val3 = data.substring(idx3 + 3, idx4).toInt();
-    int val4 = data.substring(idx4 + 3).toInt(); // Grabs everything from C4: to the end
+    int val4 = data.substring(idx4 + 3).toInt();
 
     currentPose[0] = constrain(val0, USMIN, USMAX);
     currentPose[1] = constrain(val1, USMIN, USMAX);
