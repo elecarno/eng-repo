@@ -1,8 +1,8 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  25 MAY 2026 05:32
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  28 MAY 2026 02:21
  system commands enabled.
  file:line:error style messages enabled.
-**d:/1_repos/eng-repo/morris_6dof-arm/latex/main.tex
-(d:/1_repos/eng-repo/morris_6dof-arm/latex/main.tex
+**d:/1_repos/eng-repo/morris_5dof-arm/latex/main.tex
+(d:/1_repos/eng-repo/morris_5dof-arm/latex/main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
@@ -714,40 +714,45 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = main.toc
  [1
 
-{C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] 
-[4]
-[5] (./main.aux)
+{C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+8.
+
+("C:/Program Files/MiKTeX/tex/latex/lm/t1lmtt.fd"
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [2] [3] [4] [5] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 080A549D8E6CBFDBAF9215AAEFFE4123;1075.
+(rerunfilecheck)             Checksum: 48A396C06D2664B8FF8573EBC96D0424;1008.
 )
 
 Here is how much of LuaTeX's memory you used:
- 19354 strings out of 476076
+ 19416 strings out of 476076
  100000,794899 words of node,token memory allocated
- 529 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 57 glue_spec,
- 8 attribute_list, 2 write nodes
-   avail lists: 1:1,2:654,3:144,4:91,5:339,6:40,7:5124,8:38,9:647,10:5,11:252
- 41392 multiletter control sequences out of 65536+600000
- 47 fonts using 2873607 bytes
- 94i,11n,88p,471b,943s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Fil
-es/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
-c/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Pr
-ogram Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/lm/lmr12.pfb>
-Output written on main.pdf (5 pages, 192164 bytes).
+ 537 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 10 attribute, 57 glue_spec
+, 10 attribute_list, 2 write nodes
+   avail lists: 1:1,2:734,3:165,4:85,5:333,6:60,7:5774,8:38,9:681,10:5,11:322
+ 41442 multiletter control sequences out of 65536+600000
+ 49 fonts using 3017687 bytes
+ 94i,11n,88p,551b,947s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX/
+fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program
+ Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Progr
+am Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/
+type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (5 pages, 227603 bytes).
 
-PDF statistics: 114 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 1048576)
+PDF statistics: 136 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 1048576)
  72 words of extra memory for PDF output out of 10000 (max. 100000000)
 

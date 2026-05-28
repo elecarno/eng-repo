@@ -63,88 +63,73 @@
 %     \label{fig:arm}
 % \end{figure}
 
-Morris 
+The Morris robot is a five degrees of freedom robotic arm designed to be easily 3D printed and assembled and to act as a teaching platform for basic robotics control.
 
-% --- 2: DRAWINGS ----------------------------------------------------------------------------------
-% \newpage
-% \section{Drawings}
-% \begin{figure}[H]
-%     \centering
-%     \includesvg[width=0.6\linewidth]{svg/arm_exp.svg}
-%     \caption{Exploded arm assembly}
-%     \label{fig:assembly}
-% \end{figure}
+Morris uses five MG996R servo motors as they are common amongst hobbyist robotics, relatively cheap, and easy to control. These are routed into a PCA9685 16 Channel servo driver board which is controlled using an ESP32 microcontroller. 
 
-///
+The ESP32 was chosen over the Arduino due to its smaller form factor and the fact that it is more commonly used in final robotics designs than the Arduino, which is primarily a prototyping board. Additionally, the Robot Operating System (ROS) was avoided for Morris as this arm is intended to teach fundamentals and does not require the added complexity of the ROS middleware.
 
-% --- 3: BILL OF MATERIALS -------------------------------------------------------------------------
-\newpage
-\section{Bill of Materials (BOM)}
-\begin{table}[H]
-    \centering
-    \caption{Purchased Parts}
-    \label{tab:bom_pp}
-    \begin{tabularx}{\textwidth}{@{} l X r @{}}
-        \toprule
-        \textbf{Description} & \textbf{Qty} \\
-        \midrule
-        MG996R Servo                                              & 5 \\
-        ESP32 Devkit Type-C                                       & 1 \\
-        PCA9685 16-Channel 12-Bit PWM Driver                      & 1 \\
-        DC5525 to Screw Terminal Connector DC Power Jack (Female) & 1 \\
-        10A Adjustable DC-DC Step Down Converter                  & 1 \\
-        \bottomrule
-    \end{tabularx}
-\end{table}
+Each of Morris' parts have been designed to be 3D printed easily, quickly, and with minimal supports. The Morris robot was been developed and tested using parts printed in PLA.
 
-% \begin{table}[H]
-%     \centering
-%     \caption{Manufactured Parts}
-%     \label{tab:bom_manufactured}
-%     \begin{tabularx}{\textwidth}{@{} l X r @{}}
-%         \toprule
-%         \textbf{Part} & \textbf{Material} & \textbf{Qty} \\
-%         \midrule
-%         \texttt{base}                   & PLA - White & 1 \\
-%         \bottomrule
-%     \end{tabularx}
-% \end{table}
+% --- 2: SOFTWARE ----------------------------------------------------------------------------------
+\section{Software}
+Included with Morris is a set of four Python scripts and one Arduino IDE script to be used with the Morris robot.
 
-% \begin{table}[H]
-%     \centering
-%     \caption{Standard Parts}
-%     \label{tab:bom_fasteners}
-%     \begin{tabularx}{\textwidth}{@{} l X r @{}}
-%         \toprule
-%         \textbf{Description} & \textbf{Qty} \\
-%         \midrule
-%         M3x6 Pan Head Screw  & 9  \\
-%         M3x10 Pan Head Screw & 22 \\
-%         M3x14 Pan Head Screw & 1  \\
-%         M3 Nut               & 3  \\
-%         \bottomrule
-%     \end{tabularx}
-% \end{table}
+The Arduino IDE script is compiled and uploaded to the robot. Three of the Python scripts use the \texttt{serial} library to communicate with the robot via USB. Note that for the Python scripts to run, the Arduino IDE must be closed to allow the ESP32's relevant COM port to remain open.
+
+\begin{itemize}
+    \item \texttt{morris\_servo-interface.ino} is uploaded to the robot's ESP32 and is used to define a format for serial data sent to the robot in order to control each of the five servos. \textbf{This script is important as the robot will not function if it has not been uploaded to its ESP32}.
+    \item \texttt{morris\_ik-hardware.py} is a basic Python script used to demonstrate the robot's inverse kinematics solving algorithm. Users can manually set the target positon for the robot and its end-effector orientation in the code before running the script. Note that inputting a target outside of the robot's workspace will throw an exception.
+    \item \texttt{morris\_gui-direct.py} is a Python script which builds a simple user interface that can be used to directly control the position of each servo on the robot.
+    \item \texttt{morris\_gui-ik.py} is a Python script which builds a simpe user interface that can be used to set and change the target position and end-effector orientation for the robot's inverse kinematics algorithm in realtime with a series of sliders.
+    \item \texttt{morris\_ik-simulation.py} is a Python script which uses Mujoco to run a simulation of the robot's inverse kinematics algorithm. Note that this script must be run from the \texttt{scripts/} directory in order to function.
+\end{itemize}
 
 
-% --- 4: ANALYSIS ----------------------------------------------------------------------------------
+% --- 3: ANALYSIS ----------------------------------------------------------------------------------
 \newpage
 \section{Analysis}
+\begin{table}
+    \centering
+    \caption{Physical Parameters}
+    \label{tab:physicals}
+    \begin{tabular}{p{4cm} c c}
+        \hline \\
+        \textbf{Parameter}    & \textbf{Symbol} & \textbf{Value} ($\si{mm}$) \\
+        \hline \\
+        Link 2 $x$ length     & $L_{2x}$        & 100 \\
+        Link 2 $y$ length     & $L_{2y}$        & 32  \\
+        Link 3 length         & $L_{3}$         & 90  \\
+        Link 4 length         & $L_{4}$         & 62  \\
+        Joint 2 Height offset & $h$             & 86  \\
+        \hline
+    \end{tabular}
+\end{table}
 
-\subsection{Forward Kinematics}
-///
+The $n$ links of the robot are taken as $L_n$ with joints $J_n$. As link 2 has an L-shaped structure it is more specifically denoted by the horizontal and vertical offsets between the joints $J_{2}$ and $J_{3}$, notated as $L_{2x}$ and $L_{2y}$. Table \ref{tab:physicals} shows the physical values of the link length constants for the Morris robot.
+
+% \subsection{Forward Kinematics}
+% The forward kinematics of the robot can be written in the spatial frame product of exponentials (PoE) form as
+% \begin{equation*}
+%     T(\theta_{1}, \theta_{2}, \theta_{3}, \theta_{4}, \theta_{5}) =
+%     e^{\displaystyle [S_{1}]\theta_{1}}
+%     e^{\displaystyle [S_{2}]\theta_{2}}
+%     e^{\displaystyle [S_{3}]\theta_{3}}
+%     e^{\displaystyle [S_{4}]\theta_{4}}
+%     e^{\displaystyle [S_{5}]\theta_{5}}
+%     M
+% \end{equation*}
 
 \subsection{Inverse Kinematics}
 When calculating the inverse kinematics (IK) of the Morris robot we will consider the robot's spatial frame $\{\mathrm{s}\}$ to be placed at the center of the base of the robot and aligned such that the $-\mathrm{y}$ direction faces forward, the $-\mathrm{x}$ direction faces right, and the $+\mathrm{z}$ direction faces upwards. 
 
-The $n$ links of the robot are taken as $L_n$ with joints $J_n$. As link 2 has an L-shaped structure it is more specifically denoted by the horizontal and vertical offsets between the joints $J_{2}$ and $J_{3}$, notated as $L_{2x}$ and ${L_2y}$
-
 The following covers the IK required to position the robot's end-effector at a point $\vec{p} = (p_{x},p_{y},p_{z})$ in 3D space and an orientation $\phi$ in the 2D space of the robot's wrist. The robot is kinematically decoupled into three independent systems. The base pivot $J_{1}$, the main arm $J_{2}$ and $J_{3}$, and the wrist $J_{4}$.
 
 $J_{1}$ is considered a 1R mechanism that acts in the $\mathrm{x}\mathrm{-}\mathrm{y}$ plane that only needs to point towards the target point $\vec{p}$, as such the IK angle for $J_{1}$ is found via
-\begin{align*}
+\begin{align}
     \theta_{1} = \mathrm{atan2}(p_{y},p_{x})
-\end{align*}
+    \label{eq:theta_1}
+\end{align}
 
 $J_{2}$, $J_{3}$, and $J_{4}$ are all considered coplanar. In order to apply IK to these joints, the point $\vec{p}$ must be converted into a point $\vec{p'} = (p'_{x}, p'_{y})$ this plane. The $x$ coordinate of this point can be found as magnitude of the $\mathrm{x}\mathrm{-}\mathrm{y}$ plane projection of $\vec{p}$; whilst the $y$ coordinate is simply the $z$ coordinate of $\vec{p}$, therefore
 \begin{align*}
@@ -156,7 +141,7 @@ $J_{2}$ and $J_{3}$ form a 2R mechanism that is decoupled from $J_{4}$. The IK e
     P_{x} &= p'_{x} - L_{4}\cos(\phi) \\
     P_{y} &= p'_{y} - L_{4}\sin(\phi) - h
 \end{align*}
-where $h$ is the vertical offset of $J_{1}$ from the origin of $\{\mathrm{s}\}$. Link 2 posssesses an L-shaped structure, as such an "offset angle" $\theta_{0}$ is established, and the length of the effective link $L_{2}$ is calculated from its components,
+where $h$ is the vertical offset of $J_{2}$ from the origin of $\{\mathrm{s}\}$ (with a physical value as shown in Table \ref{tab:physicals}). Link 2 posssesses an L-shaped structure, as such an "offset angle" $\theta_{0}$ is established, and the length of the effective link $L_{2}$ is calculated from its components,
 \begin{align*}
     \theta_0 &= \mathrm{atan2}(L_{2y}, L_{2x}) \\
     L_{2} &= \sqrt{ L_{2x}^2 + L_{2y}^2 }
@@ -166,14 +151,16 @@ The distance between $J_2$ and the target position $\vec{P}$ is denoted $d$ and 
     d = \sqrt{P_{x}^2 + P_{y}^2}
 \end{align*}
 Using the above variables, $\theta_{2}$ and $\theta_{3}$ can then be seen via the law of cosines to be
-\begin{align*}
-    \theta_{2} &= \theta_{0} + \mathrm{atam2}(P_{y}, P_{x}) + \arccos \left( \frac{L_{2}^2 + d^2 - L_{3}^2}{2L_{2}d} \right) \\
+\begin{align}
+    \theta_{2} &= \theta_{0} + \mathrm{atam2}(P_{y}, P_{x}) + \arccos \left( \frac{L_{2}^2 + d^2 - L_{3}^2}{2L_{2}d} \right) \nonumber \\
     \theta_{3} &= \arccos \left( \frac{L_{2}^2 + L_{3}^2 - d^2}{2L_{2}L_{3}} \right) - \theta_{0} - \frac{\pi}{2}
-\end{align*}
+    \label{eq:theta_2_and_3}
+\end{align}
 From which the angle $\theta_{4}$ is defined as
-\begin{align*}
-    \phi - (\theta_{2} + \theta_{3}) + \frac{\pi}{2}
-\end{align*}
+\begin{align}
+    theta_{4} = \phi - (\theta_{2} + \theta_{3}) + \frac{\pi}{2}
+    \label{eq:theta_4}
+\end{align}
 
 \subsubsection{Implementation of Inverse Kinematics}
 The calculated angles $\theta_{1}$, $\theta_{2}$, $\theta_{3}$, and $\theta_{4}$ are the angles between each link and as such they cannot be directly inputted into the robot's servo joints. For this task the auxilliary angles $\alpha_{n}$ are defined as
@@ -186,6 +173,69 @@ The calculated angles $\theta_{1}$, $\theta_{2}$, $\theta_{3}$, and $\theta_{4}$
 It is also recommended that a clamping function is introduced into any implementation of these angles to prevent damagining the servo motors.
 
 \subsubsection{Workspace Analysis}
-The arm has a limited range and as such if a target point $\vec{p}$ is outside of this range the $\theta_{n}$ functions may fail to produce values. For a point to be in the workspace of the robot the expression ///
+The arm has a limited range and as such if a target point $\vec{p}$ is outside of this range then Equations \ref{eq:theta_1}, \ref{eq:theta_2_and_3}, and \ref{eq:theta_4} may fail to produce values. At a basic level, for a point to be in the workspace of the robot the expression
+\begin{equation}
+    (L_{2} - L_{3}) \leq \lVert\vec{P}\rVert \leq (L{2} + L_{3})
+    \label{eq:workspace}
+\end{equation}
+must hold true. Equation \ref{eq:workspace} however only describes the workspace according to the inverse kinematics equations and does not fully reflect the physical restrictions placed on the workspace by the robot's design and joint limits. For this reason it may sufficient for ensuring that software implementations of the inverse kinematics do not throw errors, however testing should be done to determine the robot's true workspace and implement the revelant safety features.
+
+% --- 4: BILL OF MATERIALS -------------------------------------------------------------------------
+\newpage
+\section{Bill of Materials (BOM)}
+Note that jumper cables are not included in the BoM. Washers are also recommended to be placed between some screws and plastic parts
+
+PLA colours are simply recommendations and reflect what was used on the final prototype of the robot.
+
+\begin{table}[H]
+    \centering
+    \caption{Purchased Parts}
+    \label{tab:bom_pp}
+    \begin{tabularx}{\textwidth}{@{} l X r @{}}
+        \toprule
+        \textbf{Description} & \textbf{Qty} \\
+        \midrule
+        MG996R Servo                                              & 5 \\
+        ESP32 Devkit Type-C                                       & 1 \\
+        PCA9685 16-Channel 12-Bit PWM Driver                      & 1 \\
+        DC5525 to Screw Terminal Connector DC Power Jack (Female) & 1 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Manufactured Parts}
+    \label{tab:bom_manufactured}
+    \begin{tabularx}{\textwidth}{@{} l X r @{}}
+        \toprule
+        \textbf{Part} & \textbf{Material} & \textbf{Qty} \\
+        \midrule
+        \texttt{base}                    & PLA - White & 1 \\
+        \texttt{link1a}                  & PLA - White & 1 \\
+        \texttt{link1b}                  & PLA - White & 1 \\
+        \texttt{link2}                   & PLA - White & 1 \\
+        \texttt{link2-shell}             & PLA - Black & 1 \\
+        \texttt{link3}                   & PLA - White & 1 \\
+        \texttt{link3-shell}             & PLA - Black & 1 \\
+        \texttt{link4}                   & PLA - White & 1 \\
+        \texttt{link4-shell}             & PLA - Black & 1 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Fasteners}
+    \label{tab:bom_fasteners}
+    \begin{tabularx}{\textwidth}{@{} l X r @{}}
+        \toprule
+        \textbf{Description} & \textbf{Qty} \\
+        \midrule
+        M3x6 Pan Head Screw  & 5  \\
+        M3x10 Pan Head Screw & 38 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \end{document}
