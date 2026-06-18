@@ -145,32 +145,31 @@ if __name__ == "__main__":
             # --- LEG MOVEMENT ---
             # get timer
             t = data.time
-            frequency = 5
+            frequency = 9
 
             # define leg ik targets & set positions
             fl_x = 0.18
-            fl_y = 0.06*np.maximum(0, np.cos(t * frequency))
+            fl_y = 0.06*np.cos(t * frequency)
             fl_z = 0.04*np.maximum(0, np.sin(t * frequency)) - 0.07
             fl_ik = leg_ik_solver(np.array([fl_x, fl_y, fl_z]))
             set_leg_position("fl", [ fl_ik[0], fl_ik[1], fl_ik[2] ])
 
-            br_offset = 0
             br_x = 0.18
-            br_y = -0.06*np.maximum(0, np.cos(t * frequency + br_offset))
-            br_z = 0.04*np.maximum(0, np.sin(t * frequency + br_offset)) - 0.07
+            br_y = -0.06*np.cos(t * frequency)
+            br_z = 0.04*np.maximum(0, np.sin(t * frequency)) - 0.07
             br_ik = leg_ik_solver(np.array([br_x, br_y, br_z]))
             set_leg_position("br", [ br_ik[0], br_ik[1], br_ik[2] ])
 
             fr_offset = np.pi * frequency
             fr_x = 0.18
-            fr_y = 0.06*np.maximum(0, np.cos(t * frequency + fr_offset))
+            fr_y = 0.06*np.cos(t * frequency + fr_offset)
             fr_z = 0.04*np.maximum(0, np.sin(t * frequency + fr_offset)) - 0.07
             fr_ik = leg_ik_solver(np.array([fr_x, fr_y, fr_z]))
             set_leg_position("fr", [ fr_ik[0], fr_ik[1], fr_ik[2] ])
 
             bl_offset = np.pi * frequency
             bl_x = 0.18
-            bl_y = -0.06*np.maximum(0, np.cos(t * frequency + bl_offset))
+            bl_y = -0.06*np.cos(t * frequency + bl_offset)
             bl_z = 0.04*np.maximum(0, np.sin(t * frequency + bl_offset)) - 0.07
             bl_ik = leg_ik_solver(np.array([bl_x, bl_y, bl_z]))
             set_leg_position("bl", [ bl_ik[0], bl_ik[1], bl_ik[2] ])
