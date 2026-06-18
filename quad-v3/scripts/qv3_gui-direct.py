@@ -1,4 +1,4 @@
-# MORRIS ROBOT DIRECT CONTROL INTERFACE
+# STEVEN ROBOT DIRECT CONTROL INTERFACE
 # This script is used to connect to the Morris robot and provides a basic GUI that allows the user
 # to direct control the position of each joint using sliders
 
@@ -24,7 +24,7 @@ def send_pulse_widths(*args):
     """
         Packages and transmits raw microsecond values to the PCA9685.
     """
-    if ser and ser.is_open and len(sliders) == 5:
+    if ser and ser.is_open and len(sliders) == 12:
         try:
             # generate format: "C0:1500,C1:2500,C2:500,C3:1500,C4:1500\n"
             msg = ",".join(
@@ -34,46 +34,73 @@ def send_pulse_widths(*args):
         except NameError:
             pass  # protection during initialization
 
-
 # --- GUI ------------------------------------------------------------------------------------------
 def create_us_slider(label_text, default_us):
     frame = ttk.Frame(root)
-    frame.pack(fill='x', padx=20, pady=10)
+    frame.pack(fill='x', padx=20, pady=5)
     
-    label = ttk.Label(frame, text=label_text, width=22)
+    label = ttk.Label(frame, text=label_text, width=18)
     label.pack(side='left')
     
-    slider = ttk.Scale(frame, from_=500, to=2500, orient='horizontal', command=send_pulse_widths)
+    val_label = ttk.Label(frame, text=f"{default_us} µs", width=8, anchor='e')
+    val_label.pack(side='right', padx=(10, 0))
+    
+    def on_slider_move(val):
+        val_label.config(text=f"{int(float(val))} µs")
+        send_pulse_widths()
+
+    # 3. Middle: The Slider itself
+    slider = ttk.Scale(frame, from_=500, to=2500, orient='horizontal', command=on_slider_move)
     slider.set(default_us)
     slider.pack(side='right', expand=True, fill='x')
+    
     return slider
 
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.title("Morris 5-DOF Direct Controller")
-    root.geometry("450x480")
+    root.title("Q-v3 Servo Controller")
+    root.geometry("450x720")
 
-    ttk.Label(root, text="Morris 5-DOF IK Controller", font=("Arial", 14, "bold")).pack(pady=15)
+    ttk.Label(root, text="Q-v3 Servo Controller", font=("Arial", 14, "bold")).pack(pady=15)
 
     # list to hold slider references
     sliders = []
 
+    rest_poses = [
+        500, 2500, 2500,
+
+        500, 2500, 2500,
+
+        500, 2500, 2500,
+
+        500, 2500, 2500,
+    ]
+
     configs = [
-        ("Channel 0 - (J1) Base:",      1500 ),  # USMID
-        ("Channel 1 - (J2) Shoulder:",  500  ),  # USMIN
-        ("Channel 2 - (J3) Elbow:",     500  ),  # USMIN
-        ("Channel 3 - (J4) Wrist:",     1500 ),  # USMID
-        ("Channel 4 - (J5) Cuff:",      1500 )   # USMID
+        ("C0  FL Hip:  ", rest_poses[0 ]),
+        ("C1  FL Knee: ", rest_poses[1 ]),
+        ("C2  FL Ankle:", rest_poses[2 ]),
+         
+        ("C3  FR Hip:  ", rest_poses[3 ]),
+        ("C4  FR Knee: ", rest_poses[4 ]),
+        ("C5  FR Ankle:", rest_poses[5 ]),
+        
+        ("C6  BL Hip:  ", rest_poses[6 ]),
+        ("C7  BL Knee: ", rest_poses[7 ]),
+        ("C8  BL Ankle:", rest_poses[8 ]),
+
+        ("C9  BR Hip:  ", rest_poses[9 ]),
+        ("C10 BR Knee: ", rest_poses[10]),
+        ("C11 BR Ankle:", rest_poses[11]),
     ]
 
     # create sliders
     for label_text, default_val in configs:
         sliders.append(create_us_slider(label_text, default_val))
 
-    # rest function for 5 servos
+    # rest function for 12 servos
     def reset_to_rest_pose():
-        rest_poses = [1500, 500, 500, 1500, 1500]
         for slider, pose in zip(sliders, rest_poses):
             slider.set(pose)
         send_pulse_widths()

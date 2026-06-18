@@ -92,7 +92,7 @@ joints = [ # position to set joints to
     np.radians(90) - np.pi/2,
 ]
 
-data.ctrl[joint1] = joints[0] 
+data.ctrl[joint1] = joints[0]
 data.ctrl[joint2] = joints[1]
 data.ctrl[joint3] = joints[2]
 data.ctrl[joint4] = joints[3]

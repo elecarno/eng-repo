@@ -1,0 +1,799 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/d7eef6374aced10980d655e0/w/a95c1ea2fcec3b2e30db9b5b/e/b32b4e966e295fbd7fa5fb15 -->
+<mujoco model="quad-v3">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+  <default>
+    <default class="quad-v3">
+      <joint frictionloss="0.1" armature="0.005"/>
+      <position kp="50" dampratio="1"/>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom group="3"/>
+      </default>
+    </default>
+  </default>
+  <worldbody>
+    <!-- Link q_v3_body -->
+    <body name="q_v3_body" pos="0 0 0" quat="1 0 0 0" childclass="quad-v3">
+      <freejoint name="q_v3_body_freejoint"/>
+      <inertial pos="-0.0012336 0.0019953 0.0702704" mass="0.266723" fullinertia="0.00103573 0.00110383 0.00208163 0 -0 -4.3739e-08"/>
+      <!-- Part attach -->
+      <geom type="mesh" class="visual" pos="0.0627664 -0.0803382 0.0522623" quat="0.707107 -0 -0 0.707107" mesh="attach" material="attach_material"/>
+      <geom type="mesh" class="collision" pos="0.0627664 -0.0803382 0.0522623" quat="0.707107 -0 -0 0.707107" mesh="attach" material="attach_material"/>
+      <!-- Part body -->
+      <geom type="mesh" class="visual" pos="-0.0012336 0.00201089 0.0557563" quat="1 -0 -0 -0" mesh="body" material="body_material"/>
+      <geom type="mesh" class="collision" pos="-0.0012336 0.00201089 0.0557563" quat="1 -0 -0 -0" mesh="body" material="body_material"/>
+      <!-- Part mg996r -->
+      <geom type="mesh" class="visual" pos="0.0627664 -0.0803382 0.0517623" quat="0.707107 -0 -0 0.707107" mesh="mg996r" material="mg996r_material"/>
+      <geom type="mesh" class="collision" pos="0.0627664 -0.0803382 0.0517623" quat="0.707107 -0 -0 0.707107" mesh="mg996r" material="mg996r_material"/>
+      <!-- Part mg996r_2 -->
+      <geom type="mesh" class="visual" pos="-0.0652336 -0.0803382 0.0517623" quat="0.707107 -0 -0 0.707107" mesh="mg996r" material="mg996r_material"/>
+      <geom type="mesh" class="collision" pos="-0.0652336 -0.0803382 0.0517623" quat="0.707107 -0 -0 0.707107" mesh="mg996r" material="mg996r_material"/>
+      <!-- Part attach_2 -->
+      <geom type="mesh" class="visual" pos="-0.0652336 -0.0803382 0.0522623" quat="0.707107 -0 -0 0.707107" mesh="attach" material="attach_material"/>
+      <geom type="mesh" class="collision" pos="-0.0652336 -0.0803382 0.0522623" quat="0.707107 -0 -0 0.707107" mesh="attach" material="attach_material"/>
+      <!-- Part mg996r_3 -->
+      <geom type="mesh" class="visual" pos="0.0627664 0.08436 0.0517623" quat="0.707107 0 -0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+      <geom type="mesh" class="collision" pos="0.0627664 0.08436 0.0517623" quat="0.707107 0 -0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+      <!-- Part attach_3 -->
+      <geom type="mesh" class="visual" pos="0.0627664 0.08436 0.0522623" quat="0.707107 0 -0 -0.707107" mesh="attach" material="attach_material"/>
+      <geom type="mesh" class="collision" pos="0.0627664 0.08436 0.0522623" quat="0.707107 0 -0 -0.707107" mesh="attach" material="attach_material"/>
+      <!-- Part mg996r_4 -->
+      <geom type="mesh" class="visual" pos="-0.0652336 0.08436 0.0517623" quat="0.707107 0 -0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+      <geom type="mesh" class="collision" pos="-0.0652336 0.08436 0.0517623" quat="0.707107 0 -0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+      <!-- Part attach_4 -->
+      <geom type="mesh" class="visual" pos="-0.0652336 0.08436 0.0522623" quat="0.707107 0 -0 -0.707107" mesh="attach" material="attach_material"/>
+      <geom type="mesh" class="collision" pos="-0.0652336 0.08436 0.0522623" quat="0.707107 0 -0 -0.707107" mesh="attach" material="attach_material"/>
+      <!-- Link q_v3_link1_l -->
+      <body name="q_v3_link1_l" pos="0.0627664 -0.0699891 0.0957563" quat="0 1 0 0">
+        <!-- Joint from q_v3_body to q_v3_link1_l -->
+        <joint axis="0 0 1" name="fl-hip" type="hinge" range="-3.1415926535897896 3.552713678800501e-15"/>
+        <inertial pos="-0.00502839 0.0412557 0.0078882" mass="0.0652243" fullinertia="7.04793e-05 5.45155e-05 0.000113205 5.97287e-06 2.13232e-06 -1.308e-05"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545 -->
+        <geom type="mesh" class="visual" pos="0.031 0.04 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.04 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb -->
+        <geom type="mesh" class="visual" pos="-0.0354 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <geom type="mesh" class="collision" pos="-0.0354 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_2 -->
+        <geom type="mesh" class="visual" pos="0 0 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0 0 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part 626_insert_a -->
+        <geom type="mesh" class="visual" pos="-0.025 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <geom type="mesh" class="collision" pos="-0.025 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_3 -->
+        <geom type="mesh" class="visual" pos="0.031 0.052 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.052 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part 626rs -->
+        <geom type="mesh" class="visual" pos="-0.027 0.065 0.014" quat="0.707107 0 -0.707107 0" mesh="626rs" material="626rs_material"/>
+        <geom type="mesh" class="collision" pos="-0.027 0.065 0.014" quat="0.707107 0 -0.707107 0" mesh="626rs" material="626rs_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_4 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.046 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.046 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part leg_link1a_l -->
+        <geom type="mesh" class="visual" pos="0 0 0" quat="0 0.707107 0.707107 -0" mesh="leg_link1a_l" material="leg_link1a_l_material"/>
+        <geom type="mesh" class="collision" pos="0 0 0" quat="0 0.707107 0.707107 -0" mesh="leg_link1a_l" material="leg_link1a_l_material"/>
+        <!-- Part mg996r_straight -->
+        <geom type="mesh" class="visual" pos="0.02935 0.065 0.014" quat="0.5 0.5 -0.5 0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="0.02935 0.065 0.014" quat="0.5 0.5 -0.5 0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Part leg_link1c_l -->
+        <geom type="mesh" class="visual" pos="-0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1c_l" material="leg_link1c_l_material"/>
+        <geom type="mesh" class="collision" pos="-0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1c_l" material="leg_link1c_l_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_5 -->
+        <geom type="mesh" class="visual" pos="0.0344 0.065 0.014" quat="0.5 0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.0344 0.065 0.014" quat="0.5 0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_6 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.034 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.034 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part leg_link1b_l -->
+        <geom type="mesh" class="visual" pos="0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1b_l" material="leg_link1b_l_material"/>
+        <geom type="mesh" class="collision" pos="0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1b_l" material="leg_link1b_l_material"/>
+        <!-- Part mg996r_straight_2 -->
+        <geom type="mesh" class="visual" pos="-0 0 -0.00235" quat="0.707107 0.707107 0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="-0 0 -0.00235" quat="0.707107 0.707107 0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Link q_v3_link2_l -->
+        <body name="q_v3_link2_l" pos="0.027 0.065 0.014" quat="0.707107 -0 0.707107 -0">
+          <!-- Joint from q_v3_link1_l to q_v3_link2_l -->
+          <joint axis="0 0 1" name="fl-knee" type="hinge" range="0.0 3.141592653589793"/>
+          <inertial pos="0.036416 0.00563821 -0.0268684" mass="0.189893" fullinertia="5.96712e-05 0.000177018 0.000182362 -1.77684e-05 9.1566e-07 2.54368e-07"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b -->
+          <geom type="mesh" class="visual" pos="0.021 0.018 -0.0129" quat="0.707107 -0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.021 0.018 -0.0129" quat="0.707107 -0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_7 -->
+          <geom type="mesh" class="visual" pos="-0.0214 0.014 -0.02" quat="0.707107 0 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="-0.0214 0.014 -0.02" quat="0.707107 0 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_2 -->
+          <geom type="mesh" class="visual" pos="0.043 0.002 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 0.002 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_support -->
+          <geom type="mesh" class="visual" pos="0.074 0.031 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="0.074 0.031 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part leg_link2_support_2 -->
+          <geom type="mesh" class="visual" pos="-0.011 0.014 -0.02" quat="0 -0.707107 -0 -0.707107" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="-0.011 0.014 -0.02" quat="0 -0.707107 -0 -0.707107" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_3 -->
+          <geom type="mesh" class="visual" pos="0.078 0.021 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 0.021 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_8 -->
+          <geom type="mesh" class="visual" pos="0.0474 0.014 -0.02" quat="0 -0.707107 -0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="0.0474 0.014 -0.02" quat="0 -0.707107 -0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part leg_link2_shell_b_l -->
+          <geom type="mesh" class="visual" pos="-0 0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_b_l" material="leg_link2_shell_b_l_material"/>
+          <geom type="mesh" class="collision" pos="-0 0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_b_l" material="leg_link2_shell_b_l_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_4 -->
+          <geom type="mesh" class="visual" pos="-0.001 0.018 -0.0129" quat="0.707107 -0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="-0.001 0.018 -0.0129" quat="0.707107 -0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_9 -->
+          <geom type="mesh" class="visual" pos="0.074 -0.0214 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="0.074 -0.0214 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part leg_link2_shell_a_l -->
+          <geom type="mesh" class="visual" pos="-0 0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_a_l" material="leg_link2_shell_a_l_material"/>
+          <geom type="mesh" class="collision" pos="-0 0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_a_l" material="leg_link2_shell_a_l_material"/>
+          <!-- Part leg_link2 -->
+          <geom type="mesh" class="visual" pos="-0 0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <geom type="mesh" class="collision" pos="-0 0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_5 -->
+          <geom type="mesh" class="visual" pos="0.043 -0.01 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 -0.01 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_6 -->
+          <geom type="mesh" class="visual" pos="0.078 -0.001 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 -0.001 -0.0129" quat="0 -0 0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_10 -->
+          <geom type="mesh" class="visual" pos="0.074 0.0414 -0.02" quat="0.5 -0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="0.074 0.0414 -0.02" quat="0.5 -0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part mg996r_5 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 0 -0.043994" quat="1 0 0 0" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 0 -0.043994" quat="1 0 0 0" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_5 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 0 -0.043494" quat="1 0 0 0" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 0 -0.043494" quat="1 0 0 0" mesh="attach" material="attach_material"/>
+          <!-- Part mg996r_6 -->
+          <geom type="mesh" class="visual" pos="0.06 -0.0103491 -0.043994" quat="0.707107 0 0 0.707107" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="0.06 -0.0103491 -0.043994" quat="0.707107 0 0 0.707107" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_6 -->
+          <geom type="mesh" class="visual" pos="0.06 -0.0103491 -0.043494" quat="0.707107 0 0 0.707107" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="0.06 -0.0103491 -0.043494" quat="0.707107 0 0 0.707107" mesh="attach" material="attach_material"/>
+          <!-- Link q_v3_link3_l -->
+          <body name="q_v3_link3_l" pos="0.06 0 -0" quat="0 -0.707107 -0.707107 0">
+            <!-- Joint from q_v3_link2_l to q_v3_link3_l -->
+            <joint axis="0 0 1" name="fl-ankle" type="hinge" range="-2.6645352591003757e-14 3.1415926535897665"/>
+            <inertial pos="0.0120508 -0.0800241 0.0281686" mass="0.164689" fullinertia="0.000615455 0.000187329 0.000474064 6.05574e-05 2.31931e-06 -1.54015e-05"/>
+            <!-- Part mg996r_straight_3 -->
+            <geom type="mesh" class="visual" pos="-0 0 -0.00235" quat="0 0 0.707107 0.707107" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <geom type="mesh" class="collision" pos="-0 0 -0.00235" quat="0 0 0.707107 0.707107" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_7 -->
+            <geom type="mesh" class="visual" pos="0.0331 -0.107128 0.041" quat="0.707107 0 0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.0331 -0.107128 0.041" quat="0.707107 0 0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125 -->
+            <geom type="mesh" class="visual" pos="-0 0 -0.0164" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="-0 0 -0.0164" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part 626_insert_b -->
+            <geom type="mesh" class="visual" pos="0 -0 0.054" quat="0.588949 -0 -0 0.80817" mesh="626_insert_b" material="626_insert_b_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 0.054" quat="0.588949 -0 -0 0.80817" mesh="626_insert_b" material="626_insert_b_material"/>
+            <!-- Part 626rs_2 -->
+            <geom type="mesh" class="visual" pos="0 -0 0.07" quat="0 -0 -1 -0" mesh="626rs" material="626rs_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 0.07" quat="0 -0 -1 -0" mesh="626rs" material="626rs_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_8 -->
+            <geom type="mesh" class="visual" pos="0.022 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.022 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3_support_l -->
+            <geom type="mesh" class="visual" pos="0 -0 -0.01" quat="0.707107 0 0.707107 -0" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 -0.01" quat="0.707107 0 0.707107 -0" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_9 -->
+            <geom type="mesh" class="visual" pos="0.022 -0.092 -0.0171" quat="0 -0.707107 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.022 -0.092 -0.0171" quat="0 -0.707107 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_10 -->
+            <geom type="mesh" class="visual" pos="0.008 -0.12 -0.0171" quat="0 -0.707107 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.008 -0.12 -0.0171" quat="0 -0.707107 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_11 -->
+            <geom type="mesh" class="visual" pos="0.022 -0.092 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.022 -0.092 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_12 -->
+            <geom type="mesh" class="visual" pos="0.0331 -0.107128 0.013" quat="0.707107 0 0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.0331 -0.107128 0.013" quat="0.707107 0 0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_13 -->
+            <geom type="mesh" class="visual" pos="0.022 -0.12 -0.0171" quat="0 -0.707107 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.022 -0.12 -0.0171" quat="0 -0.707107 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_14 -->
+            <geom type="mesh" class="visual" pos="0.008 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="0.008 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3_shell_l -->
+            <geom type="mesh" class="visual" pos="0 -0 -0.01" quat="0.707107 0 0.707107 -0" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 -0.01" quat="0.707107 0 0.707107 -0" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_2 -->
+            <geom type="mesh" class="visual" pos="0 -0 0.0724" quat="0.588949 -0 -0 0.80817" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 0.0724" quat="0.588949 -0 -0 0.80817" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part leg_link3b_l -->
+            <geom type="mesh" class="visual" pos="0 -0 0.068" quat="0.707107 0 0.707107 -0" mesh="leg_link3b_l" material="leg_link3b_l_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 0.068" quat="0.707107 0 0.707107 -0" mesh="leg_link3b_l" material="leg_link3b_l_material"/>
+            <!-- Part leg_link3a_l -->
+            <geom type="mesh" class="visual" pos="-0 0 -0.01" quat="0.707107 0 0.707107 -0" mesh="leg_link3a_l" material="leg_link3a_l_material"/>
+            <geom type="mesh" class="collision" pos="-0 0 -0.01" quat="0.707107 0 0.707107 -0" mesh="leg_link3a_l" material="leg_link3a_l_material"/>
+          </body>
+        </body>
+      </body>
+      <!-- Link q_v3_link1_r -->
+      <body name="q_v3_link1_r" pos="-0.0652336 -0.0699891 0.0957563" quat="0 1 -0 0">
+        <!-- Joint from q_v3_body to q_v3_link1_r -->
+        <joint axis="0 0 1" name="fr-hip" type="hinge" range="0.0 3.141592653589793"/>
+        <inertial pos="0.00502839 0.0412557 0.0078882" mass="0.0652243" fullinertia="7.04793e-05 5.45155e-05 0.000113205 -5.97287e-06 -2.13232e-06 -1.308e-05"/>
+        <!-- Part leg_link1a_r -->
+        <geom type="mesh" class="visual" pos="-0 -0.15 0" quat="0 0.707107 -0.707107 0" mesh="leg_link1a_r" material="leg_link1a_r_material"/>
+        <geom type="mesh" class="collision" pos="-0 -0.15 0" quat="0 0.707107 -0.707107 0" mesh="leg_link1a_r" material="leg_link1a_r_material"/>
+        <!-- Part mg996r_straight_4 -->
+        <geom type="mesh" class="visual" pos="0 0 -0.00235" quat="0.707107 0.707107 -0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="0 0 -0.00235" quat="0.707107 0.707107 -0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_11 -->
+        <geom type="mesh" class="visual" pos="0.031 0.046 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.046 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_12 -->
+        <geom type="mesh" class="visual" pos="0 0 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0 0 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_13 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.052 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.052 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part mg996r_straight_5 -->
+        <geom type="mesh" class="visual" pos="-0.02935 0.065 0.014" quat="0.5 0.5 0.5 -0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="-0.02935 0.065 0.014" quat="0.5 0.5 0.5 -0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Part leg_link1b_r -->
+        <geom type="mesh" class="visual" pos="-0.027 -0.085 0.014" quat="0 0.707107 -0.707107 0" mesh="leg_link1b_r" material="leg_link1b_r_material"/>
+        <geom type="mesh" class="collision" pos="-0.027 -0.085 0.014" quat="0 0.707107 -0.707107 0" mesh="leg_link1b_r" material="leg_link1b_r_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_14 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.04 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.04 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part 626_insert_a_2 -->
+        <geom type="mesh" class="visual" pos="0.025 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <geom type="mesh" class="collision" pos="0.025 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <!-- Part 626rs_3 -->
+        <geom type="mesh" class="visual" pos="0.027 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626rs" material="626rs_material"/>
+        <geom type="mesh" class="collision" pos="0.027 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626rs" material="626rs_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_2 -->
+        <geom type="mesh" class="visual" pos="0.0354 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <geom type="mesh" class="collision" pos="0.0354 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <!-- Part leg_link1c_r -->
+        <geom type="mesh" class="visual" pos="0.027 -0.085 0.014" quat="0 0.707107 -0.707107 0" mesh="leg_link1c_r" material="leg_link1c_r_material"/>
+        <geom type="mesh" class="collision" pos="0.027 -0.085 0.014" quat="0 0.707107 -0.707107 0" mesh="leg_link1c_r" material="leg_link1c_r_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_15 -->
+        <geom type="mesh" class="visual" pos="-0.0344 0.065 0.014" quat="0.5 0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.0344 0.065 0.014" quat="0.5 0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_16 -->
+        <geom type="mesh" class="visual" pos="0.031 0.034 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.034 -0.0064" quat="0 0.707107 -0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Link q_v3_link2_r -->
+        <body name="q_v3_link2_r" pos="-0.027 0.065 0.014" quat="0 -0.707107 -0 0.707107">
+          <!-- Joint from q_v3_link1_r to q_v3_link2_r -->
+          <joint axis="0 0 1" name="fr-knee" type="hinge" range="-3.1415926535897922 8.881784197001252e-16"/>
+          <inertial pos="0.0364341 -0.00568172 -0.0268251" mass="0.191096" fullinertia="5.9918e-05 0.000178134 0.00018361 1.77313e-05 8.92089e-07 -1.97625e-07"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_3 -->
+          <geom type="mesh" class="visual" pos="0.074 -0.0414 -0.02" quat="0.5 0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <geom type="mesh" class="collision" pos="0.074 -0.0414 -0.02" quat="0.5 0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <!-- Part leg_link2_support_3 -->
+          <geom type="mesh" class="visual" pos="0.074 -0.031 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="0.074 -0.031 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part leg_link2_support_4 -->
+          <geom type="mesh" class="visual" pos="-0.011 -0.014 -0.02" quat="0.707107 -0 0.707107 0" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="-0.011 -0.014 -0.02" quat="0.707107 -0 0.707107 0" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_15 -->
+          <geom type="mesh" class="visual" pos="0.078 0.001 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 0.001 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_16 -->
+          <geom type="mesh" class="visual" pos="0.078 -0.021 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 -0.021 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_4 -->
+          <geom type="mesh" class="visual" pos="-0.0214 -0.014 -0.02" quat="0 0.707107 0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <geom type="mesh" class="collision" pos="-0.0214 -0.014 -0.02" quat="0 0.707107 0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_17 -->
+          <geom type="mesh" class="visual" pos="0.043 0.01 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 0.01 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_shell_b_r -->
+          <geom type="mesh" class="visual" pos="-0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_b_r" material="leg_link2_shell_b_r_material"/>
+          <geom type="mesh" class="collision" pos="-0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_b_r" material="leg_link2_shell_b_r_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_5 -->
+          <geom type="mesh" class="visual" pos="0.074 0.0214 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <geom type="mesh" class="collision" pos="0.074 0.0214 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_18 -->
+          <geom type="mesh" class="visual" pos="-0.001 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="-0.001 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_shell_a_r -->
+          <geom type="mesh" class="visual" pos="-0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_a_r" material="leg_link2_shell_a_r_material"/>
+          <geom type="mesh" class="collision" pos="-0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_a_r" material="leg_link2_shell_a_r_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_3 -->
+          <geom type="mesh" class="visual" pos="0.0474 -0.014 -0.02" quat="0.707107 -0 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+          <geom type="mesh" class="collision" pos="0.0474 -0.014 -0.02" quat="0.707107 -0 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_19 -->
+          <geom type="mesh" class="visual" pos="0.043 -0.002 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 -0.002 -0.0129" quat="0 -0 -0 -1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_2 -->
+          <geom type="mesh" class="visual" pos="0 0 -0.016" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <geom type="mesh" class="collision" pos="0 0 -0.016" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_20 -->
+          <geom type="mesh" class="visual" pos="0.021 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.021 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part mg996r_7 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 -0 -0.043994" quat="1 0 -0 -0" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 -0 -0.043994" quat="1 0 -0 -0" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_7 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 0 -0.043494" quat="1 0 0 0" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 0 -0.043494" quat="1 0 0 0" mesh="attach" material="attach_material"/>
+          <!-- Part mg996r_8 -->
+          <geom type="mesh" class="visual" pos="0.06 0.0103491 -0.043994" quat="0.707107 -0 0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="0.06 0.0103491 -0.043994" quat="0.707107 -0 0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_8 -->
+          <geom type="mesh" class="visual" pos="0.06 0.0103491 -0.043494" quat="0.707107 -0 0 -0.707107" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="0.06 0.0103491 -0.043494" quat="0.707107 -0 0 -0.707107" mesh="attach" material="attach_material"/>
+          <!-- Link q_v3_link3_r -->
+          <body name="q_v3_link3_r" pos="0.06 0 -0" quat="0 -0.707107 -0.707107 0">
+            <!-- Joint from q_v3_link2_r to q_v3_link3_r -->
+            <joint axis="0 0 1" name="fr-ankle" type="hinge" range="-3.141592653589788 5.329070518200751e-15"/>
+            <inertial pos="-0.0120508 -0.0800241 0.0281686" mass="0.164689" fullinertia="0.000615455 0.000187329 0.000474064 -6.05574e-05 -2.31931e-06 -1.54015e-05"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_4 -->
+            <geom type="mesh" class="visual" pos="0 0 -0.0164" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="0 0 -0.0164" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_21 -->
+            <geom type="mesh" class="visual" pos="-0.008 -0.12 -0.0171" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.008 -0.12 -0.0171" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part mg996r_straight_6 -->
+            <geom type="mesh" class="visual" pos="0 0 -0.00235" quat="0.707107 0.707107 -0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <geom type="mesh" class="collision" pos="0 0 -0.00235" quat="0.707107 0.707107 -0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <!-- Part leg_link3_support_l_2 -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.064" quat="0.707107 0 -0.707107 0" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.064" quat="0.707107 0 -0.707107 0" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_22 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.12 -0.0171" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.12 -0.0171" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3_shell_l_2 -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.064" quat="0.707107 0 -0.707107 0" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.064" quat="0.707107 0 -0.707107 0" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_23 -->
+            <geom type="mesh" class="visual" pos="-0.0331 -0.107128 0.041" quat="0.707107 0 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.0331 -0.107128 0.041" quat="0.707107 0 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_24 -->
+            <geom type="mesh" class="visual" pos="-0.0331 -0.107128 0.013" quat="0.707107 0 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.0331 -0.107128 0.013" quat="0.707107 0 -0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part 626_insert_b_2 -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.054" quat="1 0 -0 0" mesh="626_insert_b" material="626_insert_b_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.054" quat="1 0 -0 0" mesh="626_insert_b" material="626_insert_b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_25 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.092 -0.0171" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.092 -0.0171" quat="0 0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_26 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.12 0.0711" quat="0.707107 -0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.12 0.0711" quat="0.707107 -0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3a_r -->
+            <geom type="mesh" class="visual" pos="-0 0 0.14" quat="0.707107 0 -0.707107 0" mesh="leg_link3a_r" material="leg_link3a_r_material"/>
+            <geom type="mesh" class="collision" pos="-0 0 0.14" quat="0.707107 0 -0.707107 0" mesh="leg_link3a_r" material="leg_link3a_r_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_27 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.092 0.0711" quat="0.707107 -0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.092 0.0711" quat="0.707107 -0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part 626rs_4 -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.07" quat="0 -0 1 0" mesh="626rs" material="626rs_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.07" quat="0 -0 1 0" mesh="626rs" material="626rs_material"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_5 -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.0724" quat="1 0 -0 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.0724" quat="1 0 -0 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part leg_link3b_r -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.218" quat="0.707107 0 -0.707107 0" mesh="leg_link3b_r" material="leg_link3b_r_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.218" quat="0.707107 0 -0.707107 0" mesh="leg_link3b_r" material="leg_link3b_r_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_28 -->
+            <geom type="mesh" class="visual" pos="-0.008 -0.12 0.0711" quat="0.707107 -0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.008 -0.12 0.0711" quat="0.707107 -0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          </body>
+        </body>
+      </body>
+      <!-- Link q_v3_link1_l_2 -->
+      <body name="q_v3_link1_l_2" pos="-0.0652336 0.0740109 0.0957563" quat="0 -0 1 -0">
+        <!-- Joint from q_v3_body to q_v3_link1_l_2 -->
+        <joint axis="0 0 1" name="br-hip" type="hinge" range="-3.141592653589769 2.398081733190338e-14"/>
+        <inertial pos="-0.00502839 0.0412557 0.0078882" mass="0.0652243" fullinertia="7.04793e-05 5.45155e-05 0.000113205 5.97287e-06 2.13232e-06 -1.308e-05"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_17 -->
+        <geom type="mesh" class="visual" pos="0.031 0.04 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.04 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_6 -->
+        <geom type="mesh" class="visual" pos="-0.0354 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <geom type="mesh" class="collision" pos="-0.0354 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_18 -->
+        <geom type="mesh" class="visual" pos="0 -0 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0 -0 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part 626_insert_a_3 -->
+        <geom type="mesh" class="visual" pos="-0.025 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <geom type="mesh" class="collision" pos="-0.025 0.065 0.014" quat="0.5 -0.5 -0.5 0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_19 -->
+        <geom type="mesh" class="visual" pos="0.031 0.052 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.052 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part 626rs_5 -->
+        <geom type="mesh" class="visual" pos="-0.027 0.065 0.014" quat="0.707107 0 -0.707107 0" mesh="626rs" material="626rs_material"/>
+        <geom type="mesh" class="collision" pos="-0.027 0.065 0.014" quat="0.707107 0 -0.707107 0" mesh="626rs" material="626rs_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_20 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.046 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.046 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part leg_link1a_l_2 -->
+        <geom type="mesh" class="visual" pos="0 0 0" quat="0 0.707107 0.707107 -0" mesh="leg_link1a_l" material="leg_link1a_l_material"/>
+        <geom type="mesh" class="collision" pos="0 0 0" quat="0 0.707107 0.707107 -0" mesh="leg_link1a_l" material="leg_link1a_l_material"/>
+        <!-- Part mg996r_straight_7 -->
+        <geom type="mesh" class="visual" pos="0.02935 0.065 0.014" quat="0.5 0.5 -0.5 0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="0.02935 0.065 0.014" quat="0.5 0.5 -0.5 0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Part leg_link1c_l_2 -->
+        <geom type="mesh" class="visual" pos="-0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1c_l" material="leg_link1c_l_material"/>
+        <geom type="mesh" class="collision" pos="-0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1c_l" material="leg_link1c_l_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_21 -->
+        <geom type="mesh" class="visual" pos="0.0344 0.065 0.014" quat="0.5 0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.0344 0.065 0.014" quat="0.5 0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_22 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.034 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.034 -0.0064" quat="0 0.707107 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part leg_link1b_l_2 -->
+        <geom type="mesh" class="visual" pos="0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1b_l" material="leg_link1b_l_material"/>
+        <geom type="mesh" class="collision" pos="0.027 0.065 0.014" quat="0 -0.707107 -0.707107 -0" mesh="leg_link1b_l" material="leg_link1b_l_material"/>
+        <!-- Part mg996r_straight_8 -->
+        <geom type="mesh" class="visual" pos="0 0 -0.00235" quat="0.707107 0.707107 -0 0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="0 0 -0.00235" quat="0.707107 0.707107 -0 0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Link q_v3_link2_l_2 -->
+        <body name="q_v3_link2_l_2" pos="0.027 0.065 0.014" quat="0.707107 0 0.707107 0">
+          <!-- Joint from q_v3_link1_l_2 to q_v3_link2_l_2 -->
+          <joint axis="0 0 1" name="br-knee" type="hinge" range="-7.842220035299191e-15 3.141592653589785"/>
+          <inertial pos="0.036416 0.00563821 -0.0268684" mass="0.189893" fullinertia="5.96712e-05 0.000177018 0.000182362 -1.77684e-05 9.1566e-07 2.54368e-07"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_29 -->
+          <geom type="mesh" class="visual" pos="0.021 0.018 -0.0129" quat="0.707107 0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.021 0.018 -0.0129" quat="0.707107 0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_23 -->
+          <geom type="mesh" class="visual" pos="-0.0214 0.014 -0.02" quat="0.707107 0 -0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="-0.0214 0.014 -0.02" quat="0.707107 0 -0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_30 -->
+          <geom type="mesh" class="visual" pos="0.043 0.002 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 0.002 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_support_5 -->
+          <geom type="mesh" class="visual" pos="0.074 0.031 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="0.074 0.031 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part leg_link2_support_6 -->
+          <geom type="mesh" class="visual" pos="-0.011 0.014 -0.02" quat="0 -0.707107 0 -0.707107" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="-0.011 0.014 -0.02" quat="0 -0.707107 0 -0.707107" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_31 -->
+          <geom type="mesh" class="visual" pos="0.078 0.021 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 0.021 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_24 -->
+          <geom type="mesh" class="visual" pos="0.0474 0.014 -0.02" quat="0 -0.707107 0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="0.0474 0.014 -0.02" quat="0 -0.707107 0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part leg_link2_shell_b_l_2 -->
+          <geom type="mesh" class="visual" pos="0 -0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_b_l" material="leg_link2_shell_b_l_material"/>
+          <geom type="mesh" class="collision" pos="0 -0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_b_l" material="leg_link2_shell_b_l_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_32 -->
+          <geom type="mesh" class="visual" pos="-0.001 0.018 -0.0129" quat="0.707107 0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="-0.001 0.018 -0.0129" quat="0.707107 0 0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_25 -->
+          <geom type="mesh" class="visual" pos="0.074 -0.0214 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="0.074 -0.0214 -0.02" quat="0.5 0.5 -0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part leg_link2_shell_a_l_2 -->
+          <geom type="mesh" class="visual" pos="-0 -0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_a_l" material="leg_link2_shell_a_l_material"/>
+          <geom type="mesh" class="collision" pos="-0 -0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2_shell_a_l" material="leg_link2_shell_a_l_material"/>
+          <!-- Part leg_link2_3 -->
+          <geom type="mesh" class="visual" pos="0 -0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <geom type="mesh" class="collision" pos="0 -0 -0.024" quat="0.5 0.5 -0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_33 -->
+          <geom type="mesh" class="visual" pos="0.043 -0.01 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 -0.01 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_34 -->
+          <geom type="mesh" class="visual" pos="0.078 -0.001 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 -0.001 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_26 -->
+          <geom type="mesh" class="visual" pos="0.074 0.0414 -0.02" quat="0.5 -0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <geom type="mesh" class="collision" pos="0.074 0.0414 -0.02" quat="0.5 -0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+          <!-- Part mg996r_9 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 -0 -0.043994" quat="1 0 0 -0" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 -0 -0.043994" quat="1 0 0 -0" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_9 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 0 -0.043494" quat="1 0 0 0" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 0 -0.043494" quat="1 0 0 0" mesh="attach" material="attach_material"/>
+          <!-- Part mg996r_10 -->
+          <geom type="mesh" class="visual" pos="0.06 -0.0103491 -0.043994" quat="0.707107 0 -0 0.707107" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="0.06 -0.0103491 -0.043994" quat="0.707107 0 -0 0.707107" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_10 -->
+          <geom type="mesh" class="visual" pos="0.06 -0.0103491 -0.043494" quat="0.707107 0 -0 0.707107" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="0.06 -0.0103491 -0.043494" quat="0.707107 0 -0 0.707107" mesh="attach" material="attach_material"/>
+          <!-- Link q_v3_link3_l_2 -->
+          <body name="q_v3_link3_l_2" pos="0.06 -0 -0" quat="0 -0.707107 0.707107 0">
+            <!-- Joint from q_v3_link2_l_2 to q_v3_link3_l_2 -->
+            <joint axis="0 0 1" name="br-ankle" type="hinge" range="0.0 3.141592653589793"/>
+            <inertial pos="-0.0120508 0.0800241 0.0281686" mass="0.164689" fullinertia="0.000615455 0.000187329 0.000474064 6.05574e-05 -2.31931e-06 1.54015e-05"/>
+            <!-- Part mg996r_straight_9 -->
+            <geom type="mesh" class="visual" pos="-0 0 -0.00235" quat="0.707107 0.707107 0 0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <geom type="mesh" class="collision" pos="-0 0 -0.00235" quat="0.707107 0.707107 0 0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_35 -->
+            <geom type="mesh" class="visual" pos="-0.0331 0.107128 0.041" quat="0 -0.707107 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.0331 0.107128 0.041" quat="0 -0.707107 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_6 -->
+            <geom type="mesh" class="visual" pos="0 -0 -0.0164" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 -0.0164" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part 626_insert_b_3 -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.054" quat="1 -0 0 -0" mesh="626_insert_b" material="626_insert_b_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.054" quat="1 -0 0 -0" mesh="626_insert_b" material="626_insert_b_material"/>
+            <!-- Part 626rs_6 -->
+            <geom type="mesh" class="visual" pos="0 -0 0.07" quat="0 -1 0 -0" mesh="626rs" material="626rs_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 0.07" quat="0 -1 0 -0" mesh="626rs" material="626rs_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_36 -->
+            <geom type="mesh" class="visual" pos="-0.022 0.12 0.0711" quat="0.707107 0 -0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 0.12 0.0711" quat="0.707107 0 -0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3_support_l_3 -->
+            <geom type="mesh" class="visual" pos="-0 -0 -0.01" quat="0 -0.707107 -0 0.707107" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 -0.01" quat="0 -0.707107 -0 0.707107" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_37 -->
+            <geom type="mesh" class="visual" pos="-0.022 0.092 -0.0171" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 0.092 -0.0171" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_38 -->
+            <geom type="mesh" class="visual" pos="-0.008 0.12 -0.0171" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.008 0.12 -0.0171" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_39 -->
+            <geom type="mesh" class="visual" pos="-0.022 0.092 0.0711" quat="0.707107 0 -0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 0.092 0.0711" quat="0.707107 0 -0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_40 -->
+            <geom type="mesh" class="visual" pos="-0.0331 0.107128 0.013" quat="0 -0.707107 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.0331 0.107128 0.013" quat="0 -0.707107 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_41 -->
+            <geom type="mesh" class="visual" pos="-0.022 0.12 -0.0171" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 0.12 -0.0171" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_42 -->
+            <geom type="mesh" class="visual" pos="-0.008 0.12 0.0711" quat="0.707107 0 -0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.008 0.12 0.0711" quat="0.707107 0 -0 -0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3_shell_l_3 -->
+            <geom type="mesh" class="visual" pos="-0 -0 -0.01" quat="0 -0.707107 -0 0.707107" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 -0.01" quat="0 -0.707107 -0 0.707107" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_7 -->
+            <geom type="mesh" class="visual" pos="-0 -0 0.0724" quat="1 -0 0 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 0.0724" quat="1 -0 0 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part leg_link3b_l_2 -->
+            <geom type="mesh" class="visual" pos="0 -0 0.068" quat="0 -0.707107 -0 0.707107" mesh="leg_link3b_l" material="leg_link3b_l_material"/>
+            <geom type="mesh" class="collision" pos="0 -0 0.068" quat="0 -0.707107 -0 0.707107" mesh="leg_link3b_l" material="leg_link3b_l_material"/>
+            <!-- Part leg_link3a_l_2 -->
+            <geom type="mesh" class="visual" pos="-0 -0 -0.01" quat="0 -0.707107 -0 0.707107" mesh="leg_link3a_l" material="leg_link3a_l_material"/>
+            <geom type="mesh" class="collision" pos="-0 -0 -0.01" quat="0 -0.707107 -0 0.707107" mesh="leg_link3a_l" material="leg_link3a_l_material"/>
+          </body>
+        </body>
+      </body>
+      <!-- Link q_v3_link1_r_2 -->
+      <body name="q_v3_link1_r_2" pos="0.0627664 0.0740109 0.0957563" quat="0 0 1 -0">
+        <!-- Joint from q_v3_body to q_v3_link1_r_2 -->
+        <joint axis="0 0 1" name="bl-hip" type="hinge" range="0.0 3.141592653589793"/>
+        <inertial pos="0.00502839 0.0412557 0.0078882" mass="0.0652243" fullinertia="7.04793e-05 5.45155e-05 0.000113205 -5.97287e-06 -2.13232e-06 -1.308e-05"/>
+        <!-- Part leg_link1a_r_2 -->
+        <geom type="mesh" class="visual" pos="0 -0.15 -0" quat="0 -0.707107 0.707107 0" mesh="leg_link1a_r" material="leg_link1a_r_material"/>
+        <geom type="mesh" class="collision" pos="0 -0.15 -0" quat="0 -0.707107 0.707107 0" mesh="leg_link1a_r" material="leg_link1a_r_material"/>
+        <!-- Part mg996r_straight_10 -->
+        <geom type="mesh" class="visual" pos="0 0 -0.00235" quat="0.707107 0.707107 0 0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="0 0 -0.00235" quat="0.707107 0.707107 0 0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_27 -->
+        <geom type="mesh" class="visual" pos="0.031 0.046 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.046 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_28 -->
+        <geom type="mesh" class="visual" pos="0 -0 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0 -0 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_29 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.052 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.052 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part mg996r_straight_11 -->
+        <geom type="mesh" class="visual" pos="-0.02935 0.065 0.014" quat="0.5 0.5 0.5 -0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <geom type="mesh" class="collision" pos="-0.02935 0.065 0.014" quat="0.5 0.5 0.5 -0.5" mesh="mg996r_straight" material="mg996r_straight_material"/>
+        <!-- Part leg_link1b_r_2 -->
+        <geom type="mesh" class="visual" pos="-0.027 -0.085 0.014" quat="0 -0.707107 0.707107 0" mesh="leg_link1b_r" material="leg_link1b_r_material"/>
+        <geom type="mesh" class="collision" pos="-0.027 -0.085 0.014" quat="0 -0.707107 0.707107 0" mesh="leg_link1b_r" material="leg_link1b_r_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_30 -->
+        <geom type="mesh" class="visual" pos="-0.031 0.04 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.031 0.04 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part 626_insert_a_4 -->
+        <geom type="mesh" class="visual" pos="0.025 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <geom type="mesh" class="collision" pos="0.025 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626_insert_a" material="626_insert_a_material"/>
+        <!-- Part 626rs_7 -->
+        <geom type="mesh" class="visual" pos="0.027 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626rs" material="626rs_material"/>
+        <geom type="mesh" class="collision" pos="0.027 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="626rs" material="626rs_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_7 -->
+        <geom type="mesh" class="visual" pos="0.0354 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <geom type="mesh" class="collision" pos="0.0354 0.065 0.014" quat="0.5 -0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+        <!-- Part leg_link1c_r_2 -->
+        <geom type="mesh" class="visual" pos="0.027 -0.085 0.014" quat="0 -0.707107 0.707107 0" mesh="leg_link1c_r" material="leg_link1c_r_material"/>
+        <geom type="mesh" class="collision" pos="0.027 -0.085 0.014" quat="0 -0.707107 0.707107 0" mesh="leg_link1c_r" material="leg_link1c_r_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_31 -->
+        <geom type="mesh" class="visual" pos="-0.0344 0.065 0.014" quat="0.5 0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="-0.0344 0.065 0.014" quat="0.5 0.5 -0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Part ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_32 -->
+        <geom type="mesh" class="visual" pos="0.031 0.034 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <geom type="mesh" class="collision" pos="0.031 0.034 -0.0064" quat="0 -0.707107 0.707107 0" mesh="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545" material="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material"/>
+        <!-- Link q_v3_link2_r_2 -->
+        <body name="q_v3_link2_r_2" pos="-0.027 0.065 0.014" quat="0 0.707107 0 -0.707107">
+          <!-- Joint from q_v3_link1_r_2 to q_v3_link2_r_2 -->
+          <joint axis="0 0 1" name="bl-knee" type="hinge" range="-3.1415926535897922 8.881784197001252e-16"/>
+          <inertial pos="0.0364341 -0.00568172 -0.0268251" mass="0.191096" fullinertia="5.9918e-05 0.000178134 0.00018361 1.77313e-05 8.92089e-07 -1.97625e-07"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_8 -->
+          <geom type="mesh" class="visual" pos="0.074 -0.0414 -0.02" quat="0.5 0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <geom type="mesh" class="collision" pos="0.074 -0.0414 -0.02" quat="0.5 0.5 0.5 -0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <!-- Part leg_link2_support_7 -->
+          <geom type="mesh" class="visual" pos="0.074 -0.031 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="0.074 -0.031 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part leg_link2_support_8 -->
+          <geom type="mesh" class="visual" pos="-0.011 -0.014 -0.02" quat="0.707107 -0 0.707107 -0" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <geom type="mesh" class="collision" pos="-0.011 -0.014 -0.02" quat="0.707107 -0 0.707107 -0" mesh="leg_link2_support" material="leg_link2_support_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_43 -->
+          <geom type="mesh" class="visual" pos="0.078 0.001 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 0.001 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_44 -->
+          <geom type="mesh" class="visual" pos="0.078 -0.021 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.078 -0.021 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_9 -->
+          <geom type="mesh" class="visual" pos="-0.0214 -0.014 -0.02" quat="0 0.707107 -0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <geom type="mesh" class="collision" pos="-0.0214 -0.014 -0.02" quat="0 0.707107 -0 -0.707107" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_45 -->
+          <geom type="mesh" class="visual" pos="0.043 0.01 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 0.01 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_shell_b_r_2 -->
+          <geom type="mesh" class="visual" pos="0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_b_r" material="leg_link2_shell_b_r_material"/>
+          <geom type="mesh" class="collision" pos="0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_b_r" material="leg_link2_shell_b_r_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_10 -->
+          <geom type="mesh" class="visual" pos="0.074 0.0214 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <geom type="mesh" class="collision" pos="0.074 0.0214 -0.02" quat="0.5 -0.5 0.5 0.5" mesh="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb" material="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_46 -->
+          <geom type="mesh" class="visual" pos="-0.001 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="-0.001 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_shell_a_r_2 -->
+          <geom type="mesh" class="visual" pos="0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_a_r" material="leg_link2_shell_a_r_material"/>
+          <geom type="mesh" class="collision" pos="0 -0 -0.174" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2_shell_a_r" material="leg_link2_shell_a_r_material"/>
+          <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_8 -->
+          <geom type="mesh" class="visual" pos="0.0474 -0.014 -0.02" quat="0.707107 -0 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+          <geom type="mesh" class="collision" pos="0.0474 -0.014 -0.02" quat="0.707107 -0 0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_47 -->
+          <geom type="mesh" class="visual" pos="0.043 -0.002 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.043 -0.002 -0.0129" quat="0 0 -0 1" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part leg_link2_4 -->
+          <geom type="mesh" class="visual" pos="-0 -0 -0.016" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <geom type="mesh" class="collision" pos="-0 -0 -0.016" quat="0.5 -0.5 0.5 0.5" mesh="leg_link2" material="leg_link2_material"/>
+          <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_48 -->
+          <geom type="mesh" class="visual" pos="0.021 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <geom type="mesh" class="collision" pos="0.021 -0.018 -0.0129" quat="0.707107 -0 0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          <!-- Part mg996r_11 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 -0 -0.043994" quat="1 -0 -0 -0" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 -0 -0.043994" quat="1 -0 -0 -0" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_11 -->
+          <geom type="mesh" class="visual" pos="-0.0103491 -0 -0.043494" quat="1 -0 0 0" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="-0.0103491 -0 -0.043494" quat="1 -0 0 0" mesh="attach" material="attach_material"/>
+          <!-- Part mg996r_12 -->
+          <geom type="mesh" class="visual" pos="0.06 0.0103491 -0.043994" quat="0.707107 -0 -0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+          <geom type="mesh" class="collision" pos="0.06 0.0103491 -0.043994" quat="0.707107 -0 -0 -0.707107" mesh="mg996r" material="mg996r_material"/>
+          <!-- Part attach_12 -->
+          <geom type="mesh" class="visual" pos="0.06 0.0103491 -0.043494" quat="0.707107 -0 -0 -0.707107" mesh="attach" material="attach_material"/>
+          <geom type="mesh" class="collision" pos="0.06 0.0103491 -0.043494" quat="0.707107 -0 -0 -0.707107" mesh="attach" material="attach_material"/>
+          <!-- Link q_v3_link3_r_2 -->
+          <body name="q_v3_link3_r_2" pos="0.06 -0 0" quat="0 0.707107 0.707107 -0">
+            <!-- Joint from q_v3_link2_r_2 to q_v3_link3_r_2 -->
+            <joint axis="0 0 1" name="bl-ankle" type="hinge" range="-3.141592653589793 0.0"/>
+            <inertial pos="-0.0120508 -0.0800241 0.0281686" mass="0.164689" fullinertia="0.000615455 0.000187329 0.000474064 -6.05574e-05 -2.31931e-06 -1.54015e-05"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_9 -->
+            <geom type="mesh" class="visual" pos="0 0 -0.0164" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="0 0 -0.0164" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_49 -->
+            <geom type="mesh" class="visual" pos="-0.008 -0.12 -0.0171" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.008 -0.12 -0.0171" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part mg996r_straight_12 -->
+            <geom type="mesh" class="visual" pos="0 0 -0.00235" quat="0.707107 0.707107 0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <geom type="mesh" class="collision" pos="0 0 -0.00235" quat="0.707107 0.707107 0 -0" mesh="mg996r_straight" material="mg996r_straight_material"/>
+            <!-- Part leg_link3_support_l_4 -->
+            <geom type="mesh" class="visual" pos="0 0 0.064" quat="0.707107 -0 -0.707107 -0" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <geom type="mesh" class="collision" pos="0 0 0.064" quat="0.707107 -0 -0.707107 -0" mesh="leg_link3_support_l" material="leg_link3_support_l_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_50 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.12 -0.0171" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.12 -0.0171" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3_shell_l_4 -->
+            <geom type="mesh" class="visual" pos="-0 0 0.064" quat="0.707107 0 -0.707107 -0" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <geom type="mesh" class="collision" pos="-0 0 0.064" quat="0.707107 0 -0.707107 -0" mesh="leg_link3_shell_l" material="leg_link3_shell_l_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_51 -->
+            <geom type="mesh" class="visual" pos="-0.0331 -0.107128 0.041" quat="0.707107 0 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.0331 -0.107128 0.041" quat="0.707107 0 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_52 -->
+            <geom type="mesh" class="visual" pos="-0.0331 -0.107128 0.013" quat="0.707107 0 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.0331 -0.107128 0.013" quat="0.707107 0 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part 626_insert_b_4 -->
+            <geom type="mesh" class="visual" pos="0 0 0.054" quat="0.64328 0 -0 0.765631" mesh="626_insert_b" material="626_insert_b_material"/>
+            <geom type="mesh" class="collision" pos="0 0 0.054" quat="0.64328 0 -0 0.765631" mesh="626_insert_b" material="626_insert_b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_53 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.092 -0.0171" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.092 -0.0171" quat="0 -0.707107 -0.707107 -0" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_54 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part leg_link3a_r_2 -->
+            <geom type="mesh" class="visual" pos="0 0 0.14" quat="0.707107 0 -0.707107 -0" mesh="leg_link3a_r" material="leg_link3a_r_material"/>
+            <geom type="mesh" class="collision" pos="0 0 0.14" quat="0.707107 0 -0.707107 -0" mesh="leg_link3a_r" material="leg_link3a_r_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_55 -->
+            <geom type="mesh" class="visual" pos="-0.022 -0.092 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.022 -0.092 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <!-- Part 626rs_8 -->
+            <geom type="mesh" class="visual" pos="0 0 0.07" quat="0 -0 -1 -0" mesh="626rs" material="626rs_material"/>
+            <geom type="mesh" class="collision" pos="0 0 0.07" quat="0 -0 -1 -0" mesh="626rs" material="626rs_material"/>
+            <!-- Part ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_10 -->
+            <geom type="mesh" class="visual" pos="0 0 0.0724" quat="0.64328 0 -0 0.765631" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <geom type="mesh" class="collision" pos="0 0 0.0724" quat="0.64328 0 -0 0.765631" mesh="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125" material="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material"/>
+            <!-- Part leg_link3b_r_2 -->
+            <geom type="mesh" class="visual" pos="0 0 0.218" quat="0.707107 -0 -0.707107 -0" mesh="leg_link3b_r" material="leg_link3b_r_material"/>
+            <geom type="mesh" class="collision" pos="0 0 0.218" quat="0.707107 -0 -0.707107 -0" mesh="leg_link3b_r" material="leg_link3b_r_material"/>
+            <!-- Part ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_56 -->
+            <geom type="mesh" class="visual" pos="-0.008 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+            <geom type="mesh" class="collision" pos="-0.008 -0.12 0.0711" quat="0.707107 0 -0 0.707107" mesh="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b" material="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <asset>
+    <mesh file="626_insert_b.stl"/>
+    <mesh file="leg_link3b_l.stl"/>
+    <mesh file="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b.stl"/>
+    <mesh file="leg_link2_shell_b_l.stl"/>
+    <mesh file="leg_link2.stl"/>
+    <mesh file="attach.stl"/>
+    <mesh file="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb.stl"/>
+    <mesh file="leg_link1b_l.stl"/>
+    <mesh file="626rs.stl"/>
+    <mesh file="leg_link3b_r.stl"/>
+    <mesh file="leg_link3_shell_l.stl"/>
+    <mesh file="leg_link3_support_l.stl"/>
+    <mesh file="body.stl"/>
+    <mesh file="leg_link2_support.stl"/>
+    <mesh file="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125.stl"/>
+    <mesh file="leg_link2_shell_b_r.stl"/>
+    <mesh file="leg_link2_shell_a_r.stl"/>
+    <mesh file="leg_link1a_r.stl"/>
+    <mesh file="leg_link1c_l.stl"/>
+    <mesh file="leg_link3a_l.stl"/>
+    <mesh file="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545.stl"/>
+    <mesh file="leg_link1c_r.stl"/>
+    <mesh file="leg_link2_shell_a_l.stl"/>
+    <mesh file="mg996r.stl"/>
+    <mesh file="leg_link1b_r.stl"/>
+    <mesh file="626_insert_a.stl"/>
+    <mesh file="leg_link3a_r.stl"/>
+    <mesh file="mg996r_straight.stl"/>
+    <mesh file="leg_link1a_l.stl"/>
+    <material name="attach_material" rgba="0.796078 0.823529 0.937255 1"/>
+    <material name="body_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="mg996r_material" rgba="0.301961 0.301961 0.301961 1"/>
+    <material name="ph_pan_head_screw_m3x0_50_x_10__f9471002c7d2be787504e53f034b0545_material" rgba="0.603922 0.647059 0.686275 1"/>
+    <material name="ph_pan_head_screw_m3x0_50_x_14__f18bb73879804e50d417551afdf87beb_material" rgba="0.603922 0.647059 0.686275 1"/>
+    <material name="626_insert_a_material" rgba="0.980392 0.713725 0.00392157 1"/>
+    <material name="626rs_material" rgba="0.701961 0.701961 0.701961 1"/>
+    <material name="leg_link1a_l_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="mg996r_straight_material" rgba="0.439216 0.47451 0.501961 1"/>
+    <material name="leg_link1c_l_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="leg_link1b_l_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="ph_pan_head_screw_m4x0_70_x_20__cb388d49982372b8fb451041a0f4673b_material" rgba="0.603922 0.647059 0.686275 1"/>
+    <material name="leg_link2_support_material" rgba="0.980392 0.713725 0.00392157 1"/>
+    <material name="leg_link2_shell_b_l_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="leg_link2_shell_a_l_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="leg_link2_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="ph_pan_head_screw_m3x0_50_x_20__8f0194334e69840c9abf173658477125_material" rgba="0.603922 0.647059 0.686275 1"/>
+    <material name="626_insert_b_material" rgba="0.980392 0.713725 0.00392157 1"/>
+    <material name="leg_link3_support_l_material" rgba="0.980392 0.713725 0.00392157 1"/>
+    <material name="leg_link3_shell_l_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="leg_link3b_l_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="leg_link3a_l_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="leg_link1a_r_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="leg_link1b_r_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="leg_link1c_r_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="leg_link2_shell_b_r_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="leg_link2_shell_a_r_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="leg_link3a_r_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="leg_link3b_r_material" rgba="0.972549 0.529412 0.00392157 1"/>
+  </asset>
+  <actuator>
+    <position class="quad-v3" name="fl-hip" joint="fl-hip" inheritrange="1"/>
+    <position class="quad-v3" name="fl-knee" joint="fl-knee" inheritrange="1"/>
+    <position class="quad-v3" name="fl-ankle" joint="fl-ankle" inheritrange="1"/>
+    <position class="quad-v3" name="fr-hip" joint="fr-hip" inheritrange="1"/>
+    <position class="quad-v3" name="fr-knee" joint="fr-knee" inheritrange="1"/>
+    <position class="quad-v3" name="fr-ankle" joint="fr-ankle" inheritrange="1"/>
+    <position class="quad-v3" name="br-hip" joint="br-hip" inheritrange="1"/>
+    <position class="quad-v3" name="br-knee" joint="br-knee" inheritrange="1"/>
+    <position class="quad-v3" name="br-ankle" joint="br-ankle" inheritrange="1"/>
+    <position class="quad-v3" name="bl-hip" joint="bl-hip" inheritrange="1"/>
+    <position class="quad-v3" name="bl-knee" joint="bl-knee" inheritrange="1"/>
+    <position class="quad-v3" name="bl-ankle" joint="bl-ankle" inheritrange="1"/>
+  </actuator>
+  <equality/>
+</mujoco>
