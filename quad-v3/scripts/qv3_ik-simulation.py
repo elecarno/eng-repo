@@ -5,7 +5,7 @@ import time
 import mujoco
 import mujoco.viewer
 import numpy as np
-
+import keyboard
 
 # --- LOAD MODEL AS GLOBAL -------------------------------------------------------------------------
 # path must be relative to location that script is being run from
@@ -155,31 +155,28 @@ if __name__ == "__main__":
             w_gait_rise = 0.04
 
             # define leg ik targets & set positions
-            fl_x = w_spread
-            fl_y = w_gait_width*np.cos(t * frequency) - w_length
-            fl_z = w_gait_rise*np.maximum(0, np.sin(t * frequency)) - w_floor
-            fl_ik = leg_ik_solver(np.array([fl_x, fl_y, fl_z]))
-            set_leg_position("fl", [ fl_ik[0], fl_ik[1], fl_ik[2] ])
+            def leg_walk(leg, direction, offset):
+                w_offset = offset * frequency
+                w_x = w_spread
+                w_y = direction * w_gait_width*np.cos(t * frequency + w_offset) - w_length
+                w_z = w_gait_rise*np.maximum(0, np.sin(t * frequency + w_offset)) - w_floor
+                w_ik = leg_ik_solver(np.array([w_x, w_y, w_z]))
+                set_leg_position(leg, [ w_ik[0], w_ik[1], w_ik[2] ])
 
-            br_x = w_spread
-            br_y = -w_gait_width*np.cos(t * frequency) - w_length
-            br_z = w_gait_rise*np.maximum(0, np.sin(t * frequency)) - w_floor
-            br_ik = leg_ik_solver(np.array([br_x, br_y, br_z]))
-            set_leg_position("br", [ br_ik[0], br_ik[1], br_ik[2] ])
+            def move(directions):
+                leg_walk("fl",  directions[0], 0)
+                leg_walk("br",  directions[1], 0)
+                leg_walk("fr",  directions[2], np.pi)
+                leg_walk("bl",  directions[3], np.pi)
 
-            fr_offset = np.pi * frequency
-            fr_x = w_spread
-            fr_y = w_gait_width*np.cos(t * frequency + fr_offset) - w_length
-            fr_z = w_gait_rise*np.maximum(0, np.sin(t * frequency + fr_offset)) - w_floor
-            fr_ik = leg_ik_solver(np.array([fr_x, fr_y, fr_z]))
-            set_leg_position("fr", [ fr_ik[0], fr_ik[1], fr_ik[2] ])
-
-            bl_offset = np.pi * frequency
-            bl_x = w_spread
-            bl_y = -w_gait_width*np.cos(t * frequency + bl_offset) - w_length
-            bl_z = w_gait_rise*np.maximum(0, np.sin(t * frequency + bl_offset)) - w_floor
-            bl_ik = leg_ik_solver(np.array([bl_x, bl_y, bl_z]))
-            set_leg_position("bl", [ bl_ik[0], bl_ik[1], bl_ik[2] ])
+            if keyboard.is_pressed("up"):
+                move([  1, -1,  1, -1 ]) # forwards
+            elif keyboard.is_pressed("down"):
+                move([ -1,  1, -1,  1 ]) # backwards
+            elif keyboard.is_pressed("left"):
+                move([ -1, -1,  1,  1 ]) # turn left
+            elif keyboard.is_pressed("right"):
+                move([  1,  1, -1, -1 ]) # turn right
             # --- LEG MOVEMENT ---
 
             # step physics forward & refresh viewer each step
