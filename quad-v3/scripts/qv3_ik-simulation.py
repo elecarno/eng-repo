@@ -145,32 +145,39 @@ if __name__ == "__main__":
             # --- LEG MOVEMENT ---
             # get timer
             t = data.time
-            frequency = 9
+            frequency = 13 # must be an odd number
+
+            # walk function parameters
+            w_spread = 0.17
+            w_length = 0.08
+            w_floor = 0.11
+            w_gait_width = 0.07
+            w_gait_rise = 0.04
 
             # define leg ik targets & set positions
-            fl_x = 0.18
-            fl_y = 0.06*np.cos(t * frequency)
-            fl_z = 0.04*np.maximum(0, np.sin(t * frequency)) - 0.07
+            fl_x = w_spread
+            fl_y = w_gait_width*np.cos(t * frequency) - w_length
+            fl_z = w_gait_rise*np.maximum(0, np.sin(t * frequency)) - w_floor
             fl_ik = leg_ik_solver(np.array([fl_x, fl_y, fl_z]))
             set_leg_position("fl", [ fl_ik[0], fl_ik[1], fl_ik[2] ])
 
-            br_x = 0.18
-            br_y = -0.06*np.cos(t * frequency)
-            br_z = 0.04*np.maximum(0, np.sin(t * frequency)) - 0.07
+            br_x = w_spread
+            br_y = -w_gait_width*np.cos(t * frequency) - w_length
+            br_z = w_gait_rise*np.maximum(0, np.sin(t * frequency)) - w_floor
             br_ik = leg_ik_solver(np.array([br_x, br_y, br_z]))
             set_leg_position("br", [ br_ik[0], br_ik[1], br_ik[2] ])
 
             fr_offset = np.pi * frequency
-            fr_x = 0.18
-            fr_y = 0.06*np.cos(t * frequency + fr_offset)
-            fr_z = 0.04*np.maximum(0, np.sin(t * frequency + fr_offset)) - 0.07
+            fr_x = w_spread
+            fr_y = w_gait_width*np.cos(t * frequency + fr_offset) - w_length
+            fr_z = w_gait_rise*np.maximum(0, np.sin(t * frequency + fr_offset)) - w_floor
             fr_ik = leg_ik_solver(np.array([fr_x, fr_y, fr_z]))
             set_leg_position("fr", [ fr_ik[0], fr_ik[1], fr_ik[2] ])
 
             bl_offset = np.pi * frequency
-            bl_x = 0.18
-            bl_y = -0.06*np.cos(t * frequency + bl_offset)
-            bl_z = 0.04*np.maximum(0, np.sin(t * frequency + bl_offset)) - 0.07
+            bl_x = w_spread
+            bl_y = -w_gait_width*np.cos(t * frequency + bl_offset) - w_length
+            bl_z = w_gait_rise*np.maximum(0, np.sin(t * frequency + bl_offset)) - w_floor
             bl_ik = leg_ik_solver(np.array([bl_x, bl_y, bl_z]))
             set_leg_position("bl", [ bl_ik[0], bl_ik[1], bl_ik[2] ])
             # --- LEG MOVEMENT ---
