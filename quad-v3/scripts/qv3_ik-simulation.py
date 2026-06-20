@@ -177,6 +177,8 @@ if __name__ == "__main__":
                 move([ -1, -1,  1,  1 ]) # turn left
             elif keyboard.is_pressed("right"):
                 move([  1,  1, -1, -1 ]) # turn right
+            elif keyboard.is_pressed("l"):
+                move([  -1,  -1, -1, -1 ]) # dance
             # --- LEG MOVEMENT ---
 
             # step physics forward & refresh viewer each step
