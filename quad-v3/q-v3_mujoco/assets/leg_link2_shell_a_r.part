@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "550c5d66ca4734a701197f0e",
+    "documentMicroversion": "dfdb168a2b21b4481fc2f77c",
     "elementId": "21152283a73ce8d545162539",
     "fullConfiguration": "default",
     "id": "MogHMOdwUnN4P1R4Y",
     "isStandardContent": false,
     "name": "leg-link2-shell-a-r <1>",
-    "partId": "RRCD",
+    "partId": "RtCD",
     "suppressed": false,
     "type": "Part"
 }

@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "d7eef6374aced10980d655e0",
+    "documentMicroversion": "dfdb168a2b21b4481fc2f77c",
+    "elementId": "c084fffb61a1a148e2ece665",
+    "fullConfiguration": "default",
+    "id": "MIPxbxWHraFuxMp4S",
+    "isStandardContent": false,
+    "name": "pca9685-generic <1>",
+    "partId": "JFD",
+    "suppressed": false,
+    "type": "Part"
+}
