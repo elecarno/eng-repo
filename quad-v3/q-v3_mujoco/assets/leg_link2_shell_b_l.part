@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "dfdb168a2b21b4481fc2f77c",
+    "documentMicroversion": "69bb592219ac2f5916433b87",
     "elementId": "21152283a73ce8d545162539",
     "fullConfiguration": "default",
     "id": "MQWuasD/sKW1XH3Wn",
     "isStandardContent": false,
     "name": "leg-link2-shell-b-l <1>",
-    "partId": "R5BD",
+    "partId": "RQDD",
     "suppressed": false,
     "type": "Part"
 }

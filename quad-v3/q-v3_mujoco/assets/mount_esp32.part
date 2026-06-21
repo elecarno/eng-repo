@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "d7eef6374aced10980d655e0",
+    "documentMicroversion": "69bb592219ac2f5916433b87",
+    "elementId": "21152283a73ce8d545162539",
+    "fullConfiguration": "default",
+    "id": "M2GWY8sIG9Q9dYf2n",
+    "isStandardContent": false,
+    "name": "mount-esp32 <1>",
+    "partId": "RdBD",
+    "suppressed": false,
+    "type": "Part"
+}

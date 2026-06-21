@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "dfdb168a2b21b4481fc2f77c",
+    "documentMicroversion": "69bb592219ac2f5916433b87",
     "elementId": "21152283a73ce8d545162539",
     "fullConfiguration": "default",
     "id": "MGk8h2iowUbl/sWFZ",
     "isStandardContent": false,
     "name": "body-shell-side-l <1>",
-    "partId": "JrD",
+    "partId": "JvD",
     "suppressed": false,
     "type": "Part"
 }

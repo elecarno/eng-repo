@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "dfdb168a2b21b4481fc2f77c",
+    "documentMicroversion": "69bb592219ac2f5916433b87",
     "elementId": "21152283a73ce8d545162539",
     "fullConfiguration": "default",
     "id": "MUocL6HRheoOuuIHk",
     "isStandardContent": false,
     "name": "leg-link2-shell-a-l <1>",
-    "partId": "RyBD",
+    "partId": "RJDD",
     "suppressed": false,
     "type": "Part"
 }

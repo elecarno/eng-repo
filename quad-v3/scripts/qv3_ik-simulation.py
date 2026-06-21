@@ -71,6 +71,10 @@ def set_leg_position(leg, position):
     data.ctrl[knee]  = position[1]*coeffs[1]
     data.ctrl[ankle] = position[2]*coeffs[2]
 
+def set_antenna_positions(positions):
+    data.ctrl[model.actuator("antenna-l").id] = positions[0] * -1
+    data.ctrl[model.actuator("antenna-r").id] = positions[1]
+
 
 # --- LEG IK SOLVER --------------------------------------------------------------------------------
 def leg_ik_solver(target_3d):
@@ -135,6 +139,10 @@ if __name__ == "__main__":
         np.radians(20), 
         np.radians(30)
     ])
+    set_antenna_positions([
+        np.radians(30),
+        np.radians(30)
+    ])
 
     # --- VISUALISER ----
     with mujoco.viewer.launch_passive(model, data) as viewer:
@@ -145,7 +153,7 @@ if __name__ == "__main__":
             # --- LEG MOVEMENT ---
             # get timer
             t = data.time
-            frequency = 13 # must be an odd number
+            frequency = 17 # must be an odd number
 
             # walk function parameters
             w_spread = 0.17
@@ -179,6 +187,31 @@ if __name__ == "__main__":
                 move([  1,  1, -1, -1 ]) # turn right
             elif keyboard.is_pressed("l"):
                 move([  -1,  -1, -1, -1 ]) # dance
+            elif keyboard.is_pressed("4"): # default
+                set_antenna_positions([
+                    np.radians(30),
+                    np.radians(30)
+                ])
+            elif keyboard.is_pressed("5"): # down
+                set_antenna_positions([
+                    np.radians(0),
+                    np.radians(0)
+                ])
+            elif keyboard.is_pressed("6"): # up
+                set_antenna_positions([
+                    np.radians(90),
+                    np.radians(90)
+                ])
+            elif keyboard.is_pressed("7"): # confused left
+                set_antenna_positions([
+                    np.radians(15),
+                    np.radians(60)
+                ])
+            elif keyboard.is_pressed("8"): # confused right
+                set_antenna_positions([
+                    np.radians(60),
+                    np.radians(15)
+                ])
             # --- LEG MOVEMENT ---
 
             # step physics forward & refresh viewer each step
