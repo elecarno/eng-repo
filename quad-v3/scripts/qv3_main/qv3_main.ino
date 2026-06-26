@@ -23,30 +23,30 @@
 Adafruit_PWMServoDriver sPWM = Adafruit_PWMServoDriver();
 
 // servo definitions
-const int sSERVO_FREQ = 50   // analog servo ~50 Hz updates
+const int sSERVO_FREQ = 50;   // analog servo ~50 Hz updates
 // MG996R limits (channels 0 - 11)
-const int sUSMIN_MG996R = 500   // minimum safe limit for MG996R
-const int sUSMAX_MG996R = 2500  // maximum safe limit for MG996R
+const int sUSMIN_MG996R = 500;   // minimum safe limit for MG996R
+const int sUSMAX_MG996R = 2500;  // maximum safe limit for MG996R
 // MG90S limits (channels 12 & 13)
-const int sUSMIN_MG90S = 600   // minimum safe limit for MG90S
-const int sUSMAX_MG90S = 2400  // maximum safe limit for MG90S
+const int sUSMIN_MG90S = 600;   // minimum safe limit for MG90S
+const int sUSMAX_MG90S = 2400;  // maximum safe limit for MG90S
 
 // rest position definition
 const uint16_t sRestPose[14] = {
-  USMIN_MG996R,  // channel 0  FRONT LEFT LEG   hip
-  USMAX_MG996R,  // channel 1                   knee
-  USMAX_MG996R,  // channel 2                   ankle
-  USMIN_MG996R,  // channel 3  FRONT RIGHT LEG  hip
-  USMAX_MG996R,  // channel 4,                  knee
-  USMAX_MG996R,  // channel 5,                  ankle
-  USMIN_MG996R,  // channel 6, BACK LEFT LEG    hip
-  USMAX_MG996R,  // channel 7,                  knee
-  USMAX_MG996R,  // channel 8,                  ankle
-  USMIN_MG996R,  // channel 9, BACK RIGHT LEG   hip
-  USMAX_MG996R,  // channel 10,                 knee
-  USMAX_MG996R,  // channel 11                  ankle
-  USMIN_MG90S,   // channel 12 - LEFT  ANTENNA  (MG90S)
-  USMAX_MG90S    // channel 13 - RIGHT ANTENNA  (MG90S)
+  sUSMIN_MG996R,  // channel 0  FRONT LEFT LEG   hip
+  sUSMAX_MG996R,  // channel 1                   knee
+  sUSMAX_MG996R,  // channel 2                   ankle
+  sUSMIN_MG996R,  // channel 3  FRONT RIGHT LEG  hip
+  sUSMAX_MG996R,  // channel 4,                  knee
+  sUSMAX_MG996R,  // channel 5,                  ankle
+  sUSMIN_MG996R,  // channel 6, BACK LEFT LEG    hip
+  sUSMAX_MG996R,  // channel 7,                  knee
+  sUSMAX_MG996R,  // channel 8,                  ankle
+  sUSMIN_MG996R,  // channel 9, BACK RIGHT LEG   hip
+  sUSMAX_MG996R,  // channel 10,                 knee
+  sUSMAX_MG996R,  // channel 11                  ankle
+  sUSMIN_MG90S,   // channel 12 - LEFT  ANTENNA  (MG90S)
+  sUSMAX_MG90S    // channel 13 - RIGHT ANTENNA  (MG90S)
 };
 
 // array to track current configuration in memory
@@ -101,22 +101,22 @@ void sParseAndMove(String data) {
     int val13 = data.substring(idx13 + 4       ).toInt();
 
     // constrain MG996R legs
-    currentPose[0]  = constrain(val0,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[1]  = constrain(val1,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[2]  = constrain(val2,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[3]  = constrain(val3,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[4]  = constrain(val4,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[5]  = constrain(val5,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[6]  = constrain(val6,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[7]  = constrain(val7,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[8]  = constrain(val8,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[9]  = constrain(val9,  USMIN_MG996R, USMAX_MG996R);
-    currentPose[10] = constrain(val10, USMIN_MG996R, USMAX_MG996R);
-    currentPose[11] = constrain(val11, USMIN_MG996R, USMAX_MG996R);
+    sCurrentPose[0]  = constrain(val0,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[1]  = constrain(val1,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[2]  = constrain(val2,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[3]  = constrain(val3,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[4]  = constrain(val4,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[5]  = constrain(val5,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[6]  = constrain(val6,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[7]  = constrain(val7,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[8]  = constrain(val8,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[9]  = constrain(val9,  sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[10] = constrain(val10, sUSMIN_MG996R, sUSMAX_MG996R);
+    sCurrentPose[11] = constrain(val11, sUSMIN_MG996R, sUSMAX_MG996R);
     
     // constrain MG90S antennae
-    currentPose[12] = constrain(val12, USMIN_MG90S, USMAX_MG90S);
-    currentPose[13] = constrain(val13, USMIN_MG90S, USMAX_MG90S);
+    sCurrentPose[12] = constrain(val12, sUSMIN_MG90S, sUSMAX_MG90S);
+    sCurrentPose[13] = constrain(val13, sUSMIN_MG90S, sUSMAX_MG90S);
   }
 }
 
@@ -129,15 +129,15 @@ const int eSENSOR_COUNT = 3;
 
 
 // MATRIX DISPLAYS (d- )-----------------------------------------------
-#define HARDWARE_TYPE MD_MAX72XX::FC16_HW
-const int MAX_DEVICES = 2
+#define dHARDWARE_TYPE MD_MAX72XX::FC16_HW
+const int dMAX_DEVICES = 2;
 
 // ESP32 hardware VSPI pins
-const int CLK_PIN  = 18
-const int DATA_PIN = 23
-const int CS_PIN   = 5
+const int dCLK_PIN  = 18;
+const int dDATA_PIN = 23;
+const int dCS_PIN   = 5;
 // initialize using hardware SPI
-MD_MAX72XX mx = MD_MAX72XX(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
+MD_MAX72XX mx = MD_MAX72XX(dHARDWARE_TYPE, dCS_PIN, dMAX_DEVICES);
 
 // patterns - make using https://xantorohara.github.io/led-matrix-editor/
 const uint8_t dpLeft[8] = {
@@ -176,13 +176,42 @@ const int bBuzzerPin = 25;
 
 void bPlayTone(double frequency, int duration) {
   if (frequency == 0) {
-    ledcWriteTone(piezoPin, 0); // Stop the tone
+    ledcWriteTone(bBuzzerPin, 0);         // stop tone
   } else {
-    ledcWriteTone(piezoPin, frequency); // Start the tone directly on the PIN, not a channel
+    ledcWriteTone(bBuzzerPin, frequency); // start tone directly on PIN
   }
-  delay(duration);                      // Hold it
-  ledcWriteTone(piezoPin, 0);           // Stop the tone
-  delay(50);                            // Brief pause between notes
+  delay(duration);                        // hold tone
+  ledcWriteTone(bBuzzerPin, 0);           // stop tone
+  delay(50);                              // pause between tones
 }
 
 
+// SETUP -----------------------------------------------------------------------------------------------------------------------
+void setup() {
+
+  // SERVOS (----------------------------------------------------------
+  Serial.begin(115200); 
+  delay(1000); 
+
+  Serial.println("Initializing PCA9685 on ESP32...");
+  
+  // pass ESP32 standard I2C pins 
+  Wire.begin(21, 22);
+
+  sPWM.begin();
+  sPWM.setOscillatorFrequency(25000000);
+  sPWM.setPWMFreq(sSERVO_FREQ);  
+  delay(10);
+
+  Serial.println("Moving robot to its custom resting pose...");
+  
+  for (uint8_t i = 0; i < 14; i++) {
+    sCurrentPose[i] = sRestPose[i];
+    sPWM.writeMicroseconds(i, sCurrentPose[i]);
+  }
+}
+
+// MASTER LOOP ----------------------------------------------------------------------------------------------------------------
+void loop() {
+
+}
