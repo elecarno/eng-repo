@@ -16,31 +16,37 @@
 // --- GLOBALS --------------------------------------------------------------------------------
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-// servo definitions
-#define SERVO_FREQ  50   // analog servo ~50 Hz updates
-#define USMIN       500  // minimum safe limit
-#define USMAX      2500  // maximum safe limit
-#define USMID      1500  // 90 degrees midpoint
+// Servo definitions
+#define SERVO_FREQ      50   // Analog servo ~50 Hz updates
 
-// robot rest position definition
-// SEE BELOW FOR MG996R TO PCA9685 WIRING \/\/\/
-const uint16_t robotRestPose[12] = {
-  USMIN,  // channel 0  FRONT LEFT LEG   hip
-  USMAX,  // channel 1                   knee
-  USMAX,  // channel 2                   ankle
-  USMIN,  // channel 3  FRONT RIGHT LEG  hip
-  USMAX,  // channel 4,                  knee
-  USMAX,  // channel 5,                  ankle
-  USMIN,  // channel 6, BACK LEFT LEG    hip
-  USMAX,  // channel 7,                  knee
-  USMAX,  // channel 8,                  ankle
-  USMIN,  // channel 9, BACK RIGHT LEG   hip
-  USMAX,  // channel 10,                 knee
-  USMAX   // channel 11                  ankle
+// MG996R Limits (Channels 0 - 11)
+#define USMIN_MG996R    500  // Minimum safe limit for MG996R
+#define USMAX_MG996R   2500  // Maximum safe limit for MG996R
+
+// MG90S Limits (Channels 12 & 13)
+#define USMIN_MG90S     600  // Minimum safe limit for MG90S
+#define USMAX_MG90S    2400  // Maximum safe limit for MG90S
+
+// Robot rest position definition
+const uint16_t robotRestPose[14] = {
+  USMIN_MG996R,  // channel 0  FRONT LEFT LEG   hip
+  USMAX_MG996R,  // channel 1                   knee
+  USMAX_MG996R,  // channel 2                   ankle
+  USMIN_MG996R,  // channel 3  FRONT RIGHT LEG  hip
+  USMAX_MG996R,  // channel 4,                  knee
+  USMAX_MG996R,  // channel 5,                  ankle
+  USMIN_MG996R,  // channel 6, BACK LEFT LEG    hip
+  USMAX_MG996R,  // channel 7,                  knee
+  USMAX_MG996R,  // channel 8,                  ankle
+  USMIN_MG996R,  // channel 9, BACK RIGHT LEG   hip
+  USMAX_MG996R,  // channel 10,                 knee
+  USMAX_MG996R,  // channel 11                  ankle
+  USMIN_MG90S,   // channel 12 - LEFT  ANTENNA  (MG90S)
+  USMAX_MG90S    // channel 13 - RIGHT ANTENNA  (MG90S)
 };
 
-// array to track current configuration in memory
-uint16_t currentPose[12];
+// Array to track current configuration in memory
+uint16_t currentPose[14];
 
 
 // --- CODE -----------------------------------------------------------------------------------
@@ -49,7 +55,9 @@ void setup() {
   delay(1000); 
 
   Serial.println("Initializing PCA9685 on ESP32...");
-  Wire.begin();
+  
+  // Explicitly passing ESP32 standard I2C pins 
+  Wire.begin(21, 22);
 
   pwm.begin();
   pwm.setOscillatorFrequency(25000000);
@@ -58,7 +66,7 @@ void setup() {
 
   Serial.println("Moving robot to its custom resting pose...");
   
-  for (uint8_t i = 0; i < 12; i++) {
+  for (uint8_t i = 0; i < 14; i++) {
     currentPose[i] = robotRestPose[i];
     pwm.writeMicroseconds(i, currentPose[i]);
   }
@@ -70,7 +78,7 @@ void loop() {
     parseAndMove(data);
   }
   
-  for (uint8_t i = 0; i < 12; i++) {
+  for (uint8_t i = 0; i < 14; i++) {
     pwm.writeMicroseconds(i, currentPose[i]);
   }
   delay(20); 
@@ -89,6 +97,8 @@ void parseAndMove(String data) {
   int idx9  = data.indexOf("C9:");
   int idx10 = data.indexOf("C10:");
   int idx11 = data.indexOf("C11:");
+  int idx12 = data.indexOf("C12:");
+  int idx13 = data.indexOf("C13:");
 
   if (
     idx0  != -1 &&
@@ -102,7 +112,9 @@ void parseAndMove(String data) {
     idx8  != -1 &&
     idx9  != -1 &&
     idx10 != -1 &&
-    idx11 != -1
+    idx11 != -1 &&
+    idx12 != -1 &&
+    idx13 != -1
     ) {
     
     int val0  = data.substring(idx0  + 3, idx1 ).toInt();
@@ -115,20 +127,27 @@ void parseAndMove(String data) {
     int val7  = data.substring(idx7  + 3, idx8 ).toInt();
     int val8  = data.substring(idx8  + 3, idx9 ).toInt();
     int val9  = data.substring(idx9  + 3, idx10).toInt();
-    int val10 = data.substring(idx10 + 3, idx11).toInt();
-    int val11 = data.substring(idx11 + 3       ).toInt();
+    int val10 = data.substring(idx10 + 4, idx11).toInt();
+    int val11 = data.substring(idx11 + 4, idx12).toInt();
+    int val12 = data.substring(idx12 + 4, idx13).toInt();
+    int val13 = data.substring(idx13 + 4       ).toInt();
 
-    currentPose[0]  = constrain(val0,  USMIN, USMAX);
-    currentPose[1]  = constrain(val1,  USMIN, USMAX);
-    currentPose[2]  = constrain(val2,  USMIN, USMAX);
-    currentPose[3]  = constrain(val3,  USMIN, USMAX);
-    currentPose[4]  = constrain(val4,  USMIN, USMAX);
-    currentPose[5]  = constrain(val5,  USMIN, USMAX);
-    currentPose[6]  = constrain(val6,  USMIN, USMAX);
-    currentPose[7]  = constrain(val7,  USMIN, USMAX);
-    currentPose[8]  = constrain(val8,  USMIN, USMAX);
-    currentPose[9]  = constrain(val9,  USMIN, USMAX);
-    currentPose[10] = constrain(val10, USMIN, USMAX);
-    currentPose[11] = constrain(val11, USMIN, USMAX);
+    // constrain MG996R legs
+    currentPose[0]  = constrain(val0,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[1]  = constrain(val1,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[2]  = constrain(val2,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[3]  = constrain(val3,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[4]  = constrain(val4,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[5]  = constrain(val5,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[6]  = constrain(val6,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[7]  = constrain(val7,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[8]  = constrain(val8,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[9]  = constrain(val9,  USMIN_MG996R, USMAX_MG996R);
+    currentPose[10] = constrain(val10, USMIN_MG996R, USMAX_MG996R);
+    currentPose[11] = constrain(val11, USMIN_MG996R, USMAX_MG996R);
+    
+    // constrain MG90S antennae
+    currentPose[12] = constrain(val12, USMIN_MG90S, USMAX_MG90S);
+    currentPose[13] = constrain(val13, USMIN_MG90S, USMAX_MG90S);
   }
 }

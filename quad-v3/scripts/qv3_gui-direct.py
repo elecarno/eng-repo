@@ -24,7 +24,7 @@ def send_pulse_widths(*args):
     """
         Packages and transmits raw microsecond values to the PCA9685.
     """
-    if ser and ser.is_open and len(sliders) == 12:
+    if ser and ser.is_open and len(sliders) == 14:
         try:
             # generate format: "C0:1500,C1:2500,C2:500,C3:1500,C4:1500\n"
             msg = ",".join(
@@ -75,6 +75,9 @@ if __name__ == "__main__":
         500, 2500, 2500,
 
         500, 2500, 2500,
+
+        600, 
+        2400
     ]
 
     configs = [
@@ -93,6 +96,9 @@ if __name__ == "__main__":
         ("C9  BR Hip:  ", rest_poses[9 ]),
         ("C10 BR Knee: ", rest_poses[10]),
         ("C11 BR Ankle:", rest_poses[11]),
+
+        ("C12 L Antenna:", rest_poses[12]),
+        ("C13 R Antenna:", rest_poses[13]),
     ]
 
     # create sliders
