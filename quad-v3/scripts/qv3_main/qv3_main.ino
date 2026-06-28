@@ -213,5 +213,13 @@ void setup() {
 
 // MASTER LOOP ----------------------------------------------------------------------------------------------------------------
 void loop() {
-
+  if (Serial.available() > 0) {
+    String data = Serial.readStringUntil('\n');
+    sParseAndMove(data);
+  }
+  
+  for (uint8_t i = 0; i < 14; i++) {
+    sPWM.writeMicroseconds(i, sCurrentPose[i]);
+  }
+  delay(20); 
 }

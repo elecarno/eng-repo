@@ -32,15 +32,19 @@ const uint16_t robotRestPose[14] = {
   USMIN_MG996R,  // channel 0  FRONT LEFT LEG   hip
   USMAX_MG996R,  // channel 1                   knee
   USMAX_MG996R,  // channel 2                   ankle
-  USMIN_MG996R,  // channel 3  FRONT RIGHT LEG  hip
-  USMAX_MG996R,  // channel 4,                  knee
-  USMAX_MG996R,  // channel 5,                  ankle
-  USMIN_MG996R,  // channel 6, BACK LEFT LEG    hip
-  USMAX_MG996R,  // channel 7,                  knee
-  USMAX_MG996R,  // channel 8,                  ankle
+
+  USMAX_MG996R,  // channel 3  FRONT RIGHT LEG  hip
+  USMIN_MG996R,  // channel 4,                  knee
+  USMIN_MG996R,  // channel 5,                  ankle
+
+  USMAX_MG996R,  // channel 6, BACK LEFT LEG    hip
+  USMIN_MG996R,  // channel 7,                  knee
+  USMIN_MG996R,  // channel 8,                  ankle
+
   USMIN_MG996R,  // channel 9, BACK RIGHT LEG   hip
   USMAX_MG996R,  // channel 10,                 knee
   USMAX_MG996R,  // channel 11                  ankle
+
   USMIN_MG90S,   // channel 12 - LEFT  ANTENNA  (MG90S)
   USMAX_MG90S    // channel 13 - RIGHT ANTENNA  (MG90S)
 };
