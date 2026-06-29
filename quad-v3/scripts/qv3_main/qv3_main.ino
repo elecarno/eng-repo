@@ -18,6 +18,8 @@
 
 // GLOBALS & FUNCTIONS --------------------------------------------------------------------------------------------------------
 
+enum dDisplaySide { D_LEFT = 0, D_RIGHT = 1 };
+
 // SERVOS (s-) --------------------------------------------------------
 // driver
 Adafruit_PWMServoDriver sPWM = Adafruit_PWMServoDriver();
@@ -33,18 +35,22 @@ const int sUSMAX_MG90S = 2400;  // maximum safe limit for MG90S
 
 // rest position definition
 const uint16_t sRestPose[14] = {
-  sUSMIN_MG996R,  // channel 0  FRONT LEFT LEG   hip
-  sUSMAX_MG996R,  // channel 1                   knee
-  sUSMAX_MG996R,  // channel 2                   ankle
-  sUSMIN_MG996R,  // channel 3  FRONT RIGHT LEG  hip
-  sUSMAX_MG996R,  // channel 4,                  knee
-  sUSMAX_MG996R,  // channel 5,                  ankle
-  sUSMIN_MG996R,  // channel 6, BACK LEFT LEG    hip
-  sUSMAX_MG996R,  // channel 7,                  knee
-  sUSMAX_MG996R,  // channel 8,                  ankle
-  sUSMIN_MG996R,  // channel 9, BACK RIGHT LEG   hip
-  sUSMAX_MG996R,  // channel 10,                 knee
-  sUSMAX_MG996R,  // channel 11                  ankle
+  1000,  // channel 0  FRONT LEFT LEG   hip
+  1764,  // channel 1                   knee
+  1735,  // channel 2                   ankle
+
+  2000,  // channel 3  FRONT RIGHT LEG  hip
+  1235,  // channel 4,                  knee
+  1264,  // channel 5,                  ankle
+
+  2000,  // channel 6, BACK LEFT LEG    hip
+  1235,  // channel 7,                  knee
+  1264,  // channel 8,                  ankle
+
+  1000,  // channel 9, BACK RIGHT LEG   hip
+  1764,  // channel 10,                 knee
+  1735,  // channel 11                  ankle
+
   sUSMIN_MG90S,   // channel 12 - LEFT  ANTENNA  (MG90S)
   sUSMAX_MG90S    // channel 13 - RIGHT ANTENNA  (MG90S)
 };
@@ -124,7 +130,7 @@ void sParseAndMove(String data) {
 // SENSORS (e- )-------------------------------------------------------
 const int ePIN_TRIG = 12;
 const int ePIN_ECHO[] = {14, 27, 26}; 
-const char* eSENSOR_LABELS[] = {"left", "middle", "right"};
+const char* eSENSOR_LABELS[] = {"right", "middle", "left"};
 const int eSENSOR_COUNT = 3;
 
 
@@ -168,20 +174,28 @@ const uint8_t dpHappy[8] = {
   0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11000011, 0b10000001, 0b00000000, 0b00000000     
 };
 
-enum dDisplaySide { D_LEFT = 0, D_RIGHT = 1 };
+void dDrawMatrixPattern(enum dDisplaySide side, const uint8_t pattern[]) {
+  uint8_t startCol = side * 8; // set offset needed
+
+  mx.control((uint8_t)side, MD_MAX72XX::UPDATE, MD_MAX72XX::OFF);
+  for (uint8_t col = 0; col < 8; col++) {
+    mx.setColumn(startCol + col, pattern[col]); 
+  }
+  mx.control((uint8_t)side, MD_MAX72XX::UPDATE, MD_MAX72XX::ON);
+}
 
 
 // BUZZER (b- )--------------------------------------------------------
-const int bBuzzerPin = 25;
+const int bPIN_BUZZER = 25;
 
 void bPlayTone(double frequency, int duration) {
   if (frequency == 0) {
-    ledcWriteTone(bBuzzerPin, 0);         // stop tone
+    ledcWriteTone(bPIN_BUZZER, 0);         // stop tone
   } else {
-    ledcWriteTone(bBuzzerPin, frequency); // start tone directly on PIN
+    ledcWriteTone(bPIN_BUZZER, frequency); // start tone directly on PIN
   }
   delay(duration);                        // hold tone
-  ledcWriteTone(bBuzzerPin, 0);           // stop tone
+  ledcWriteTone(bPIN_BUZZER, 0);           // stop tone
   delay(50);                              // pause between tones
 }
 
@@ -189,7 +203,7 @@ void bPlayTone(double frequency, int duration) {
 // SETUP -----------------------------------------------------------------------------------------------------------------------
 void setup() {
 
-  // SERVOS (----------------------------------------------------------
+  // SERVOS -----------------------------------------------------------
   Serial.begin(115200); 
   delay(1000); 
 
@@ -209,10 +223,35 @@ void setup() {
     sCurrentPose[i] = sRestPose[i];
     sPWM.writeMicroseconds(i, sCurrentPose[i]);
   }
+
+  // SENSORS ----------------------------------------------------------
+  pinMode(ePIN_TRIG, OUTPUT);
+  for (int i = 0; i < eSENSOR_COUNT; i++) {
+    pinMode(ePIN_ECHO[i], INPUT);
+  }
+
+  // MATRIX DISPLAYS --------------------------------------------------
+  mx.begin();
+  mx.control(MD_MAX72XX::INTENSITY, 2); // Set brightness low (0-15)
+  mx.clear();
+
+  // --- STARTUP TEST ---
+  dDrawMatrixPattern(D_LEFT, dpLeft);
+  delay(1000);
+  dDrawMatrixPattern(D_RIGHT, dpRight);
+  delay(1000);
+
+  mx.clear(); // clear everything for main loop
+  delay(1000);
+
+  // BUZZER -----------------------------------------------------------
+  ledcAttach(bPIN_BUZZER, 2000, 8);
 }
 
 // MASTER LOOP ----------------------------------------------------------------------------------------------------------------
 void loop() {
+
+  // SERVOS -----------------------------------------------------------
   if (Serial.available() > 0) {
     String data = Serial.readStringUntil('\n');
     sParseAndMove(data);
@@ -221,5 +260,45 @@ void loop() {
   for (uint8_t i = 0; i < 14; i++) {
     sPWM.writeMicroseconds(i, sCurrentPose[i]);
   }
-  delay(20); 
+
+  // SENSORS ----------------------------------------------------------
+  for (int i = 0; i < eSENSOR_COUNT; i++) {
+    digitalWrite(ePIN_TRIG, LOW);
+    delayMicroseconds(5); // Increased stability delay
+    
+    digitalWrite(ePIN_TRIG, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(ePIN_TRIG, LOW);
+    
+    long duration = pulseIn(ePIN_ECHO[i], HIGH, 25000); 
+    float distance = (duration * 0.0343) / 2;
+    
+    Serial.print("Sensor ");
+    Serial.print(eSENSOR_LABELS[i]); 
+    Serial.print(": ");
+    
+    // if (distance == 0) {
+    //   Serial.println("Out of range");
+    // } else {
+    //   Serial.print(distance);
+    //   Serial.println(" cm");
+    // }
+    
+    // Give a generous 80ms for the power to stabilize and sound to fade
+    // delay(80); 
+  }
+
+  // MATRIX DISPLAYS --------------------------------------------------
+  dDrawMatrixPattern(D_LEFT,  dpFull);
+  dDrawMatrixPattern(D_RIGHT, dpFull);
+
+  // BUZZER -----------------------------------------------------------
+  // bPlayTone(500, 50);
+  // bPlayTone(800, 50);
+  // bPlayTone(600, 50);
+  // bPlayTone(500, 50);
+  // bPlayTone(700, 50);
+
+  // Serial.println("-----------------------");
+  delay(20);
 }

@@ -165,6 +165,18 @@ if __name__ == "__main__":
             # bl_ik = leg_walk(1, -1, np.pi)
             # br_ik = leg_walk(1, 1, 0)
 
+            # TURN LEFT
+            # fl_ik = leg_walk(-1, 1, 0)
+            # fr_ik = leg_walk(1, -1, np.pi)
+            # bl_ik = leg_walk(1, -1, np.pi)
+            # br_ik = leg_walk(-1, 1, 0)
+
+            # TURN RIGHT
+            # fl_ik = leg_walk(1, 1, 0)
+            # fr_ik = leg_walk(-1, -1, np.pi)
+            # bl_ik = leg_walk(-1, -1, np.pi)
+            # br_ik = leg_walk(1, 1, 0)
+
             # DANCE
             # fl_ik = leg_walk(1, 1, 0)
             # fr_ik = leg_walk(1, -1, np.pi)
