@@ -262,31 +262,31 @@ void loop() {
   }
 
   // SENSORS ----------------------------------------------------------
-  for (int i = 0; i < eSENSOR_COUNT; i++) {
-    digitalWrite(ePIN_TRIG, LOW);
-    delayMicroseconds(5); // Increased stability delay
+  // for (int i = 0; i < eSENSOR_COUNT; i++) {
+  //   digitalWrite(ePIN_TRIG, LOW);
+  //   delayMicroseconds(5); // Increased stability delay
     
-    digitalWrite(ePIN_TRIG, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(ePIN_TRIG, LOW);
+  //   digitalWrite(ePIN_TRIG, HIGH);
+  //   delayMicroseconds(10);
+  //   digitalWrite(ePIN_TRIG, LOW);
     
-    long duration = pulseIn(ePIN_ECHO[i], HIGH, 25000); 
-    float distance = (duration * 0.0343) / 2;
+  //   long duration = pulseIn(ePIN_ECHO[i], HIGH, 25000); 
+  //   float distance = (duration * 0.0343) / 2;
     
-    Serial.print("Sensor ");
-    Serial.print(eSENSOR_LABELS[i]); 
-    Serial.print(": ");
+  //   Serial.print("Sensor ");
+  //   Serial.print(eSENSOR_LABELS[i]); 
+  //   Serial.print(": ");
     
-    // if (distance == 0) {
-    //   Serial.println("Out of range");
-    // } else {
-    //   Serial.print(distance);
-    //   Serial.println(" cm");
-    // }
+  //   if (distance == 0) {
+  //     Serial.println("Out of range");
+  //   } else {
+  //     Serial.print(distance);
+  //     Serial.println(" cm");
+  //   }
     
-    // Give a generous 80ms for the power to stabilize and sound to fade
-    // delay(80); 
-  }
+  //   // Give a generous 80ms for the power to stabilize and sound to fade
+  //   delay(80); 
+  // }
 
   // MATRIX DISPLAYS --------------------------------------------------
   dDrawMatrixPattern(D_LEFT,  dpFull);
