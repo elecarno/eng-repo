@@ -21,44 +21,86 @@
 enum dDisplaySide { D_LEFT = 0, D_RIGHT = 1 };
 
 // SERVOS (s-) --------------------------------------------------------
-// driver
-Adafruit_PWMServoDriver sPWM = Adafruit_PWMServoDriver();
+// --- CONFIGURATION ----------------------------------------------------------
+#define SERVO_FREQ      50
+#define ENABLE_DIAGNOSTICS  false
 
-// servo definitions
-const int sSERVO_FREQ = 50;   // analog servo ~50 Hz updates
-// MG996R limits (channels 0 - 11)
-const int sUSMIN_MG996R = 500;   // minimum safe limit for MG996R
-const int sUSMAX_MG996R = 2500;  // maximum safe limit for MG996R
-// MG90S limits (channels 12 & 13)
-const int sUSMIN_MG90S = 600;   // minimum safe limit for MG90S
-const int sUSMAX_MG90S = 2400;  // maximum safe limit for MG90S
+// Servo limits
+#define USMIN_MG996R    500  
+#define USMAX_MG996R   2500  
+#define USMIN_MG90S     600  
+#define USMAX_MG90S    2400  
 
-// rest position definition
-const uint16_t sRestPose[14] = {
-  1000,  // channel 0  FRONT LEFT LEG   hip
-  1764,  // channel 1                   knee
-  1735,  // channel 2                   ankle
-
-  2000,  // channel 3  FRONT RIGHT LEG  hip
-  1235,  // channel 4,                  knee
-  1264,  // channel 5,                  ankle
-
-  2000,  // channel 6, BACK LEFT LEG    hip
-  1235,  // channel 7,                  knee
-  1264,  // channel 8,                  ankle
-
-  1000,  // channel 9, BACK RIGHT LEG   hip
-  1764,  // channel 10,                 knee
-  1735,  // channel 11                  ankle
-
-  sUSMIN_MG90S,   // channel 12 - LEFT  ANTENNA  (MG90S)
-  sUSMAX_MG90S    // channel 13 - RIGHT ANTENNA  (MG90S)
+// Rest position definition
+const uint16_t robotRestPose[14] = {
+  1000, 1764, 1735,  // Front Left
+  2000, 1235, 1264,  // Front Right
+  2000, 1235, 1264,  // Back Left
+  1000, 1764, 1735,  // Back Right
+  USMIN_MG90S, USMAX_MG90S  // Antennas
 };
 
-// array to track current configuration in memory
-uint16_t sCurrentPose[14];
+// Runtime state tracking
+uint16_t currentPose[14];
+bool servoHealthy[14];       
+unsigned long servoLastUpdate[14];
 
-void sParseAndMove(String data) {
+Adafruit_PWMServoDriver pwm;
+
+
+// ============================================================================
+// HELPER FUNCTIONS - FIXED STRING HANDLING
+// ============================================================================
+
+void printDiagnostic(const char* msg) {
+#if ENABLE_DIAGNOSTICS
+  Serial.print("[DIAG] ");
+  Serial.println(msg);
+#endif
+}
+
+// Use sprintf instead of String concatenation for diagnostics
+void markServoUnhealthy(uint8_t channel) {
+  if (!servoHealthy[channel]) {
+    char diagBuf[32];
+    snprintf(diagBuf, sizeof(diagBuf), "SERVO %d UNHEALTHY", channel);
+    printDiagnostic(diagBuf);
+    servoHealthy[channel] = false;
+  }
+}
+
+void markServoHealthy(uint8_t channel) {
+  if (!servoHealthy[channel]) {
+    char diagBuf[32];
+    snprintf(diagBuf, sizeof(diagBuf), "SERVO %d RECOVERED", channel);
+    printDiagnostic(diagBuf);
+    servoHealthy[channel] = true;
+  }
+  servoLastUpdate[channel] = millis();
+}
+
+bool safeWriteMicroseconds(uint8_t channel, uint16_t us, uint8_t retries = 3) {
+  for (uint8_t attempt = 0; attempt < retries; attempt++) {
+    pwm.writeMicroseconds(channel, us);
+    delay(1);
+    
+    // Simple success assumption - can't truly verify output on PCA9685
+    markServoHealthy(channel);
+    return true;
+  }
+  
+  char diagBuf[32];
+  snprintf(diagBuf, sizeof(diagBuf), "SERVO WRITE FAILED: CH %d", channel);
+  printDiagnostic(diagBuf);
+  markServoUnhealthy(channel);
+  return false;
+}
+
+// ============================================================================
+// COMMAND PARSING - FIXED STRING TRIMMING
+// ============================================================================
+
+void parseAndMove(String data) {
   int idx0  = data.indexOf("C0:");
   int idx1  = data.indexOf("C1:");
   int idx2  = data.indexOf("C2:");
@@ -73,65 +115,65 @@ void sParseAndMove(String data) {
   int idx11 = data.indexOf("C11:");
   int idx12 = data.indexOf("C12:");
   int idx13 = data.indexOf("C13:");
-
-  if (
-    idx0  != -1 &&
-    idx1  != -1 &&
-    idx2  != -1 &&
-    idx3  != -1 &&
-    idx4  != -1 &&
-    idx5  != -1 &&
-    idx6  != -1 &&
-    idx7  != -1 &&
-    idx8  != -1 &&
-    idx9  != -1 &&
-    idx10 != -1 &&
-    idx11 != -1 &&
-    idx12 != -1 &&
-    idx13 != -1
-    ) {
+  
+  if (idx0 == -1 || idx1 == -1 || idx2 == -1 || idx3 == -1 ||
+      idx4 == -1 || idx5 == -1 || idx6 == -1 || idx7 == -1 ||
+      idx8 == -1 || idx9 == -1 || idx10 == -1 || idx11 == -1 ||
+      idx12 == -1 || idx13 == -1) {
+    Serial.println("ERROR: Malformed command - missing markers");
+    return;
+  }
+  
+  // FIX: Parse substring into temp String FIRST, THEN trim, THEN convert
+  int vals[14];
+  String tmpStr;
+  
+  tmpStr = data.substring(idx0  + 3, idx1 ); tmpStr.trim(); vals[0] = tmpStr.toInt();
+  tmpStr = data.substring(idx1  + 3, idx2 ); tmpStr.trim(); vals[1] = tmpStr.toInt();
+  tmpStr = data.substring(idx2  + 3, idx3 ); tmpStr.trim(); vals[2] = tmpStr.toInt();
+  tmpStr = data.substring(idx3  + 3, idx4 ); tmpStr.trim(); vals[3] = tmpStr.toInt();
+  tmpStr = data.substring(idx4  + 3, idx5 ); tmpStr.trim(); vals[4] = tmpStr.toInt();
+  tmpStr = data.substring(idx5  + 3, idx6 ); tmpStr.trim(); vals[5] = tmpStr.toInt();
+  tmpStr = data.substring(idx6  + 3, idx7 ); tmpStr.trim(); vals[6] = tmpStr.toInt();
+  tmpStr = data.substring(idx7  + 3, idx8 ); tmpStr.trim(); vals[7] = tmpStr.toInt();
+  tmpStr = data.substring(idx8  + 3, idx9 ); tmpStr.trim(); vals[8] = tmpStr.toInt();
+  tmpStr = data.substring(idx9  + 3, idx10); tmpStr.trim(); vals[9] = tmpStr.toInt();
+  tmpStr = data.substring(idx10 + 4, idx11); tmpStr.trim(); vals[10] = tmpStr.toInt();
+  tmpStr = data.substring(idx11 + 4, idx12); tmpStr.trim(); vals[11] = tmpStr.toInt();
+  tmpStr = data.substring(idx12 + 4, idx13); tmpStr.trim(); vals[12] = tmpStr.toInt();
+  tmpStr = data.substring(idx13 + 4       ); tmpStr.trim(); vals[13] = tmpStr.toInt();
+  
+  // Apply with bounds checking
+  bool movementWarning = false;
+  for (uint8_t i = 0; i < 14; i++) {
+    uint16_t minVal = (i < 12) ? USMIN_MG996R : USMIN_MG90S;
+    uint16_t maxVal = (i < 12) ? USMAX_MG996R : USMAX_MG90S;
     
-    int val0  = data.substring(idx0  + 3, idx1 ).toInt();
-    int val1  = data.substring(idx1  + 3, idx2 ).toInt();
-    int val2  = data.substring(idx2  + 3, idx3 ).toInt();
-    int val3  = data.substring(idx3  + 3, idx4 ).toInt();
-    int val4  = data.substring(idx4  + 3, idx5 ).toInt();
-    int val5  = data.substring(idx5  + 3, idx6 ).toInt();
-    int val6  = data.substring(idx6  + 3, idx7 ).toInt();
-    int val7  = data.substring(idx7  + 3, idx8 ).toInt();
-    int val8  = data.substring(idx8  + 3, idx9 ).toInt();
-    int val9  = data.substring(idx9  + 3, idx10).toInt();
-    int val10 = data.substring(idx10 + 4, idx11).toInt();
-    int val11 = data.substring(idx11 + 4, idx12).toInt();
-    int val12 = data.substring(idx12 + 4, idx13).toInt();
-    int val13 = data.substring(idx13 + 4       ).toInt();
-
-    // constrain MG996R legs
-    sCurrentPose[0]  = constrain(val0,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[1]  = constrain(val1,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[2]  = constrain(val2,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[3]  = constrain(val3,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[4]  = constrain(val4,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[5]  = constrain(val5,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[6]  = constrain(val6,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[7]  = constrain(val7,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[8]  = constrain(val8,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[9]  = constrain(val9,  sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[10] = constrain(val10, sUSMIN_MG996R, sUSMAX_MG996R);
-    sCurrentPose[11] = constrain(val11, sUSMIN_MG996R, sUSMAX_MG996R);
+    int constrained = constrain(vals[i], minVal, maxVal);
+    int delta = abs(constrained - currentPose[i]);
     
-    // constrain MG90S antennae
-    sCurrentPose[12] = constrain(val12, sUSMIN_MG90S, sUSMAX_MG90S);
-    sCurrentPose[13] = constrain(val13, sUSMIN_MG90S, sUSMAX_MG90S);
+    if (delta > 500) {
+      Serial.printf("WARN: Large jump CH %d (%d -> %d)\n", i, currentPose[i], constrained);
+      movementWarning = true;
+    }
+    
+    // Only reject extreme jumps if safety threshold exceeded
+    if (delta < 800) {  // Removed broken comment syntax
+      currentPose[i] = constrained;
+    }
+  }
+  
+  if (movementWarning) {
+    Serial.println("(Movement warnings logged - positions adjusted)");
   }
 }
 
 
 // SENSORS (e- )-------------------------------------------------------
-const int ePIN_TRIG = 12;
-const int ePIN_ECHO[] = {14, 27, 26}; 
-const char* eSENSOR_LABELS[] = {"right", "middle", "left"};
-const int eSENSOR_COUNT = 3;
+const int TRIG_PIN = 12;
+const int ECHO_PINS[] = {14, 27, 26}; 
+const char* SENSOR_LABELS[] = {"Left", "Middle", "Right"};
+const int SENSOR_COUNT = 3;
 
 
 // MATRIX DISPLAYS (d- )-----------------------------------------------
@@ -202,33 +244,12 @@ void bPlayTone(double frequency, int duration) {
 
 // SETUP -----------------------------------------------------------------------------------------------------------------------
 void setup() {
-
-  // SERVOS -----------------------------------------------------------
-  Serial.begin(115200); 
-  delay(1000); 
-
-  Serial.println("Initializing PCA9685 on ESP32...");
-  
-  // pass ESP32 standard I2C pins 
-  Wire.begin(21, 22);
-
-  sPWM.begin();
-  sPWM.setOscillatorFrequency(25000000);
-  sPWM.setPWMFreq(sSERVO_FREQ);  
-  delay(10);
-
-  Serial.println("Moving robot to its custom resting pose...");
-  
-  for (uint8_t i = 0; i < 14; i++) {
-    sCurrentPose[i] = sRestPose[i];
-    sPWM.writeMicroseconds(i, sCurrentPose[i]);
-  }
-
   // SENSORS ----------------------------------------------------------
-  pinMode(ePIN_TRIG, OUTPUT);
-  for (int i = 0; i < eSENSOR_COUNT; i++) {
-    pinMode(ePIN_ECHO[i], INPUT);
-  }
+  Serial.begin(115200); 
+  // pinMode(TRIG_PIN, OUTPUT);
+  // for (int i = 0; i < SENSOR_COUNT; i++) {
+  //   pinMode(ECHO_PINS[i], INPUT);
+  // }
 
   // MATRIX DISPLAYS --------------------------------------------------
   mx.begin();
@@ -246,48 +267,97 @@ void setup() {
 
   // BUZZER -----------------------------------------------------------
   ledcAttach(bPIN_BUZZER, 2000, 8);
+
+  // SERVOS -----------------------------------------------------------
+  delay(1000);
+  
+  Serial.println("========================================");
+  Serial.println("    QUADRUPED SERVOS INITIALIZATION v3.1  ");
+  Serial.println("========================================\n");
+  
+  Wire.begin(21, 22);
+  Wire.setClock(400000);
+  
+  Serial.println("[STEP 1] Initializing PCA9685...");
+  if (!pwm.begin()) {
+    Serial.println("FATAL ERROR: PCA9685 not responding!");
+    while (true) delay(1000);
+  }
+  
+  pwm.setOscillatorFrequency(25000000);
+  pwm.setPWMFreq(SERVO_FREQ);
+  delay(200);
+  
+  Serial.println("\n[STEP 2] Initializing Rest Poses (Isolated Knee Rails)...");
+  
+  // Revised grouping: We split the high-load joints so they NEVER activate together
+  const uint8_t legGroups[4][4] = {
+    {0, 1, 2, 3},     // Phase 1: Front Left completely + Front Right hip
+    {5, 6, 7, 8},     // Phase 2: Front Right ankle + Back Left completely
+    {9, 11, 255, 255},// Phase 3: Back Right hip and ankle only
+    {4, 10, 255, 255} // Phase 4: CRITICAL KNEES ONLY - Woken up last when chassis is supported
+  };
+  
+  for (uint8_t g = 0; g < 4; g++) {
+    Serial.printf("Spooling up Leg Group %d...\n", g);
+    
+    for (uint8_t chIdx = 0; chIdx < 4; chIdx++) {
+      uint8_t channel = legGroups[g][chIdx];
+      if (channel == 255) continue; 
+      
+      // SOFT-START RAMP FOR THE PROBLEM KNEE JOINTS (4 and 10)
+      if (channel == 4 || channel == 10) {
+        Serial.printf("  [KNEE SOFT-START] Easing CH %d into load...\n", channel);
+        
+        uint16_t startPulse = 1500; // Assume standard neutral midpoint to initialize internal IC
+        uint16_t targetPulse = robotRestPose[channel];
+        int step = (targetPulse > startPulse) ? 20 : -20;
+        
+        // Wake the chip up at neutral
+        pwm.writeMicroseconds(channel, startPulse);
+        delay(50);
+        
+        // Smoothly step toward target rest pose to avoid high stall-current spikes
+        for (uint16_t p = startPulse; abs(p - targetPulse) > 20; p += step) {
+          pwm.writeMicroseconds(channel, p);
+          delay(25); // 25ms increments gives the 4A supply time to breathe
+        }
+      }
+      
+      // Standard direct power-up for non-problem channels
+      Serial.printf("  Waking up CH %d -> %d µs\n", channel, robotRestPose[channel]);
+      safeWriteMicroseconds(channel, robotRestPose[channel]);
+      
+      currentPose[channel] = robotRestPose[channel];
+      servoHealthy[channel] = true;
+      servoLastUpdate[channel] = millis();
+      
+      delay(50); 
+    }
+    
+    delay(300); // Extended pause between groups to clear trace heating/sag
+    Serial.println("  Group Stabilized.");
+  }
+
+  // Initialize the antennas separately at the very end
+  Serial.println("\n[STEP 3] Initializing Antennas...");
+  for (uint8_t i = 12; i < 14; i++) {
+    safeWriteMicroseconds(i, robotRestPose[i]);
+    currentPose[i] = robotRestPose[i];
+    servoHealthy[i] = true;
+    servoLastUpdate[i] = millis();
+    delay(50);
+  }
+  
+  Serial.println("\n========================================");
+  Serial.println("    STARTUP COMPLETE - ALL RAILS LOCKED   ");
+  Serial.println("========================================");
+  
+  delay(1000);
 }
 
 // MASTER LOOP ----------------------------------------------------------------------------------------------------------------
 void loop() {
-
-  // SERVOS -----------------------------------------------------------
-  if (Serial.available() > 0) {
-    String data = Serial.readStringUntil('\n');
-    sParseAndMove(data);
-  }
-  
-  for (uint8_t i = 0; i < 14; i++) {
-    sPWM.writeMicroseconds(i, sCurrentPose[i]);
-  }
-
-  // SENSORS ----------------------------------------------------------
-  // for (int i = 0; i < eSENSOR_COUNT; i++) {
-  //   digitalWrite(ePIN_TRIG, LOW);
-  //   delayMicroseconds(5); // Increased stability delay
-    
-  //   digitalWrite(ePIN_TRIG, HIGH);
-  //   delayMicroseconds(10);
-  //   digitalWrite(ePIN_TRIG, LOW);
-    
-  //   long duration = pulseIn(ePIN_ECHO[i], HIGH, 25000); 
-  //   float distance = (duration * 0.0343) / 2;
-    
-  //   Serial.print("Sensor ");
-  //   Serial.print(eSENSOR_LABELS[i]); 
-  //   Serial.print(": ");
-    
-  //   if (distance == 0) {
-  //     Serial.println("Out of range");
-  //   } else {
-  //     Serial.print(distance);
-  //     Serial.println(" cm");
-  //   }
-    
-  //   // Give a generous 80ms for the power to stabilize and sound to fade
-  //   delay(80); 
-  // }
-
   // MATRIX DISPLAYS --------------------------------------------------
   dDrawMatrixPattern(D_LEFT,  dpFull);
   dDrawMatrixPattern(D_RIGHT, dpFull);
@@ -300,5 +370,69 @@ void loop() {
   // bPlayTone(700, 50);
 
   // Serial.println("-----------------------");
-  delay(20);
+  
+  // SERVOS -----------------------------------------------------------
+  static unsigned long lastSystemCheck = 0;
+  
+  if (Serial.available() > 0) {
+    String data = Serial.readStringUntil('\n');
+    parseAndMove(data);
+    delay(5);
+  }
+  
+  // Update all servos at controlled rate
+  for (uint8_t i = 0; i < 14; i++) {
+    if (servoHealthy[i]) {
+      pwm.writeMicroseconds(i, currentPose[i]);
+    } else {
+      pwm.writeMicroseconds(i, 1500);  // Safe center position
+    }
+  }
+  
+  // Periodic diagnostics every 5 seconds
+  if (millis() - lastSystemCheck > 5000) {
+    lastSystemCheck = millis();
+    
+    #if ENABLE_DIAGNOSTICS
+    uint8_t offline = 0;
+    for (uint8_t i = 0; i < 14; i++) {
+      if ((millis() - servoLastUpdate[i]) > 2000) offline++;
+    }
+    if (offline > 0) {
+      Serial.printf("[%lu] STATUS: %d servos inactive\n", millis(), offline);
+    }
+    #endif
+  }
+  
+  // SENSORS ----------------------------------------------------------
+  // for (int i = 0; i < SENSOR_COUNT; i++) {
+  //   digitalWrite(TRIG_PIN, LOW);
+  //   delayMicroseconds(5); // Increased stability delay
+    
+  //   digitalWrite(TRIG_PIN, HIGH);
+  //   delayMicroseconds(10);
+  //   digitalWrite(TRIG_PIN, LOW);
+    
+  //   long duration = pulseIn(ECHO_PINS[i], HIGH, 25000); 
+  //   float distance = (duration * 0.0343) / 2;
+    
+  //   Serial.print("Sensor ");
+  //   Serial.print(SENSOR_LABELS[i]); 
+  //   Serial.print(": ");
+    
+  //   if (distance == 0) {
+  //     Serial.println("Out of range");
+  //   } else {
+  //     Serial.print(distance);
+  //     Serial.println(" cm");
+  //   }
+    
+  //   // Give a generous 80ms for the power to stabilize and sound to fade
+  //   // delay(80); 
+  // }
+  
+  // Serial.println("-----------------------");
+  // delay(300); 
+
+  delay(25);  // 40Hz refresh cycle
 }
