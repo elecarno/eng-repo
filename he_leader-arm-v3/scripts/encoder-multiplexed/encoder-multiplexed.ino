@@ -67,7 +67,7 @@ void loop() {
   Serial.print(enc2_read_degrees);
   Serial.print(",\t3: ");
   Serial.print(enc3_read_degrees);
-  Serial.print(",\t4: ");
+  Serial.print(",4: ");
   Serial.println(enc4_read_degrees);
   
   delay(128);

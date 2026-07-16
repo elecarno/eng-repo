@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "feb8dcb2c0d39d6bae3b2d9f",
-    "documentMicroversion": "dad36b3ac51ff6ea1f15e004",
+    "documentMicroversion": "ca81b4e55b6d7a0b4edeefd6",
     "elementId": "11fd5b12085a519ec2c0a8cd",
     "fullConfiguration": "default",
     "id": "MW//RweW5M0tplQAA",
     "isStandardContent": false,
     "name": "magnet-section-b <1>",
-    "partId": "RrBD",
+    "partId": "RsBD",
     "suppressed": false,
     "type": "Part"
 }
