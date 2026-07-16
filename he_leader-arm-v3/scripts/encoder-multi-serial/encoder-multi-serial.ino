@@ -11,10 +11,10 @@ MT6701 enc3;
 MT6701 enc4;
 
 // encoder initialised values (zero points) <- SET MANUALLY
-float enc1_zero = 2.42;
-float enc2_zero = 2.16;
-float enc3_zero = 0.49;
-float enc4_zero = 3.29;
+float enc1_zero = 5.51;
+float enc2_zero = 5.31;
+float enc3_zero = 0.51;
+float enc4_zero = 3.28;
 
 // encoder current values
 float enc1_value = 0.0;

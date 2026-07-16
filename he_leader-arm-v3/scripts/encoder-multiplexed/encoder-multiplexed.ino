@@ -11,10 +11,10 @@ MT6701 enc3;
 MT6701 enc4;
 
 // encoder outputs
-float enc1_read_degrees = 0.0;
-float enc2_read_degrees = 0.0;
-float enc3_read_degrees = 0.0;
-float enc4_read_degrees = 0.0;
+float enc1_read_radians = 0.0;
+float enc2_read_radians = 0.0;
+float enc3_read_radians = 0.0;
+float enc4_read_radians = 0.0;
 
 
 // SCRIPT ---------------------------------------------------------------------------------------------------------------------
@@ -29,8 +29,8 @@ void TCA9548A(uint8_t bus){
 float getEncoderValue(MT6701 &enc, int bus){
   TCA9548A(bus);
   enc.updateCount();
-  float enc_read_degrees = enc.getAngleDegrees();
-  return enc_read_degrees;
+  float enc_read_radians = enc.getAngleRadians();
+  return enc_read_radians;
 }
 
 void setup() {
@@ -55,20 +55,20 @@ void setup() {
 
 void loop() {
   // read encoder values
-  enc1_read_degrees = getEncoderValue(enc1, 2);
-  enc2_read_degrees = getEncoderValue(enc2, 3);
-  enc3_read_degrees = getEncoderValue(enc3, 4);
-  enc4_read_degrees = getEncoderValue(enc4, 5);
+  enc1_read_radians = getEncoderValue(enc1, 2);
+  enc2_read_radians = getEncoderValue(enc2, 3);
+  enc3_read_radians = getEncoderValue(enc3, 4);
+  enc4_read_radians = getEncoderValue(enc4, 5);
 
   // print values in readable format
   Serial.print("1: ");
-  Serial.print(enc1_read_degrees);
+  Serial.print(enc1_read_radians);
   Serial.print(",\t2: ");
-  Serial.print(enc2_read_degrees);
+  Serial.print(enc2_read_radians);
   Serial.print(",\t3: ");
-  Serial.print(enc3_read_degrees);
-  Serial.print(",4: ");
-  Serial.println(enc4_read_degrees);
+  Serial.print(enc3_read_radians);
+  Serial.print(",\t4: ");
+  Serial.println(enc4_read_radians);
   
   delay(128);
 }
