@@ -6,6 +6,7 @@ import time
 import mujoco
 import mujoco.viewer
 import threading
+import numpy as np
 
 
 # --- LOAD MODEL AS GLOBAL -------------------------------------------------------------------------
@@ -70,8 +71,8 @@ if __name__ == "__main__":
 
             data.qpos[model.joint("shoulder-1").qposadr[0]] = -enc_values[0]
             data.qpos[model.joint("shoulder-2").qposadr[0]] = -enc_values[1]
-            data.qpos[model.joint("shoulder-3").qposadr[0]] = -enc_values[2]
-            data.qpos[model.joint("elbow").qposadr[0]] = -enc_values[3]
+            data.qpos[model.joint("shoulder-3").qposadr[0]] = np.pi - enc_values[2]
+            data.qpos[model.joint("elbow").qposadr[0]] = np.pi - enc_values[3]
 
             # step physics forward & refresh viewer each step
             mujoco.mj_step(model, data)
