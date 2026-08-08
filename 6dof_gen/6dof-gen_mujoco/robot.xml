@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/d7eef6374aced10980d655e0/w/a95c1ea2fcec3b2e30db9b5b/e/37748f464a77cfd6b037d346 -->
+<mujoco model="6dof-gen">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+  <default>
+    <default class="6dof-gen">
+      <joint frictionloss="0.1" armature="0.005"/>
+      <position kp="50" dampratio="1"/>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom group="3"/>
+      </default>
+    </default>
+  </default>
+  <worldbody>
+    <!-- Link base -->
+    <body name="base" pos="0 0 0" quat="1 0 0 0" childclass="6dof-gen">
+      <inertial pos="0 0 0.00389069" mass="0.124156" fullinertia="0.000131759 0.000131759 0.000262233 0 0 0"/>
+      <!-- Part base -->
+      <geom type="mesh" class="visual" pos="0 0 0" quat="1 0 0 0" mesh="base" material="base_material"/>
+      <geom type="mesh" class="collision" pos="0 0 0" quat="1 0 0 0" mesh="base" material="base_material"/>
+      <!-- Link link1 -->
+      <body name="link1" pos="0 0 0.01" quat="0 1 0 0">
+        <!-- Joint from base to link1 -->
+        <joint axis="0 0 1" name="base" type="hinge" range="-6.283185307179586 6.283185307179586"/>
+        <inertial pos="-0 -0 -0.0100412" mass="0.0309563" fullinertia="8.84813e-06 1.09783e-05 1.23511e-05 0 0 0"/>
+        <!-- Part link1 -->
+        <geom type="mesh" class="visual" pos="0 0 0" quat="0 1 0 0" mesh="link1" material="link1_material"/>
+        <geom type="mesh" class="collision" pos="0 0 0" quat="0 1 0 0" mesh="link1" material="link1_material"/>
+        <!-- Link link2 -->
+        <body name="link2" pos="0.024 0 -0.032" quat="0.5 -0.5 0.5 -0.5">
+          <!-- Joint from link1 to link2 -->
+          <joint axis="0 0 1" name="shoulder" type="hinge" range="-6.283185307179586 6.283185307179586"/>
+          <inertial pos="0 0.0593663 -0.024" mass="0.167308" fullinertia="0.000387012 3.0477e-05 0.000374232 0 0 0"/>
+          <!-- Part link2 -->
+          <geom type="mesh" class="visual" pos="-0 0 -0.024" quat="0.5 -0.5 -0.5 -0.5" mesh="link2" material="link2_material"/>
+          <geom type="mesh" class="collision" pos="-0 0 -0.024" quat="0.5 -0.5 -0.5 -0.5" mesh="link2" material="link2_material"/>
+          <!-- Link link3 -->
+          <body name="link3" pos="0 0.12 -0.001" quat="1 0 0 0">
+            <!-- Joint from link2 to link3 -->
+            <joint axis="0 0 1" name="elbow" type="hinge" range="-6.283185307179586 6.283185307179586"/>
+            <inertial pos="-0 0.0379039 -0.023" mass="0.0888204" fullinertia="3.76457e-05 3.2449e-05 3.28076e-05 0 0 0"/>
+            <!-- Part link3 -->
+            <geom type="mesh" class="visual" pos="0 0 -0.023" quat="0.5 -0.5 -0.5 -0.5" mesh="link3" material="link3_material"/>
+            <geom type="mesh" class="collision" pos="0 0 -0.023" quat="0.5 -0.5 -0.5 -0.5" mesh="link3" material="link3_material"/>
+            <!-- Link link4 -->
+            <body name="link4" pos="0 0.056 -0.023" quat="0.5 0.5 -0.5 0.5">
+              <!-- Joint from link3 to link4 -->
+              <joint axis="0 0 1" name="wrist1" type="hinge" range="-6.283185307179586 6.283185307179586"/>
+              <inertial pos="-0 0 -0.028673" mass="0.0969199" fullinertia="4.03092e-05 4.14664e-05 2.65897e-05 0 0 0"/>
+              <!-- Part link4 -->
+              <geom type="mesh" class="visual" pos="-0 0 0" quat="0 1 0 0" mesh="link4" material="link4_material"/>
+              <geom type="mesh" class="collision" pos="-0 0 0" quat="0 1 0 0" mesh="link4" material="link4_material"/>
+              <!-- Link link5 -->
+              <body name="link5" pos="0.02 0 -0.072" quat="0.5 -0.5 0.5 -0.5">
+                <!-- Joint from link4 to link5 -->
+                <joint axis="0 0 1" name="wrist2" type="hinge" range="-6.283185307179586 6.283185307179586"/>
+                <inertial pos="0 0.0110926 -0.02" mass="0.0644347" fullinertia="2.04585e-05 1.14866e-05 1.79826e-05 0 0 0"/>
+                <!-- Part link5 -->
+                <geom type="mesh" class="visual" pos="0 0 -0.02" quat="0.5 -0.5 -0.5 -0.5" mesh="link5" material="link5_material"/>
+                <geom type="mesh" class="collision" pos="0 0 -0.02" quat="0.5 -0.5 -0.5 -0.5" mesh="link5" material="link5_material"/>
+                <!-- Link link6 -->
+                <body name="link6" pos="0 0.036 -0.02" quat="0.5 0.5 -0.5 0.5">
+                  <!-- Joint from link5 to link6 -->
+                  <joint axis="0 0 1" name="wrist3" type="hinge" range="-6.283185307179586 6.283185307179586"/>
+                  <inertial pos="-0 -0 -0.00993003" mass="0.0174839" fullinertia="1.8704e-06 1.8704e-06 3.12508e-06 0 0 0"/>
+                  <!-- Part link6 -->
+                  <geom type="mesh" class="visual" pos="0 0 -0.008" quat="0 1 0 0" mesh="link6" material="link6_material"/>
+                  <geom type="mesh" class="collision" pos="0 0 -0.008" quat="0 1 0 0" mesh="link6" material="link6_material"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <asset>
+    <mesh file="link6.stl"/>
+    <mesh file="link2.stl"/>
+    <mesh file="link3.stl"/>
+    <mesh file="link5.stl"/>
+    <mesh file="link4.stl"/>
+    <mesh file="base.stl"/>
+    <mesh file="link1.stl"/>
+    <material name="base_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="link1_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="link2_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="link3_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="link4_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="link5_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="link6_material" rgba="0.615686 0.811765 0.929412 1"/>
+  </asset>
+  <actuator>
+    <position class="6dof-gen" name="base" joint="base" inheritrange="1"/>
+    <position class="6dof-gen" name="shoulder" joint="shoulder" inheritrange="1"/>
+    <position class="6dof-gen" name="elbow" joint="elbow" inheritrange="1"/>
+    <position class="6dof-gen" name="wrist1" joint="wrist1" inheritrange="1"/>
+    <position class="6dof-gen" name="wrist2" joint="wrist2" inheritrange="1"/>
+    <position class="6dof-gen" name="wrist3" joint="wrist3" inheritrange="1"/>
+  </actuator>
+  <equality/>
+</mujoco>
