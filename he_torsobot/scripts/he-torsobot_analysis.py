@@ -2,9 +2,6 @@ import numpy as np
 
 # --- vector and matrix handling -------------------------------------------------------------------
 def unit(v: np.ndarray) -> np.ndarray:
-    """
-    Takes in a vector and ensures that it is a unit vector.
-    """
     if v.shape != (3,):
         raise ValueError("Input vector must have exactly 3 elements.")
     
@@ -26,17 +23,9 @@ def skew(v: np.ndarray) -> np.ndarray:
     ])
 
 def skew2(v: np.ndarray) -> np.ndarray:
-    v = np.asarray(v).ravel()
-    if v.shape != (3,):
-        raise ValueError("Input vector must have exactly 3 elements.")
-        
-    v1, v2, v3 = v[0], v[1], v[2]
-    
-    return np.array([
-        [-(v2**2 + v3**2),  v1 * v2,          v1 * v3        ],
-        [  v1 * v2,        -(v1**2 + v3**2),  v2 * v3        ],
-        [  v1 * v3,         v2 * v3,         -(v1**2 + v2**2)]
-    ])
+    # FIXED: Matrix square of skew(v) guarantees correct signs
+    S = skew(v)
+    return S @ S
 
 
 # --- rotation matrix via rodrigues formula --------------------------------------------------------
@@ -45,7 +34,7 @@ def rot(w: np.ndarray, theta: float) -> np.ndarray:
         raise ValueError("Input axis must have exactly 3 elements.")
     
     w_unit = unit(w)
-    return np.identity(3) + np.sin(theta)*skew(w_unit) + (1-np.cos(theta))*skew2(w_unit)
+    return np.identity(3) + np.sin(theta)*skew(w_unit) + (1 - np.cos(theta))*skew2(w_unit)
 
 
 # --- screw, twist, and wrench ---------------------------------------------------------------------
@@ -106,9 +95,6 @@ def PoE_space(screws: list, thetas: np.ndarray, M: np.ndarray) -> np.ndarray:
     return T @ M
 
 def PoE_body(screws: list, thetas: np.ndarray, M: np.ndarray) -> np.ndarray:
-    """
-    takes in space screws an converts them to body screws
-    """
     M_inv = np.linalg.inv(M)
     Ad_M_inv = ad_rep(M_inv)
     
@@ -122,31 +108,19 @@ def PoE_body(screws: list, thetas: np.ndarray, M: np.ndarray) -> np.ndarray:
 
 # --- jacobians ------------------------------------------------------------------------------------
 def jac_column(screws: list, thetas: np.ndarray, col: int) -> np.ndarray:
-    """
-    Computes column 'col' (0-indexed) of the Space Jacobian.
-    J_i = Ad_(e^([S1]*t1) ... e^([S_{i-1}]*t_{i-1})) * S_i
-    """
     T = np.identity(4)
     for i in range(col):
         T = T @ trans(screws[i], thetas[i])
 
-    # Multiply Adjoint representation by the current column's screw S_col
     return ad_rep(T) @ screws[col]
 
 
 def jac_space(screws: list, thetas: np.ndarray) -> np.ndarray:
-    """
-    Constructs the 6 x n Space Jacobian by stacking columns horizontally.
-    """
     columns = [jac_column(screws, thetas, i) for i in range(len(screws))]
     return np.column_stack(columns)
 
 
 def jac_body(screws: list, thetas: np.ndarray, M: np.ndarray) -> np.ndarray:
-    """
-    Constructs the 6 x n Body Jacobian using jac_space and transforming via Ad_(T^-1).
-    J_b = Ad_(T_fk^-1) * J_s
-    """
     T_fk = PoE_space(screws, thetas, M)
     Js = jac_space(screws, thetas)
     return ad_rep(np.linalg.inv(T_fk)) @ Js
@@ -157,25 +131,25 @@ if __name__ == "__main__":
     L1, L2 = 0.3, 0.3
 
     thetas = np.array([
-        -np.pi/2, 
-        0, 
-        0,
-
-        0, 
-
-        0, 
-        0, 
-        0
+        np.radians(-90),
+        np.radians(0), 
+        np.radians(0),
+        np.radians(0),
+        np.radians(0), 
+        np.radians(0), 
+        np.radians(0)
     ])
 
     screws = [
-        screw(np.array([ 1,  0,  0]), np.array([0,  0,           0])),  # S1: q = [0,0,0]
-        screw(np.array([ 0, -1,  0]), np.array([0,  0,           0])),  # S2: q = [0,0,0]
-        screw(np.array([ 0,  0, -1]), np.array([0,  0,           0])),  # S3: q = [0,0,0]
-        screw(np.array([ 1,  0,  0]), np.array([0, -L1,          0])),  # S4: q = [0,0,-L1]
-        screw(np.array([ 0,  0, -1]), np.array([0,  0,           0])),  # S5: q = [0,0,-(L1+L2)] -> v = 0
-        screw(np.array([ 1,  0,  0]), np.array([0, -(L1 + L2),   0])),  # S6: q = [0,0,-(L1+L2)] -> v = [0, -(L1+L2), 0]
-        screw(np.array([ 0,  0, -1]), np.array([0,  0,           0]))   # S7: q = [0,0,-(L1+L2)] -> v = 0
+        screw(np.array([ 1,  0,  0 ]), np.array([ 0,  0,         0])),  # S1: q = [0,0,0]
+        screw(np.array([ 0, -1,  0 ]), np.array([ 0,  0,         0])),  # S2: q = [0,0,0]
+        screw(np.array([ 0,  0, -1 ]), np.array([ 0,  0,         0])),  # S3: q = [0,0,0]
+
+        screw(np.array([ 1,  0,  0 ]), np.array([ 0, -L1,        0])),  # S4: q = [0,0,-L1]
+
+        screw(np.array([ 0,  0, -1 ]), np.array([ 0, -(L1 + L2), 0])),  # S5: q = [0,0,-(L1+L2)] -> v = 0
+        screw(np.array([ 1,  0,  0 ]), np.array([ 0, -(L1 + L2), 0])),  # S6: q = [0,0,-(L1+L2)] -> v = [0, -(L1+L2), 0]
+        screw(np.array([ 0,  0, -1 ]), np.array([ 0, -(L1 + L2), 0]))   # S7: q = [0,0,-(L1+L2)] -> v = 0
     ]
 
     M = np.array([
@@ -189,8 +163,8 @@ if __name__ == "__main__":
     Js = jac_space(screws, thetas)
 
     Fs = wrench(
-        np.array([0, 0, 0]),
-        np.array([0, 0, 9.81])
+        np.array([-5.886, 0, 0]),
+        np.array([0, 0, 0])
     )
 
     tau = np.transpose(Js) @ Fs
@@ -201,7 +175,16 @@ if __name__ == "__main__":
     z_b = np.array([ T[0, 2], T[1, 2], T[2, 2] ])
     p_b = np.array([ T[0, 3], T[1, 3], T[2, 3] ])
 
+    print("Robot Configuration:")
+    print(np.round(thetas, 3))
+    print("Joint Screw Axes:")
+    print(np.round(screws, 3))
+
+    print("\nPoE Transformation Matrix:")
     print(np.round(T, 3))
+    print("Jacobian Matrix:")
+    print(np.round(Js, 3))
+
     print("\nEnd-Effector Orientation:")
     print(f"\tx_b: {np.round(x_b, 3)}")
     print(f"\ty_b: {np.round(y_b, 3)}")
