@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Overview}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}A note on the name}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Arm Design}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Forward Kinematics \& Preliminary Torque Analysis}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Gearhead Efficiency Requirement Analysis}{5}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Gearhead Design}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Prototype Testing}{6}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Body, Head, \& Sensors}{7}{section.4}%
+\contentsline {section}{\numberline {5}Points for Development \& Timeline}{8}{section.5}%
