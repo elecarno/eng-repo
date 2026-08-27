@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  23 AUG 2026 21:59
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  27 AUG 2026 20:21
  system commands enabled.
  file:line:error style messages enabled.
 **d:/1_repos/eng-repo/he_torsobot/latex/main.tex
@@ -993,23 +993,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<img/mockup_shell.png, id=62, 773.13844pt x 644.4075pt>
+<img/mockup_shell.png, id=72, 773.13844pt x 644.4075pt>
 File: img/mockup_shell.png Graphic file (type png)
 <use img/mockup_shell.png>
 Package luatex.def Info: img/mockup_shell.png  used on input line 64.
 (luatex.def)             Requested size: 227.62206pt x 189.71509pt.
  [2<./img/mockup_shell.png>]
-<img/arm_posed.png, id=74, 596.98032pt x 662.475pt>
+<img/arm_posed.png, id=84, 596.98032pt x 662.475pt>
 File: img/arm_posed.png Graphic file (type png)
 <use img/arm_posed.png>
 Package luatex.def Info: img/arm_posed.png  used on input line 97.
 (luatex.def)             Requested size: 172.99498pt x 191.97131pt.
-<img/arm_rest_shell.png, id=75, 388.45125pt x 651.93562pt>
+<img/arm_rest_shell.png, id=85, 388.45125pt x 651.93562pt>
 File: img/arm_rest_shell.png Graphic file (type png)
 <use img/arm_rest_shell.png>
 Package luatex.def Info: img/arm_rest_shell.png  used on input line 104.
 (luatex.def)             Requested size: 136.57462pt x 229.21544pt.
-<img/arm_rest_noshell.png, id=76, 358.33875pt x 645.16031pt>
+<img/arm_rest_noshell.png, id=86, 358.33875pt x 645.16031pt>
 File: img/arm_rest_noshell.png Graphic file (type png)
 <use img/arm_rest_noshell.png>
 Package luatex.def Info: img/arm_rest_noshell.png  used on input line 111.
@@ -1019,32 +1019,53 @@ Package luatex.def Info: img/arm_rest_noshell.png  used on input line 111.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3<./img/arm_posed.png><./img/arm_rest_shell.png><./img/arm_rest_noshell.png>]
-<img/joint_diagram.png, id=95, 2055.68pt x 2055.68pt>
+<img/joint_diagram.png, id=105, 2055.68pt x 2055.68pt>
 File: img/joint_diagram.png Graphic file (type png)
 <use img/joint_diagram.png>
 Package luatex.def Info: img/joint_diagram.png  used on input line 159.
 (luatex.def)             Requested size: 273.14923pt x 273.14479pt.
 
-[4<./img/joint_diagram.png>] [5] [6] [7] [8] [9] (./main.aux)
+[4<./img/joint_diagram.png>] [5]
+<img/proto1_a.png, id=136, 700.11563pt x 615.0478pt>
+File: img/proto1_a.png Graphic file (type png)
+<use img/proto1_a.png>
+Package luatex.def Info: img/proto1_a.png  used on input line 265.
+(luatex.def)             Requested size: 204.85846pt x 179.96411pt.
+<img/proto1_b.png, id=137, 714.41907pt x 685.8122pt>
+File: img/proto1_b.png Graphic file (type png)
+<use img/proto1_b.png>
+Package luatex.def Info: img/proto1_b.png  used on input line 272.
+(luatex.def)             Requested size: 204.85846pt x 196.65147pt.
+<img/proto2_a.jpg, id=142, 3083.52pt x 4095.3pt>
+File: img/proto2_a.jpg Graphic file (type jpg)
+<use img/proto2_a.jpg>
+Package luatex.def Info: img/proto2_a.jpg  used on input line 293.
+(luatex.def)             Requested size: 273.14923pt x 362.7496pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6<./img/proto1_a.png><./img/proto1_b.png>] [7<./img/proto2_a.jpg>] [8]
+[9] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 5DFD39F5CA2FB73B3B5A017A4DCA0F62;1568.
+(rerunfilecheck)             Checksum: ACFC23274ED5BC52586005F1002895A9;2057.
 Package logreq Info: Writing requests to 'main.run.xml'.
 
 \openout1 = main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 26891 strings out of 476076
+ 26934 strings out of 476076
  125121,1373583 words of node,token memory allocated
  612 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 16 attribute, 69 glue_spec
 , 16 attribute_list, 2 write nodes
-   avail lists: 1:1,2:757,3:181,4:103,5:295,6:49,7:6742,8:51,9:919,10:21,11:392
- 48790 multiletter control sequences out of 65536+600000
+   avail lists: 1:1,2:757,3:215,4:127,5:295,6:56,7:6746,8:51,9:919,10:21,11:392
+ 48820 multiletter control sequences out of 65536+600000
  52 fonts using 3266207 bytes
  94i,8n,88p,1234b,945s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/f
@@ -1061,9 +1082,9 @@ type1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmcsc
 s/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
-Output written on main.pdf (9 pages, 1116996 bytes).
+Output written on main.pdf (9 pages, 2266862 bytes).
 
-PDF statistics: 196 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 1048576)
- 88 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 222 PDF objects out of 1000 (max. 8388607)
+ 33 named destinations out of 1000 (max. 1048576)
+ 104 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -120,7 +120,7 @@ The poem is a discussion on themes of the origins of life and the place of human
 
 Figure \ref{fig:arm_posed} shows the complete preliminary arm design in a posed state, with Figure \ref{fig:arm_rest_shell} in the resting positon. The parts coloured in dark gray (excluding motors) are aesthetic "shells", which have been hidden in Figure \ref{fig:arm_rest_noshell}. It should be noted that the primary focus of this preliminary design the general structure of the arm and the design of the actuator gearheads; the aesthetic shells have been very roughly constructed for visual purposes and are missing key features such as cutouts for cable management.
 
-The design is comprised of primarily 3D printed parts, and two pieces of $20\,\si{mm} \times 20\,\si{mm}$ Aluminium extrusion. The motors used in the preliminary design are 17HS3401S stepper motors, however these are not critical to the design as the mounting holes can be easily adjusted. One option may be to swap out these motors for a lighter model, provided that the produced torque is comparable, as the current motors contribute a significant amount of mass at $220\,\si{g}$ each.
+The design is comprised of primarily 3D printed parts, and two pieces of $20\,\si{mm} \times 20\,\si{mm}$ aluminium extrusion. The motors used in the preliminary design are 17HS3401S stepper motors, however these are not critical to the design as the mounting holes can be easily adjusted. One option may be to swap out these motors for a lighter model, provided that the produced torque is comparable, as the current motors contribute a significant amount of mass at $220\,\si{g}$ each.
 
 The arm is roughly $600\,\si{mm}$ in length. Most of the length comes from the large size of the actuators, however about $200\,\si{mm}$ is contributed by the Aluminium extrusion. The extrusion was added for two reaons: (i) to increase the reach of the arm and bring it in-line with the goal of being a "full-scale" humanoid arm; (ii) to support the arm links at points of high bending moments. The primary downside of this length is that it decreases the potential maximum payload of the arm. This drawback has been overruled in favour of greater reach in the preliminary design as arm dexterity and "human-ness" are seen as more significant goals for the project than maximum payload, if however, maximum payload becomes an important goal, then the inclusion of the extruded bars may be reconsidered and actuators instead mounted end-to-end to one another.
 
@@ -244,9 +244,9 @@ The method for performing this analysis is detailed in \cite[\S~5]{modernrobotic
 
 Using the python script, a variety of configurations were tested for a $600\,\si{g}$ payload. This is greater than the reasonable payload considered as a goal for the final arm design (which sits at $300\,\si{g}$ to $500\,\si{g}$), however performing early computations for an oversized payload was done as the robot must have a factor of safety on top of its specified capabilties. An additional reason is that this analysis does not take into account the masses of the links themselves.
 
-The tested configurations showed that the maximum torque required of the arm's joints would take place in the shoulder pitch, shoulder roll, and elbow, and would be roughly of a magnitude of $4\,\si{N m}$. Considering this figure, and the estimated efficiency of a 3D printed cycloidal of 40\%-60\%, the primary gearhead ratio of 48:1 was chosen.
+The tested configurations showed that the maximum torque required of the arm's joints would take place in the shoulder pitch, shoulder roll, and elbow, and would be roughly of a magnitude of $4\,\si{N m}$. Considering this figure, and the estimated efficiency of a 3D printed cycloidal gearhead of 40\%-60\%, the primary gearhead ratio of 48:1 was chosen.
 
-Following this, a prototype 24:1 gearhead was developed and tested, as detailed in \S~\ref{sec:prototype}, in order to inform the rest of the preliminary arm design.
+Following this, a series of prototype were developed in order to inform the rest of the preliminary arm design. These are detailed in \S~\ref{sec:gearheads},.
 
 \subsection{Gearhead Efficiency Requirement Analysis}
 
@@ -256,7 +256,51 @@ Following this, a prototype 24:1 gearhead was developed and tested, as detailed 
 
 /// talk about the design using the 24:1 prototype here ///
 
-\subsection{Prototype Testing}\label{sec:prototype}
+\subsection{First Prototype - 24:1}\label{sec:proto1}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{img/proto1_a.png}
+      \caption{Isometric view.}
+      \label{fig:proto1a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{img/proto1_b.png}
+      \caption{View of disc plane.}
+      \label{fig:proto1b}
+    \end{subfigure}
+  
+    \caption{The prototype 24:1 gearhead design.}
+    \label{fig:proto1}
+\end{figure}
+
+Figure \ref{fig:proto1} shows the design of the first prototype gearhead that was built and tested. This prototype was built with a 24:1 reduction ratio, half of the primary 48:1 reduction ratio calculated in \S~\ref{sec:forward_kinematics}. Figure \ref{fig:proto1a} shows an isometric view of the design with all housings included, Figure \ref{fig:proto1b} shows a view from the plane of the gearhead's cycloidal discs, with the output housing hidden for clarity.
+
+The design is almost entirely comprised of FDM printed parts, with the only exceptions being the bearings, screws, and of course stepper motor.
+
+Testing was conducted using various masses suspended from a 30cm bar of $20\,\si{mm} \times 20\,\si{mm}$ aluminium extrusion. The gearhead was seen to be able to achieve a maximum output torque of roughly $1.0\,\si{N m}$, which assuming a dynamic torque for the stepper motor of $0.2\,\si{N m}$ gives an efficiency of about 21\%. This is, needless to say, a poor result, however it did show that the design was able to successfully increase the output torque of the motor.
+
+\subsection{Second Prototype - 48:1}\label{sec:proto2}
+
+\begin{figure}[h!]
+    \centering
+    % NO 'crop' option here. Just the filename.
+    % Ensure you cropped the SVG in Inkscape first!
+    \includegraphics[width=0.6\linewidth]{img/proto2_a.jpg} 
+    \caption{A photo of the second constructed prototype gearhead, author's hand for scale.}
+    \label{fig:proto2}
+\end{figure}
+
+The primary cause of the low efficiency seen with the first prototype in \S~\ref{sec:proto1} was believed to be excess friction caused by poor tolerances and printed part surface finishes. The second prototype, shown in Figure \ref{fig:proto2} was thusly produced using a higher quality printer in order to improve these tolerances and surface finishes. Due to added material availability, it was also decided to scale the prototype up to the full 48:1 design. The design of this second prototype was fundamentally the same as the first, only scaled up.
+
+Despite the improved print quality, effiency actually decreased from the initial prototype. The highest output torque achieved was roughly $1.4\,\si{N m}$, which gives an efficiency of 15\%.
+
+\subsection{Third Prototype - 48:1 with Steel Dowels}
+
 
 % --- BODY -----------------------------------------------------------------------------------------
 \newpage

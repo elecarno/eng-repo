@@ -4,6 +4,8 @@
 \contentsline {subsection}{\numberline {2.1}Forward Kinematics \& Preliminary Torque Analysis}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Gearhead Efficiency Requirement Analysis}{5}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Gearhead Design}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Prototype Testing}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}First Prototype - 24:1}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Second Prototype - 48:1}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Third Prototype - 48:1 with Steel Dowels}{6}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Body, Head, \& Sensors}{7}{section.4}%
 \contentsline {section}{\numberline {5}Points for Development \& Timeline}{8}{section.5}%
