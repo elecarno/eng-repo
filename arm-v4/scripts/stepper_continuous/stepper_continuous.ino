@@ -38,7 +38,7 @@ void setup() {
   setMotorRPM(motor1, 100.0);
 
   // Set Motor 2 to 180 RPM (3 Revolutions Per Second)
-  setMotorRPM(motor2, 100.0);
+  setMotorRPM(motor2, 150.0);
 }
 
 void loop() {
