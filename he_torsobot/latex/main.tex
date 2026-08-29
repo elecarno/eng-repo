@@ -126,7 +126,7 @@ The arm is roughly $600\,\si{mm}$ in length. Most of the length comes from the l
 
 Each of the 3D printed parts (excluding the aesthetic shells) has been designed to require minimal to no support structures during printing and to feature various weight saving cutouts where possible. The parts will be prototyped using PLA, with the final designs printed in PETG.
 
-\begin{figure}[h!]
+\begin{table}[h!]
     \centering
     
     \begin{tabular}{|c|c|}
@@ -145,7 +145,7 @@ Each of the 3D printed parts (excluding the aesthetic shells) has been designed 
 
     \caption{Gear ratios present at each joint.}
     \label{tab:joints}
-\end{figure}
+\end{table}
 
 The arm follows the common humanoid arm model of a 3-DOF shoulder and a 3-DOF wrist connected by a 1-DOF elbow. A joint diagram can be seen in \S~\ref{sec:forward_kinematics}. Table \ref{tab:joints} shows the gear ratios of each joint's gearheads. The ratios have been chosen such that each joint can produce its required output torques while also comprising of only two primary gearhead designs. The gearheads are of a cycloidal design, as detailled in \S~\ref{sec:gearheads}.
 
@@ -254,7 +254,11 @@ Following this, a series of prototype were developed in order to inform the rest
 \newpage
 \section{Gearhead Design}\label{sec:gearheads}
 
-/// talk about the design using the 24:1 prototype here ///
+Cycloidal drives have been chosen for the actuators of the arm. This is primarily due to their affinity for being produced using FDM printing when compared to planetary or strain-wave gear systems, wherein the former presents difficult to achieve tolerances (as well as comparatively low reduction ratios) and the latter requires the development of a flexible element.
+
+The following sections detail the development of a prototype gearhead. The model of stepper motor used was the 17HS3401S, which was ran at a speed of $100\,\si{RPM}$ and measured to have a dynamic torque of $0.17\,\si{N m}$\footnote{Used to drive a rudimentary pulley of diameter $30\,\si{mm}$ and found to be capable of lifting a maximum of $575\,\si{g}$.}.
+
+The output torque produced by each prototype gearhead was tested using various masses suspended from a $30\,\si{cm}$ bar of $20\,\si{mm} \times 40\,\si{mm}$ aluminium extrusion attached from the centerpoint of the gearhead's output.
 
 \subsection{First Prototype - 24:1}\label{sec:proto1}
 
@@ -282,7 +286,7 @@ Figure \ref{fig:proto1} shows the design of the first prototype gearhead that wa
 
 The design is almost entirely comprised of FDM printed parts, with the only exceptions being the bearings, screws, and of course stepper motor.
 
-Testing was conducted using various masses suspended from a 30cm bar of $20\,\si{mm} \times 20\,\si{mm}$ aluminium extrusion. The gearhead was seen to be able to achieve a maximum output torque of roughly $1.0\,\si{N m}$, which assuming a dynamic torque for the stepper motor of $0.2\,\si{N m}$ gives an efficiency of about 21\%. This is, needless to say, a poor result, however it did show that the design was able to successfully increase the output torque of the motor.
+The gearhead was seen to be able to achieve a maximum output torque of roughly $1.0\,\si{N m}$, which gives an efficiency of about 25\%. This is, needless to say, a poor result, however it did show that the design was able to successfully increase the output torque of the motor.
 
 \subsection{Second Prototype - 48:1}\label{sec:proto2}
 
@@ -300,6 +304,7 @@ The primary cause of the low efficiency seen with the first prototype in \S~\ref
 Despite the improved print quality, effiency actually decreased from the initial prototype. The highest output torque achieved was roughly $1.4\,\si{N m}$, which gives an efficiency of 15\%.
 
 \subsection{Third Prototype - 48:1 with Steel Dowels}
+
 
 
 % --- BODY -----------------------------------------------------------------------------------------
