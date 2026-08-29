@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.3.18)  29 AUG 2026 11:15
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 25.12) (format=lualatex 2026.3.18)  29 AUG 2026 20:07
  system commands enabled.
  file:line:error style messages enabled.
 **c:/Users/benro/Repositories/eng-repo/he_torsobot/latex/main.tex
@@ -1027,57 +1027,41 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <img/mockup_shell.png, id=72, 773.13844pt x 644.4075pt>
 File: img/mockup_shell.png Graphic file (type png)
 <use img/mockup_shell.png>
-Package luatex.def Info: img/mockup_shell.png  used on input line 64.
+Package luatex.def Info: img/mockup_shell.png  used on input line 62.
 (luatex.def)             Requested size: 227.62206pt x 189.71509pt.
  [2<./img/mockup_shell.png>]
-<img/arm_posed.png, id=84, 596.98032pt x 662.475pt>
-File: img/arm_posed.png Graphic file (type png)
-<use img/arm_posed.png>
-Package luatex.def Info: img/arm_posed.png  used on input line 97.
-(luatex.def)             Requested size: 172.99498pt x 191.97131pt.
-<img/arm_rest_shell.png, id=85, 388.45125pt x 651.93562pt>
-File: img/arm_rest_shell.png Graphic file (type png)
-<use img/arm_rest_shell.png>
-Package luatex.def Info: img/arm_rest_shell.png  used on input line 104.
-(luatex.def)             Requested size: 136.57462pt x 229.21544pt.
-<img/arm_rest_noshell.png, id=86, 358.33875pt x 645.16031pt>
-File: img/arm_rest_noshell.png Graphic file (type png)
-<use img/arm_rest_noshell.png>
-Package luatex.def Info: img/arm_rest_noshell.png  used on input line 111.
-(luatex.def)             Requested size: 136.57462pt x 245.89194pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3<./img/arm_posed.png><./img/arm_rest_shell.png><./img/arm_rest_noshell.png>]
-<img/joint_diagram.png, id=105, 2055.68pt x 2055.68pt>
+<img/joint_diagram.png, id=84, 2055.68pt x 2055.68pt>
 File: img/joint_diagram.png Graphic file (type png)
 <use img/joint_diagram.png>
-Package luatex.def Info: img/joint_diagram.png  used on input line 159.
+Package luatex.def Info: img/joint_diagram.png  used on input line 94.
 (luatex.def)             Requested size: 273.14923pt x 273.14479pt.
-
-[4<./img/joint_diagram.png>] [5]
-<img/proto1_a.png, id=137, 700.11563pt x 615.0478pt>
+ [3<./img/joint_diagram.png>] [4]
+<img/proto1_a.png, id=120, 700.11563pt x 615.0478pt>
 File: img/proto1_a.png Graphic file (type png)
 <use img/proto1_a.png>
-Package luatex.def Info: img/proto1_a.png  used on input line 269.
+Package luatex.def Info: img/proto1_a.png  used on input line 293.
 (luatex.def)             Requested size: 204.85846pt x 179.96411pt.
-<img/proto1_b.png, id=138, 714.41907pt x 685.8122pt>
+<img/proto1_b.png, id=121, 714.41907pt x 685.8122pt>
 File: img/proto1_b.png Graphic file (type png)
 <use img/proto1_b.png>
-Package luatex.def Info: img/proto1_b.png  used on input line 276.
+Package luatex.def Info: img/proto1_b.png  used on input line 300.
 (luatex.def)             Requested size: 204.85846pt x 196.65147pt.
-<img/proto2_a.jpg, id=143, 3083.52pt x 4095.3pt>
+ [5<./img/proto1_a.png><./img/proto1_b.png>]
+<img/proto2_a.jpg, id=140, 3083.52pt x 4095.3pt>
 File: img/proto2_a.jpg Graphic file (type jpg)
 <use img/proto2_a.jpg>
-Package luatex.def Info: img/proto2_a.jpg  used on input line 297.
+Package luatex.def Info: img/proto2_a.jpg  used on input line 319.
 (luatex.def)             Requested size: 273.14923pt x 362.7496pt.
+<img/proto3_a.png, id=143, 709.90219pt x 437.38406pt>
+File: img/proto3_a.png Graphic file (type png)
+<use img/proto3_a.png>
+Package luatex.def Info: img/proto3_a.png  used on input line 332.
+(luatex.def)             Requested size: 273.14923pt x 168.2966pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6<./img/proto1_a.png><./img/proto1_b.png>] [7<./img/proto2_a.jpg>] [8]
-[9] [10] (./main.aux)
+[6<./img/proto2_a.jpg>] [7<./img/proto3_a.png>] [8] [9] [10] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1090,15 +1074,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 26822 strings out of 476081
+ 26796 strings out of 476081
  125121,1373583 words of node,token memory allocated
  645 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 19 attribute, 69 glue_spec
 , 19 attribute_list, 2 write nodes
-   avail lists: 1:1,2:751,3:220,4:128,5:296,6:56,7:6743,8:51,9:919,10:21,11:392
- 48701 multiletter control sequences out of 65536+600000
+   avail lists: 1:1,2:661,3:210,4:128,5:262,6:56,7:4927,8:51,9:831,10:12,11:317
+ 48681 multiletter control sequences out of 65536+600000
  67 fonts using 4258615 bytes
- 94i,8n,88p,1251b,945s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,10n,88p,1251b,941s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/benro/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/U
 sers/benro/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users
 /benro/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -1121,9 +1105,9 @@ KTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/benro/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmr9.pfb><C:/Users/benro/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/lm/lmri10.pfb><C:/Users/benro/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (10 pages, 2335999 bytes).
+Output written on main.pdf (10 pages, 2557823 bytes).
 
-PDF statistics: 244 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 240 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 1048576)
  104 words of extra memory for PDF output out of 10000 (max. 100000000)
 

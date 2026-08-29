@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1787996733.24355 "main.bcf" "main.bbl" "main" 1787998554.88116 0
-  "main.bcf" 1787998554 107940 d6eacb66dc1bcacdd4552e574055c2df "lualatex"
-  "references.bib" 1787582582 248 cc1a2ad7478bff2e68c00c9dd44effd5 ""
+["biber main"] 1788030464.34556 "main.bcf" "main.bbl" "main" 1788030469.39555 0
+  "main.bcf" 1788030440 107940 d6eacb66dc1bcacdd4552e574055c2df "lualatex"
+  "references.bib" 1788030462 494 a66c3dd03368e3f3b6eea500ead1c8f9 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["lualatex"] 1787998548.20828 "c:/Users/benro/Repositories/eng-repo/he_torsobot/latex/main.tex" "main.pdf" "main" 1787998554.88289 0
+["lualatex"] 1788030433.96443 "c:/Users/benro/Repositories/eng-repo/he_torsobot/latex/main.tex" "main.pdf" "main" 1788030469.39637 0
   "C:/Users/benro/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1787996728 122748 1a7e4f5c810613044ecead90561e41bb ""
   "C:/Users/benro/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1774102138 127337 c870f1e8f2356184f7f7e42851b599fe ""
   "C:/Users/benro/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -229,21 +229,19 @@
   "C:/Users/benro/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-tounicode.lua" 1740607740 7529 21fe79d2526f3c3d789a9cc0366347ab ""
   "C:/Users/benro/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/benro/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
-  "c:/Users/benro/Repositories/eng-repo/he_torsobot/latex/main.tex" 1787998546 17961 bb95e30494e07e4412e0e9add45e2bb8 ""
-  "img/arm_posed.png" 1787582582 214772 d1939d5d2df5cca9057d9647b1df1a68 ""
-  "img/arm_rest_noshell.png" 1787582582 204638 d93bb32983794e286acd4691abead61e ""
-  "img/arm_rest_shell.png" 1787582582 142189 2216f5c761c5119ef14c2ef750130b0f ""
+  "c:/Users/benro/Repositories/eng-repo/he_torsobot/latex/main.tex" 1788030432 19174 895190dddea65732be0f17b597c870c4 ""
   "img/joint_diagram.png" 1787582582 453467 885559c6066f0246712195f31589a2be ""
   "img/mockup_shell.png" 1787582582 178739 cd9f47898b0db65e59209ea110a16682 ""
   "img/proto1_a.png" 1787860309 239264 85667b979fc302893de5553a3e82d846 ""
   "img/proto1_b.png" 1787860309 512238 ccc7a9efb89e91e3dbca32a282e9bcae ""
   "img/proto2_a.jpg" 1787860309 513699 673d3ae2636f27f33e8dbc7ebd91ea91 ""
-  "main.aux" 1787998554 5311 6aa76b4f5f0e99391f84b6bddef6e446 "lualatex"
-  "main.bbl" 1787996736 2025 0d7d50d070be129e1d1d61f6042ad924 "biber main"
-  "main.out" 1787998554 2057 acfc23274ed5bc52586005f1002895a9 "lualatex"
-  "main.run.xml" 1787998554 2437 c81361f07ee8b285e6eff88de5a61f4b "lualatex"
-  "main.tex" 1787998546 17961 bb95e30494e07e4412e0e9add45e2bb8 ""
-  "main.toc" 1787998554 957 71abcaaf884a6b20e4beb6bd56a57f25 "lualatex"
+  "img/proto3_a.png" 1788027704 654795 8ca8b1ecfed160707bbfa4137bd974cd ""
+  "main.aux" 1788030440 4729 95fd6a51849f3ee406fc17a3282cee03 "lualatex"
+  "main.bbl" 1788030469 2025 0d7d50d070be129e1d1d61f6042ad924 "biber main"
+  "main.out" 1788030440 2057 acfc23274ed5bc52586005f1002895a9 "lualatex"
+  "main.run.xml" 1788030440 2437 c81361f07ee8b285e6eff88de5a61f4b "lualatex"
+  "main.tex" 1788030432 19174 895190dddea65732be0f17b597c870c4 ""
+  "main.toc" 1788030440 957 4823b2e91e133f8ee7c4c4d78abe66d4 "lualatex"
   (generated)
   "main.aux"
   "main.bcf"
