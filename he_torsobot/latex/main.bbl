@@ -19,6 +19,25 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global/global}
+    \entry{parol6}{online}{}{}
+      \list{organization}{1}{%
+        {Source Robotics}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{PAROL6 Robotic Arm}
+      \field{urlday}{29}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://source-robotics.com/products/parol6-robotic-arm
+      \endverb
+      \verb{url}
+      \verb https://source-robotics.com/products/parol6-robotic-arm
+      \endverb
+    \endentry
     \entry{modernrobotics}{book}{}{}
       \name{author}{2}{}{%
         {{hash=ab9086b1452a1a9813fc6765151b4f61}{%
@@ -43,13 +62,147 @@
       \strng{authornamehash}{8d01efb70f6cec86f711e78e22f97a48}
       \strng{authorfullhash}{8d01efb70f6cec86f711e78e22f97a48}
       \strng{authorfullhashraw}{8d01efb70f6cec86f711e78e22f97a48}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-1-107-15630-2}
       \field{title}{Modern Robotics: Mechanics, Planning, and Control}
       \field{year}{2017}
+    \endentry
+    \entry{ar4gripper}{online}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{Servo Gripper Parts Kit}
+      \field{urlday}{1}
+      \field{urlmonth}{9}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://anninrobotics.com/product-page/servo-gripper-parts-kit/
+      \endverb
+      \verb{url}
+      \verb https://anninrobotics.com/product-page/servo-gripper-parts-kit/
+      \endverb
+    \endentry
+    \entry{quazi2025}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=d99102b515ca0649536110855d19fe6b}{%
+           family={Quazi},
+           familyi={Q\bibinitperiod},
+           given={I.\bibnamedelimi N.},
+           giveni={I\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=e2fe35d5256060da8162f84f75812000}{%
+           family={Shasmin},
+           familyi={S\bibinitperiod},
+           given={H.\bibnamedelimi N.},
+           giveni={H\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=3cb5844ef89944ff4c1374d848b69785}{%
+           family={Arifin},
+           familyi={A\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=662681c2aa00e7457e0c06b84fd568b8}{%
+           family={Abd\bibnamedelima Razak},
+           familyi={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={N.\bibnamedelimi A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=7e54a25927ad1b740d3a024840eb2040}{%
+           family={Abu\bibnamedelima Osman},
+           familyi={A\bibinitperiod\bibinitdelim O\bibinitperiod},
+           given={N.\bibnamedelimi A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7386078538fa9789f05fd291c2520585}
+      \strng{fullhash}{ee868be766db9e5eaa5ed5bcb0390a36}
+      \strng{fullhashraw}{ee868be766db9e5eaa5ed5bcb0390a36}
+      \strng{bibnamehash}{ee868be766db9e5eaa5ed5bcb0390a36}
+      \strng{authorbibnamehash}{ee868be766db9e5eaa5ed5bcb0390a36}
+      \strng{authornamehash}{7386078538fa9789f05fd291c2520585}
+      \strng{authorfullhash}{ee868be766db9e5eaa5ed5bcb0390a36}
+      \strng{authorfullhashraw}{ee868be766db9e5eaa5ed5bcb0390a36}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the Institution of Mechanical Engineers, Part H: Journal of Engineering in Medicine}
+      \field{number}{11-12}
+      \field{title}{The effect of clearance on gear performance: An optimization study for a light-weight 3D-printed cycloidal drive}
+      \field{urlday}{1}
+      \field{urlmonth}{9}
+      \field{urlyear}{2026}
+      \field{volume}{239}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1176\bibrangedash 1189}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1177/09544119251391399
+      \endverb
+      \verb{urlraw}
+      \verb https://read.qxmd.com/read/41291423/the-effect-of-clearance-on-gear-performance-an-optimization-study-for-a-light-weight-3d-printed-cycloidal-drive
+      \endverb
+      \verb{url}
+      \verb https://read.qxmd.com/read/41291423/the-effect-of-clearance-on-gear-performance-an-optimization-study-for-a-light-weight-3d-printed-cycloidal-drive
+      \endverb
+    \endentry
+    \entry{nedelkovski2022}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=d3f11fc13eb71eaaaa195cca30522520}{%
+           family={Nedelkovski},
+           familyi={N\bibinitperiod},
+           given={Dejan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {HowToMechatronics}%
+      }
+      \strng{namehash}{d3f11fc13eb71eaaaa195cca30522520}
+      \strng{fullhash}{d3f11fc13eb71eaaaa195cca30522520}
+      \strng{fullhashraw}{d3f11fc13eb71eaaaa195cca30522520}
+      \strng{bibnamehash}{d3f11fc13eb71eaaaa195cca30522520}
+      \strng{authorbibnamehash}{d3f11fc13eb71eaaaa195cca30522520}
+      \strng{authornamehash}{d3f11fc13eb71eaaaa195cca30522520}
+      \strng{authorfullhash}{d3f11fc13eb71eaaaa195cca30522520}
+      \strng{authorfullhashraw}{d3f11fc13eb71eaaaa195cca30522520}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{7}
+      \field{title}{What is Cycloidal Driver? Designing, 3D Printing and Testing}
+      \field{urlday}{29}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://howtomechatronics.com/how-it-works/what-is-cycloidal-driver-designing-3d-printing-and-testing/
+      \endverb
+      \verb{url}
+      \verb https://howtomechatronics.com/how-it-works/what-is-cycloidal-driver-designing-3d-printing-and-testing/
+      \endverb
+    \endentry
+    \entry{ahl2026}{online}{}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labeltitlesource}{title}
+      \field{day}{26}
+      \field{month}{7}
+      \field{title}{New Cycloidal Gearbox! Is it a Better Design?}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=c0EptOzyOQs
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=c0EptOzyOQs
+      \endverb
+      \warn{\item online entry 'ahl2026' (references.bib): Invalid format '2026-09-1' of date field 'urldate' - ignoring}
     \endentry
   \enddatalist
 \endrefsection

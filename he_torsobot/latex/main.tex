@@ -64,7 +64,7 @@
     \label{fig:mockup}
 \end{figure}
 
-The "Oar" robot is a humanoid robot comprised of a rigidly-supported torso, a head placed upon an actuated neck, and two 7 degree of freedom robotic arms. A basic mockup of Oar is shown in Figure \ref{fig:mockup}.
+The "Oar" robot is a 3D printed humanoid robot comprised of a rigidly-supported torso, a head placed upon an actuated neck, and two 7 degree of freedom robotic arms. A basic mockup of Oar is shown in Figure \ref{fig:mockup}.
 
 The design goals for Oar are as follows:
 \begin{itemize}
@@ -73,7 +73,11 @@ The design goals for Oar are as follows:
     \item Provide a reasonable suite of sensors that can be interfaced with for experiments. Such experiments may include computer vision or reinforcement learning projects.
 \end{itemize}
 
-This proposal will focus primarily on the development of the robot's arms as they are considered to be the primary engineering challenge, however some notes on the body, neck/head, and end-effector will still be made.
+\noindent\fbox{%
+  \begin{minipage}{1.0\textwidth}
+    This proposal will focus primarily on the development of the robot's arms as they are considered to be the primary engineering challenge, however some notes on the body, neck/head, and end-effector will still be made.
+  \end{minipage}%
+}
 
 \subsection{A note on the name}
 The name "Oar" has been derived from the first line of the poem "Basking Shark" by Scottish poet Norman MacCaig, which reads:
@@ -96,70 +100,11 @@ The poem is a discussion on themes of the origins of life and the place of human
     \label{fig:joints}
 \end{figure}
 
-% \begin{figure}[htbp]
-%     \centering
-%     \begin{subfigure}[b]{0.38\textwidth}
-%       \centering
-%       \includegraphics[width=\textwidth]{img/arm_posed.png}
-%       \caption{Arm in a posed position to demonstrate the joints.}
-%       \label{fig:arm_posed}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.3\textwidth}
-%       \centering
-%       \includegraphics[width=\textwidth]{img/arm_rest_shell.png}
-%       \caption{Arm at rest with aesthetic shells.}
-%       \label{fig:arm_rest_shell}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.3\textwidth}
-%       \centering
-%       \includegraphics[width=\textwidth]{img/arm_rest_noshell.png}
-%       \caption{Arm at rest without aesthetic shells.}
-%       \label{fig:arm_rest_noshell}
-%     \end{subfigure}
-  
-%     \caption{The preliminary arm design for Oar (left arm).}
-%     \label{fig:arms}
-% \end{figure}
+The arms of Oar will follow the common 7-DOF humanoid arm model of a 3-DOF shoulder and a 3-DOF wrist connected by a 1-DOF elbow. Figure \ref{fig:joints} shows the joint diagram of the left arm.
 
+The arm aims to have a reach of $600\,\si{mm}$ (measured from the axis of rotation of the shoulder pitch actuator to the center of the gripper's jaws). To keep costs down, the arm's actuators will be driven using stepper motors. The majority of the mechanical and aesthetic parts will be FDM printed, with the major exceptions of bearings, fixtures, and some elements with specific material requirements (such as the usage of aluminium extrusion to resist high bending moments, or of steel dowels to reduce surface frictions as in \S~\ref{sec:proto3}).
 
-% Figure \ref{fig:arm_posed} shows the complete preliminary arm design in a posed state, with Figure \ref{fig:arm_rest_shell} in the resting positon. The parts coloured in dark gray (excluding motors) are aesthetic "shells", which have been hidden in Figure \ref{fig:arm_rest_noshell}. It should be noted that the primary focus of this preliminary design the general structure of the arm and the design of the actuator gearheads; the aesthetic shells have been very roughly constructed for visual purposes and are missing key features such as cutouts for cable management.
-
-% The design is comprised of primarily 3D printed parts, and two pieces of $20\,\si{mm} \times 20\,\si{mm}$ aluminium extrusion. The motors used in the preliminary design are 17HS3401S stepper motors, however these are not critical to the design as the mounting holes can be easily adjusted. One option may be to swap out these motors for a lighter model, provided that the produced torque is comparable, as the current motors contribute a significant amount of mass at $220\,\si{g}$ each.
-
-% The arm is roughly $600\,\si{mm}$ in length. Most of the length comes from the large size of the actuators, however about $200\,\si{mm}$ is contributed by the Aluminium extrusion. The extrusion was added for two reaons: (i) to increase the reach of the arm and bring it in-line with the goal of being a "full-scale" humanoid arm; (ii) to support the arm links at points of high bending moments. The primary downside of this length is that it decreases the potential maximum payload of the arm. This drawback has been overruled in favour of greater reach in the preliminary design as arm dexterity and "human-ness" are seen as more significant goals for the project than maximum payload, if however, maximum payload becomes an important goal, then the inclusion of the extruded bars may be reconsidered and actuators instead mounted end-to-end to one another.
-
-% Each of the 3D printed parts (excluding the aesthetic shells) has been designed to require minimal to no support structures during printing and to feature various weight saving cutouts where possible. The parts will be prototyped using PLA, with the final designs printed in PETG.
-
-% \begin{table}[h!]
-%     \centering
-    
-%     \begin{tabular}{|c|c|}
-%         \hline
-%         Joint & Gearhead Ratio \\
-%         \hline
-%         Shoulder Pitch & 96:1 (Comprised of two 48:1 gearheads in series) \\
-%         Shoulder Roll & 96:1 (Comprised of two 48:1 gearheads in series) \\
-%         Shoulder Yaw & 48:1 \\
-%         Elbow & 48:1 \\
-%         Wrist Roll 1 & 24:1 \\
-%         Wrist Pitch & 24:1 \\
-%         Wrist Roll 2 & 24:1 \\
-%         \hline
-%        \end{tabular}
-
-%     \caption{Gear ratios present at each joint.}
-%     \label{tab:joints}
-% \end{table}
-
-The arms of Oar will follow the common humanoid arm model of a 3-DOF shoulder and a 3-DOF wrist connected by a 1-DOF elbow. Figure \ref{fig:joints} shows the joint diagram of the left arm.
-
-The arm is /// talk about length ///
-
-% Table \ref{tab:joints} shows the gear ratios of each joint's gearheads. The ratios have been chosen such that each joint can produce its required output torques while also comprising of only two primary gearhead designs. The gearheads are of a cycloidal design, as detailled in \S~\ref{sec:gearheads}.
-
-
+The target payload is $500\,\si{g}$, this has been chosen based on the PAROL6 robot by \textit{Source Robotics} \cite{parol6}, which is a 6-DOF robotic arm that also makes heavy usage of FDM parts and is driven by stepper motors, and has a maximum reach of $400\,\si{mm}$ and payload of $1\,\si{kg}$. 
 
 \subsection{Forward Kinematics \& Preliminary Torque Analysis}\label{sec:forward_kinematics}
 
@@ -244,24 +189,22 @@ where $\mathcal{F}_{s}$ is a wrench applied to the end-effector, and $\tau$ is t
 
 The method for performing this analysis is detailed in \cite[\S~5]{modernrobotics} and for this robot results in matrices that are too large and complex to be reasonably computed by hand for every possible configuration of interest. As such Equations, \ref{eq:fk}, \ref{eq:jacobian}, and \ref{eq:statics} were implemented into a python script to complete the analysis.
 
-Using the python script, a variety of configurations were tested for a $600\,\si{g}$ payload.
-% This is greater than the reasonable payload considered as a goal for the final arm design (which sits at $300\,\si{g}$ to $500\,\si{g}$), however performing early computations for an oversized payload was done as the robot must have a factor of safety on top of its specified capabilties. An additional reason is that this analysis does not take into account the masses of the links themselves.
+Using the python script, a variety of configurations were tested for a $1\,\si{kg}$ payload. The tested configurations showed that the maximum torque required of the arm's joints would take place in the shoulder pitch, shoulder roll, and elbow, and would be roughly of a magnitude of $6\,\si{N m}$. This theoretical payload is double the target discussed in \S~\ref{sec:overview} as the arm must also be able to lift its own weight.
 
-The tested configurations showed that the maximum torque required of the arm's joints would take place in the shoulder pitch, shoulder roll, and elbow, and would be roughly of a magnitude of $4\,\si{N m}$.
+This result was then used to inform the design of various prototype gearheads. Considering an estimated dynamic torque of $0.2\,\si{N m}$ for a mid-sized NEMA17 stepper motor, the calculated torque figure of $6\,\si{N m}$, and some additional factor of safety, a target reduction ratio of 48:1 was chosen for the prototype gearheads. The development of the prototypes are detailed in \S~\ref{sec:gearheads}.
 
-This result was then used to inform the design of various prototype gearheads. 
+% \subsection{Gearhead Efficiency Requirement Analysis}
 
-The prototypes are detailed in \S~\ref{sec:gearheads}.
-
-\subsection{Gearhead Efficiency Requirement Analysis}
+\subsection{Gripper Design}
+In order to keep the mass low, the gripper will be driven using a servo, converting its rotational output into two linearly moving jaws. This style of gripper can be seen on the AR4 robotic arm by \textit{Annin Robotics} \cite{ar4gripper}.
 
 % --- GEARHEADS ------------------------------------------------------------------------------------
 \newpage
-\section{Gearhead Design}\label{sec:gearheads}
+\section{Gearhead Prototypes}\label{sec:gearheads}
 
 Cycloidal drives have been chosen for the actuators of the arm. This is primarily due to their affinity for being produced using FDM printing when compared to planetary or strain-wave gear systems, wherein the former presents difficult to achieve tolerances (as well as comparatively low reduction ratios) and the latter requires the development of a flexible element.
 
-The following sections detail the development of a prototype gearhead. The model of stepper motor used was the 17HS3401S, which was ran at a speed of $100\,\si{RPM}$ and measured to have a dynamic torque of $0.17\,\si{N m}$\footnote{Used to drive a rudimentary pulley of diameter $30\,\si{mm}$ and found to be capable of lifting a maximum of $575\,\si{g}$.}.
+The following sections detail the development of three prototype gearheads. The model of stepper motor used for each prototype was the 17HS3401S, which was ran at a speed of $100\,\si{RPM}$ and measured to have a dynamic torque of $0.17\,\si{N m}$\footnote{Used to drive a rudimentary pulley of diameter $30\,\si{mm}$ and found to be capable of lifting a maximum of $575\,\si{g}$.}. The cycloidal discs printed for each prototype followed the $0.3\,\si{mm}$ tolerance determined by Quazi \cite{quazi2025}.
 
 The output torque produced by each prototype gearhead was tested using various masses suspended from a $30\,\si{cm}$ bar of $20\,\si{mm} \times 40\,\si{mm}$ aluminium extrusion attached from the centerpoint of the gearhead's output.
 
@@ -317,7 +260,7 @@ The gearhead was seen to be able to achieve a maximum output torque of roughly $
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.6\linewidth]{img/proto2_a.jpg} 
-    \caption{A photo of the second constructed prototype gearhead, author's hand for scale.}
+    \caption{A photo of the second constructed prototype gearhead, hand for scale.}
     \label{fig:proto2}
 \end{figure}
 
@@ -325,7 +268,7 @@ The primary cause of the low efficiency seen with the first prototype in \S~\ref
 
 Despite the improved print quality, effiency actually decreased from the initial prototype. The highest output torque achieved was roughly $1.4\,\si{N m}$, which gives an efficiency of 17\%.
 
-\subsection{Third Prototype - 48:1 with Steel Dowels}
+\subsection{Third Prototype - 48:1 with Steel Dowels}\label{sec:proto3}
 
 \begin{figure}[h!]
     \centering
@@ -348,9 +291,33 @@ This prototype was seen to achieve a maximum output torque of $3.1\,\si{N m}$, g
 
 % --- DEVELOPMENT ----------------------------------------------------------------------------------
 \newpage
-\section{Points for Development \& Timeline}\label{sec:development}
+\section{Steps for Development}\label{sec:development}
 
-% --- BILBIOGRAPHY ---------------------------------------------------------------------------------
+This section details the next steps that would occur in the development of Oar's arms.
+
+\subsection{Further Gearhead Prototypes}
+
+The 38\% maximum efficiency achieved by the third gearhead prototype seen in \S~\ref{sec:proto3} is considerably lower than the efficiency figures reported by other designs, which range from 60\% \cite{nedelkovski2022} to over 90\% \cite{ahl2026}.
+
+One potential reason for this is that the designs by Nedelkovski \cite{nedelkovski2022} and \textit{Advanced Hobby Lab} \cite{ahl2026} featured significantly lower reduction ratios of 15:1 and 8:1 respectively. It is possible that the losses seen in the prototype 24:1 and 48:1 gearheads were due to the greatly increased surface area of their cycloids. Furthermore, Nedelkovski's design utilises rolling elements wherever possible to reduce losses to friction.
+
+For these reasons, a logical next step would be to develop two similar low ratio gearheads, the first of which will use rolling elements for all inner and outer pins in order to maximise efficiency. This gearhead would then be used to develop the gearheads present in the shoulder and elbow actuators, which are the joints the arm required to output the highest torques. The high ratios required for these joints can be obtained by developing two-stage gearheads (for example, combining two 10:1 cycloidal designs to produce a 100:1 reduction ratio).
+
+From this prototype, a second gearhead will be developed with the intent of minimising weight. Heavy components such as bearings or steel dowels can be strategically swapped out for FDM parts in order to balance efficiency with mass. This will be used to develop the gearheads of the wrist joints, which will be subjected to significantly smaller moments than the upper arm joints.
+
+Additionally, these new gearhead prototypes should be implement rotational encoders as these will be important in safely controlling Oar.
+
+\subsection{Tip to Base Design Order}
+
+Once satisfactory gearhead prototypes have been developed, work on the full arm can begin. The arm should be developed from the end-effector to the shoulder, such that the gearheads and structural design of each subsequent section can be informed by the weight of the previous section.
+
+Particular attention shold be paid to the end-effector and the wrist joints, with efforts placed on making them as light as possible. In light of this goal, pancake-style NEMA stepper motors can be considered for these joints.
+
+If necessary, belts transmissions can be considered in order to bring heavy actuators closer to the shoulder in order to reduce the magnitude of the moments they produce. In particular this can be done for the elbow, which can have its gearhead placed directly after the shoulder and the elbow joint itself actuated via belt. This may also be possible for the wrist pitch, however depending on the size of the gearheads involved, the distance which the gearhead may be able to be moved back up the arm may not be enough to reduce its moment enough to justify the added complexity. A belt transmission solution would also require encoders to be placed at the joints themselves rather than on the actuators.
+
+For the shoulder joints, particularly the shoulder pitch and shoulder roll, higher torque motors can be considered to drive their actuators. This could simply be a larger NEMA17, or for the shoulder pitch (which will be mounted within Oar's body and thus will not create any moments on the arm) potentially even a NEMA23 stepper motor.
+
+% --- BIBLIOGRAPHY ---------------------------------------------------------------------------------
 \newpage
 \printbibliography
 

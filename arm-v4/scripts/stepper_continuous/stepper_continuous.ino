@@ -10,7 +10,7 @@
 #define M2_EN_PIN   8
 
 // Configuration Parameters
-const float MICROSTEPS = 8.0;       // Set to match DIP switches (1, 2, 4, 8, 16, 32)
+const float MICROSTEPS = 16.0;       // Set to match DIP switches (1, 2, 4, 8, 16, 32)
 const float STEPS_PER_REV = 200.0;  // Standard 1.8° stepper motor (17HS3401S)
 
 // Driver setup (DRIVER mode: Pin 1 = STEP, Pin 2 = DIR)
@@ -35,7 +35,7 @@ void setup() {
   digitalWrite(M2_EN_PIN, LOW);
 
   // Set Motor 1 to 120 RPM (2 Revolutions Per Second)
-  setMotorRPM(motor1, 100.0);
+  setMotorRPM(motor1, 50.0);
 
   // Set Motor 2 to 180 RPM (3 Revolutions Per Second)
   setMotorRPM(motor2, 25.0);
