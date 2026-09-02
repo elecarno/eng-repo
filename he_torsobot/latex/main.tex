@@ -80,7 +80,7 @@ The design goals for Oar are as follows:
 }
 
 \subsection{A note on the name}
-The name "Oar" has been derived from the first line of the poem "Basking Shark" by Scottish poet Norman MacCaig, which reads:
+The name "Oar" has been derived from the first line of the poem "Basking Shark" by Scottish poet Norman MacCaig \cite{baskingshark}, which reads:
 
 \begin{center}
     \textit{To stub an \textbf{oar} on a rock where none should be}
@@ -195,8 +195,12 @@ This result was then used to inform the design of various prototype gearheads. C
 
 % \subsection{Gearhead Efficiency Requirement Analysis}
 
-\subsection{Gripper Design}
-In order to keep the mass low, the gripper will be driven using a servo, converting its rotational output into two linearly moving jaws. This style of gripper can be seen on the AR4 robotic arm by \textit{Annin Robotics} \cite{ar4gripper}.
+\subsection{End-Effector Design}
+In order to keep the mass low, the initial end-effector will be a simple gripper driven using a servo, converting its rotational output into two linearly moving jaws. This style of gripper can be seen on the AR4 robotic arm by \textit{Annin Robotics} \cite{ar4gripper}.
+
+A more advanced end-effector may be a pneumatic gripper or one with maleable jaws to allow for the handling of delicate objects.
+
+To allow for efficient experimentation, the end-effectors should be easy to detach and reattach without any major dissassembly of the wrist mechanism.
 
 % --- GEARHEADS ------------------------------------------------------------------------------------
 \newpage
@@ -288,12 +292,40 @@ This prototype was seen to achieve a maximum output torque of $3.1\,\si{N m}$, g
 \newpage
 \section{Body, Head, \& Sensors}\label{sec:body}
 
+\subsection{Body}
+
+As the focus of Oar is its arms, the body would simply be some portion of an upper torso, sized to fit the necessary electronics, and mounted on a rigid stand of sensible construction. On the back face of the body would also be housed all the external connections needed to use the robot, such as power and USB ports.
+
+Wheels may be considered for the base of the stand in order to make transporting the robot easier.  It would additionally be helpful for the stand to be adjustable in height. A battery may also be considered for placement within the body or at the base of the stand as the robot is already likely to be top-heavy, however as the robot itself is only intended for operation when placed stationary, this is not of immediate concern. As such, the robot can simply be powered via electrical mains and a suitable power supply.
+
+While independent power is not a major concern, possessing a suitable controller is an important element that must be fitted within the body. A Raspberry Pi or other suitable robotics board that is capable of running ROS should be implemented into the body.
+
+Depending on the hardware chosen, cooling fans may also be a sensible addition in order to safely manage the heat generated via the running of the robot's many stepper motors.
+
+
+\subsection{Head}
+
+The head is to be mounted upon an actuated at the center of the top surface of the body. The most basic construction for the neck would be a single revolute joint, allowing the head to pivot about a vertical axis. A more advanced neck would be constructed of two revolute joints in order to allow for spherical motion of the head. The latter design would be preferable in order to allow for the widest range of capabilities in experiments (such as in computer vision experiments), however depending on the sensor hardware fitted to the head, may be an unnecessary amount of freedom of motion.
+
+
+\subsection{Sensors}
+
+Joint rotational encoders are mentioned in \S~\ref{sec:development}.
+
+In order to be able to interact with its environment, Oar must possess various sensors.
+
+The most obvious option is a camera placed within the head. This would facilitate computer vision and potentially remote operation for teleoperations experiments. An accompanying infrared sensor to measure distances would provide useful assistance in manipulation experiments that require Oar to determine the position of objects.
+
+Touch or force sensors may be implemented into Oar's grippers or any other type of relevant end-effector to aid in tasks requiring delicate grasping.
+
+Although a common fixture on many robots, as Oar is ultimately a stationary robot, an inertial measurement unit is not necessary to be implemented. However, if testing shows it to be worthwhile, gyroscopes placed within the end-effectors may serve as useful calibration or corrective sensors.
+
 
 % --- DEVELOPMENT ----------------------------------------------------------------------------------
 \newpage
 \section{Steps for Development}\label{sec:development}
 
-This section details the next steps that would occur in the development of Oar's arms.
+This section details the next steps that would occur in the mechanical development of Oar's arms.
 
 \subsection{Further Gearhead Prototypes}
 

@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1788288990.47453 "main.bcf" "main.bbl" "main" 1788291609.48408 0
-  "main.bcf" 1788291609 108394 cd1731cf50d9b3723aee7190fbf4eba7 "lualatex"
-  "references.bib" 1788287966 2047 b29454d1de1fd435b8e7a9dbfb8242d5 ""
+["biber main"] 1788369972.07832 "main.bcf" "main.bbl" "main" 1788370680.62874 0
+  "main.bcf" 1788370680 108462 0b8a6408be8c4ecb4b0e0cec996c7be0 "lualatex"
+  "references.bib" 1788369940 2290 3fc862f471c63af5793eab26d486c0c8 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["lualatex"] 1788291605.97555 "d:/1_repos/eng-repo/he_torsobot/latex/main.tex" "main.pdf" "main" 1788291609.48504 0
+["lualatex"] 1788370676.87425 "d:/1_repos/eng-repo/he_torsobot/latex/main.tex" "main.pdf" "main" 1788370680.62973 0
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1234365220 996 a18840b13b499c08ac2de96a99eda4bc ""
@@ -232,20 +232,20 @@
   "C:/Program Files/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1773703161 163260 f7138aa97b0a1dcae55100dabb7d9e7d ""
   "C:/Users/MESH User/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1774360769 127316 b53e13bdad2cd325178d12d8af25291f ""
-  "d:/1_repos/eng-repo/he_torsobot/latex/main.tex" 1788291605 19986 8abb553d95a4eb1cc0be308955e40065 ""
+  "d:/1_repos/eng-repo/he_torsobot/latex/main.tex" 1788370676 23236 a2c73bd174a1037761769260d92c7dde ""
   "img/joint_diagram.png" 1786297582 453467 885559c6066f0246712195f31589a2be ""
   "img/mockup_shell.png" 1787509165 178739 cd9f47898b0db65e59209ea110a16682 ""
   "img/proto1_a.png" 1787856289 239264 85667b979fc302893de5553a3e82d846 ""
   "img/proto1_b.png" 1787856348 512238 ccc7a9efb89e91e3dbca32a282e9bcae ""
   "img/proto2_a.jpg" 1787857576 513699 673d3ae2636f27f33e8dbc7ebd91ea91 ""
   "img/proto3_a.png" 1788215001 654795 8ca8b1ecfed160707bbfa4137bd974cd ""
-  "main.aux" 1788291609 5835 fb3c41da8f3ef4ff98638ba25be2f56f "lualatex"
-  "main.bbl" 1788288992 8434 de2ea02659319ada8d3c13c273a9f509 "biber main"
-  "main.out" 1788291609 2261 255285dbab2e1c19d6d2fbfe527a9017 "lualatex"
-  "main.run.xml" 1788291609 2437 c81361f07ee8b285e6eff88de5a61f4b "lualatex"
-  "main.tex" 1788291605 19986 8abb553d95a4eb1cc0be308955e40065 ""
-  "main.toc" 1788291609 1108 7cd1c1e3bc40b353befac5f4b4abf7b1 "lualatex"
-  "references.bib" 1788287966 2047 b29454d1de1fd435b8e7a9dbfb8242d5 ""
+  "main.aux" 1788370680 6320 ff203c5e249a8d1f001f523c003bab59 "lualatex"
+  "main.bbl" 1788369974 9820 1dd2056f6bec99fb437ea025e6e83ea8 "biber main"
+  "main.out" 1788370680 2535 6259ebc5e90e435b7353a8c71aca9562 "lualatex"
+  "main.run.xml" 1788370680 2437 c81361f07ee8b285e6eff88de5a61f4b "lualatex"
+  "main.tex" 1788370676 23236 a2c73bd174a1037761769260d92c7dde ""
+  "main.toc" 1788370680 1326 4e00d1c2f0cc90c371093c9e00320801 "lualatex"
+  "references.bib" 1788369940 2290 3fc862f471c63af5793eab26d486c0c8 ""
   (generated)
   "main.aux"
   "main.bcf"

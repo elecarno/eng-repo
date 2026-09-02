@@ -1,17 +1,17 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'main.blg'
-[104] biber-MSWIN64:342> INFO - === 
-[137] Biber.pm:421> INFO - Reading 'main.bcf'
-[246] Biber.pm:1002> INFO - Found 6 citekeys in bib section 0
-[261] Biber.pm:4487> INFO - Processing section 0
-[271] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
-[309] bibtex.pm:1713> INFO - LaTeX decoding ...
-[318] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
-[385] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[386] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[386] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[386] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[395] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[397] bbl.pm:779> INFO - Output to main.bbl
-[398] Biber.pm:132> WARN - online entry 'ahl2026' (references.bib): Invalid format '2026-09-1' of date field 'urldate' - ignoring
-[398] Biber.pm:134> INFO - WARNINGS: 1
+[105] biber-MSWIN64:342> INFO - === 
+[141] Biber.pm:421> INFO - Reading 'main.bcf'
+[258] Biber.pm:1002> INFO - Found 7 citekeys in bib section 0
+[272] Biber.pm:4487> INFO - Processing section 0
+[283] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[329] bibtex.pm:1713> INFO - LaTeX decoding ...
+[338] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[410] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[410] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[410] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[410] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[419] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[422] bbl.pm:779> INFO - Output to main.bbl
+[422] Biber.pm:132> WARN - online entry 'ahl2026' (references.bib): Invalid format '2026-09-1' of date field 'urldate' - ignoring
+[422] Biber.pm:134> INFO - WARNINGS: 1
