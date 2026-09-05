@@ -6,7 +6,7 @@ const int DIR_PIN    = 6; // Y.DIR
 const int ENABLE_PIN = 8; // CNC Shield Enable Pin (Active LOW)
 
 // Motor Configuration - Adjust these manually
-const float TARGET_RPM  = 2000.0;  // Target Speed
+const float TARGET_RPM  = 160.0;  // Target Speed
 const int STEPS_PER_REV = 200;   // 1.8 degree stepper = 200 full steps
 const int MICROSTEPS    = 16;    // Match your CNC shield Y-slot jumpers
 
