@@ -18,7 +18,7 @@ const int MICROSTEPS_PER_REV = STEPS_PER_REV * MICROSTEPS;
 const float STEPS_TO_RADIANS = (2*PI) / MICROSTEPS_PER_REV;
 
 /// --- PID -----------------------------------------------------------
-const float kp = 0.0;
+const float kp = 0.15;
 const float ki = 0.0;
 const float kd = 0.0;
 
@@ -37,8 +37,8 @@ FastAccelStepperEngine engine = FastAccelStepperEngine();
 FastAccelStepper *stepper = NULL;
 
 // \/\/ TARGET ANGLE \/\/
-const float TARGET_DEGREES = 176.5;
-const float TARGET_RADIANS = 3.081;
+const float TARGET_DEGREES = 180;
+const float TARGET_RADIANS = PI;
 // /\/\ TARGET ANGLE /\/\
 
 int32_t stepperTargetPosition = 0;
@@ -91,6 +91,17 @@ float getStepperAngleRadians() {
   return 0.0;
 }
 
+double pid(double error) {
+  double proportional = error;
+  integral += error * dt;
+
+  double derivative = (error - previous) / dt;
+  previous = error;
+
+  double output = (kp * proportional) + (ki * integral) + (kd * derivative);
+  return output;
+}
+
 // --- MAIN------------------------------------------------------------
 void setup() {
   Serial.begin(115200);
@@ -113,14 +124,15 @@ void setup() {
 }
 
 void loop() {
-  if (stepper && !stepper->isRunning()) {
-    if (stepperTargetPosition == 400) {
-      stepperTargetPosition = -400;
-    } else {
-      stepperTargetPosition = 400;
-    }
-    stepper->moveTo(stepperTargetPosition);
-  }
+  // Stepper Wiggle
+  // if (stepper && !stepper->isRunning()) {
+  //   if (stepperTargetPosition == 400) {
+  //     stepperTargetPosition = -400;
+  //   } else {
+  //     stepperTargetPosition = 400;
+  //   }
+  //   stepper->moveTo(stepperTargetPosition);
+  // }
 
   static unsigned long lastExecution = 0;
 
@@ -131,17 +143,33 @@ void loop() {
     float stepperAngle = getStepperAngleRadians();
 
     // PID LOGIC
-    // stepperTargetPosition = 0;
+    dt = (millis() - last_time) / 1000.0;
+    last_time = millis();
 
-    // if (stepper) {
-    //   stepper->moveTo(stepperTargetPosition);
-    // }
+    double error = TARGET_RADIANS - encoderAngle;
+    output = pid(error);
 
+    stepperTargetPosition = output;
+
+    if (stepper) {
+      stepper->moveTo(stepperTargetPosition);
+    }
+
+    // printouts
     Serial.print("pen_angle:");
     Serial.print(encoderAngle, 2);
     Serial.print(",");
+
     Serial.print("stepper_angle:");
-    Serial.println(stepperAngle, 2);
+    Serial.print(stepperAngle, 2);
+    Serial.print(",");
+
+    Serial.print("error:");
+    Serial.print(error, 2);
+    Serial.print(",");
+
+    Serial.print("pid:");
+    Serial.println(output, 2);
   }
 }
 
