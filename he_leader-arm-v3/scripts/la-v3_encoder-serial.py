@@ -3,7 +3,7 @@ import serial
 import time
 
 # --- SERIAL ---------------------------------------------------------------------------------------
-SERIAL_PORT = 'COM4' 
+SERIAL_PORT = 'COM8' 
 BAUD_RATE = 115200
 
 try:

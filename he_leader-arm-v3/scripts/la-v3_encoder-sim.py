@@ -15,7 +15,7 @@ model = mujoco.MjModel.from_xml_path("../leader-arm-v3_mujoco/scene.xml")
 data = mujoco.MjData(model)
 
 # --- SERIAL ---------------------------------------------------------------------------------------
-SERIAL_PORT = 'COM4' 
+SERIAL_PORT = 'COM8' 
 BAUD_RATE = 115200
 
 encoder_values = [0.0, 0.0, 0.0, 0.0]
