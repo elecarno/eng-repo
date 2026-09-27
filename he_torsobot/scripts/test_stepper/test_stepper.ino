@@ -3,12 +3,12 @@
 #include <SoftwareSerial.h>
 
 // --- Configuration ---
-const float TARGET_RPM = 100.0; // Set your desired RPM here
+const float TARGET_RPM = 30.0; // Set your desired RPM here
 const int MICROSTEPS = 16;      // Your driver jumper setting (1/16)
 const int STEPS_PER_REV = 200;  // 1.8 degree stepper default
 
 // --- CNC Shield V3 Pin Mapping (Y-Axis) ---
-#define STEP_PIN 3
+#define STEP_PIN 3 
 #define DIR_PIN 6
 #define ENABLE_PIN 8
 
