@@ -23,7 +23,7 @@ data  = mujoco.MjData(model)
 target_mocap_id = model.body('target_frame').mocapid[0]
 
 # target position vector
-t_pos = np.array([0, -0.1, 0.26])
+t_pos = np.array([0.0, -0.04, 0.24])
 # target orientation (euler in degrees, zyx)
 t_eul = [0, 0, 0]
 # target orientation (rotation matrix)
@@ -48,8 +48,7 @@ h = 0.110
 # lengths betweens J2 and J3
 L1x = 179 / 1000
 L1y = 11.85 / 1000
-L1 = np.sqrt( L1x**2 + L1y**2 ) / 1000
-theta0 = np.arctan2(L1y, L1x) # angle of the L1 line when robot is at rest
+L1 = np.sqrt( L1x**2 + L1y**2 )
 
 # length between J3 and J5
 L2 = 110.15 / 1000
@@ -67,8 +66,9 @@ print(f"2d wrist position: {pos_w2d}")
 theta1 = np.arctan2(pos_w[1], pos_w[0])
 
 # 2R open chain
+theta0 = np.arctan2(L1y, L1x) # angle of the L1 line when robot is at rest
 d = np.sqrt( pos_w2d[0]**2 + pos_w2d[1]**2 ) # distance of the line between J2 and J5
-theta2 = np.arctan2(pos_w2d[1], pos_w2d[0]) + np.arccos( (L1**2 + d**2 - L2**2) / (2*L2*d) ) + theta0
+theta2 = np.arctan2(pos_w2d[1], pos_w2d[0]) + np.arccos( (L1**2 + d**2 - L2**2) / (2*L1*d) ) + theta0
 theta3 = np.arccos( (L1**2 + L2**2 - d**2) / (2*L1*L2) ) - theta0 - np.pi/2
 
 print(f"theta0: {theta0}")
@@ -80,8 +80,8 @@ print(f"theta3: {theta3}")
 # position to set joints to
 joints = [
     -(theta1 + np.pi/2),
-    0,
-    0,
+    theta2 - np.pi,
+    -(theta3 + np.pi/2),
     0,
     0
 ]
