@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "d7eef6374aced10980d655e0",
-    "documentMicroversion": "5c7096a2048db7e0af3e7767",
+    "documentMicroversion": "58da62d4f9f717cab1ed9ba1",
     "elementId": "a918b26e06e000d4992822a5",
     "fullConfiguration": "default",
     "id": "MsjpNZxYLFhq91rPO",
     "isStandardContent": false,
     "name": "base_servo-mount <1>",
-    "partId": "RJCD",
+    "partId": "RcED",
     "suppressed": false,
     "type": "Part"
 }
