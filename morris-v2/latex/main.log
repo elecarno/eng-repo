@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  6 OCT 2026 00:07
+This is LuaHBTeX, Version 1.24.0 (MiKTeX 26.2) (format=lualatex 2026.3.17)  6 OCT 2026 17:29
  system commands enabled.
  file:line:error style messages enabled.
 **d:/1_repos/eng-repo/morris-v2/latex/main.tex
@@ -1008,22 +1008,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<img/mo6_joint-diagram.png, id=42, 2055.68pt x 2055.68pt>
-File: img/mo6_joint-diagram.png Graphic file (type png)
-<use img/mo6_joint-diagram.png>
-Package luatex.def Info: img/mo6_joint-diagram.png  used on input line 73.
+<img/mv2_cad.png, id=42, 666.23906pt x 651.93562pt>
+File: img/mv2_cad.png Graphic file (type png)
+<use img/mv2_cad.png>
+Package luatex.def Info: img/mv2_cad.png  used on input line 63.
+(luatex.def)             Requested size: 318.66948pt x 311.83128pt.
+<img/mv2_joint-diagram.png, id=43, 2055.68pt x 2055.68pt>
+File: img/mv2_joint-diagram.png Graphic file (type png)
+<use img/mv2_joint-diagram.png>
+Package luatex.def Info: img/mv2_joint-diagram.png  used on input line 73.
 (luatex.def)             Requested size: 318.66948pt x 318.65848pt.
-<img/mo6_link2-offset.png, id=44, 494.59781pt x 362.85562pt>
-File: img/mo6_link2-offset.png Graphic file (type png)
-<use img/mo6_link2-offset.png>
-Package luatex.def Info: img/mo6_link2-offset.png  used on input line 82.
-(luatex.def)             Requested size: 295.90588pt x 217.08386pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2<./img/mo6_joint-diagram.png>] [3<./img/mo6_link2-offset.png>] [4] [5]
-[6] (./main.aux)
+<img/mv2_link2-offset.png, id=45, 494.59781pt x 362.85562pt>
+File: img/mv2_link2-offset.png Graphic file (type png)
+<use img/mv2_link2-offset.png>
+Package luatex.def Info: img/mv2_link2-offset.png  used on input line 82.
+(luatex.def)             Requested size: 295.90588pt x 217.08386pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2<./img/mv2_cad.png>] [3<./img/mv2_joint-diagram.png><./img/mv2_link2-offset.pn
+g>] [4] [5] [6] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1036,14 +1044,14 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 27270 strings out of 476076
+ 27282 strings out of 476076
  100000,1648299 words of node,token memory allocated
  604 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 3 glue, 4 kern, 1 glyph, 10 attribute, 69 glue_spec
 , 10 attribute_list, 2 write nodes
-   avail lists: 1:1,2:1305,3:154,4:79,5:209,6:36,7:4431,8:42,9:1195,10:15,11:233
+   avail lists: 1:1,2:1217,3:172,4:79,5:244,6:37,7:5468,8:42,9:1240,10:15,11:219
 
- 49176 multiletter control sequences out of 65536+600000
+ 49184 multiletter control sequences out of 65536+600000
  65 fonts using 4093255 bytes
  94i,14n,88p,1232b,1003s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/f
@@ -1064,9 +1072,9 @@ pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/Mi
 KTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
 lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Progra
 m Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (6 pages, 795189 bytes).
+Output written on main.pdf (6 pages, 950286 bytes).
 
-PDF statistics: 177 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 1048576)
+PDF statistics: 180 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 1048576)
  56 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -371,22 +371,27 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 OUTPUT main.toc
 OUTPUT main.toc
 INPUT C:\Users\MESH User\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
+INPUT .\img\mv2_cad.png
+INPUT .\img\mv2_cad.png
+INPUT .\img\mv2_cad.png
+INPUT .\img\mv2_cad.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
-INPUT .\img\mo6_joint-diagram.png
-INPUT .\img\mo6_joint-diagram.png
-INPUT .\img\mo6_joint-diagram.png
-INPUT .\img\mo6_joint-diagram.png
-INPUT .\img\mo6_link2-offset.png
-INPUT .\img\mo6_link2-offset.png
-INPUT .\img\mo6_link2-offset.png
-INPUT .\img\mo6_link2-offset.png
+INPUT .\img\mv2_joint-diagram.png
+INPUT .\img\mv2_joint-diagram.png
+INPUT .\img\mv2_joint-diagram.png
+INPUT .\img\mv2_joint-diagram.png
+INPUT .\img\mv2_link2-offset.png
+INPUT .\img\mv2_link2-offset.png
+INPUT .\img\mv2_link2-offset.png
+INPUT .\img\mv2_link2-offset.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
-INPUT .\img\mo6_joint-diagram.png
+INPUT .\img\mv2_cad.png
+INPUT .\img\mv2_joint-diagram.png
+INPUT .\img\mv2_link2-offset.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
-INPUT .\img\mo6_link2-offset.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr9.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\lm\ec-lmr9.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr9.tfm

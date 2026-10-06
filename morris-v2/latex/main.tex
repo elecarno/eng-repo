@@ -40,14 +40,14 @@
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={HumanEd: Mo6},
+    pdftitle={HumanEd: Mv2},
     pdfauthor={Benjamin McEwan}
 }
 
 % --- DOCUMENT -------------------------------------------------------------------------------------
 \begin{document}
 
-\title{\textbf{HumanEd: Mo-6 "Morris" 6-Axis Serial Manipulator}}
+\title{\textbf{HumanEd: Mv2 "Morris" 6-Axis Serial Manipulator}}
 \author{Benjamin McEwan}
 \date{\today}
 \maketitle
@@ -58,37 +58,37 @@
 % --- OVERVIEW -------------------------------------------------------------------------------------
 \newpage
 \section{Overview}\label{sec:overview}
-% \begin{figure}[h!]
-%     \centering
-%     \includegraphics[width=0.5\linewidth]{img/mockup_shell.png} 
-%     \caption{Mockup of Oar}
-%     \label{fig:mockup}
-% \end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{img/mv2_cad.png} 
+    \caption{The CAD model of Mv2.}
+    \label{fig:mockup}
+\end{figure}
 
-The Mo-6 robot has been designed as a low-cost 6-axis serial manipulator that can be easily tailored to use different control systems and end-effectors. The robot follows the standard joint arrangement seen on many industrial 6-DOF manipulators, with a 2R open-chain attached to a rotating base used as the positioning system for a spherical wrist.
+The Mv2 robot has been designed as a low-cost 6-axis serial manipulator that can be easily tailored to use different control systems and end-effectors. The robot follows the standard joint arrangement seen on many industrial 6-DOF manipulators, with a 2R open-chain attached to a rotating base used as the positioning system for a spherical wrist.
 
 \subsection{Kinematics}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{img/mo6_joint-diagram.png} 
-    \caption{Joint diagram of the Mo-6 robot.}
+    \includegraphics[width=0.7\linewidth]{img/mv2_joint-diagram.png} 
+    \caption{Joint diagram of the Mv2 robot.}
     \label{fig:joint_diagram}
 \end{figure}
 
-Figure~\ref{fig:joint_diagram} shows the joints of the Mo-6 robot. $\theta_{1}$, $\theta_{2}$, and $\theta_{3}$ comprise the positioning joints; $\theta_{4}$, $\theta_{5}$, and $\theta_{6}$ comprise the orienting joints, constructed in the spherical wrist configuration.
+Figure~\ref{fig:joint_diagram} shows the joints of the Mv2 robot. $\theta_{1}$, $\theta_{2}$, and $\theta_{3}$ comprise the positioning joints; $\theta_{4}$, $\theta_{5}$, and $\theta_{6}$ comprise the orienting joints, constructed in the spherical wrist configuration.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.65\linewidth]{img/mo6_link2-offset.png} 
+    \includegraphics[width=0.65\linewidth]{img/mv2_link2-offset.png} 
     \caption{Diagram of $y$-axis and $z$-axis offset distances between joint 2 and joint 3.}
     \label{fig:j2_j3_offset}
 \end{figure}
 
-The only notable deviation from this structure on the Mo-6 is that when the robot is in its rest position, there is an angled offset between joint 2 and joint 3. This can be seen in Figure~\ref{fig:j2_j3_offset}, which shows a side view of Mo-6 with the aesthetic shell of its second link removed. The offset has been marked with distances $L_{2y}$ and $L_{2z}$, and $\theta$ as the resulting offset angle. As such, any kinematic models of the robot must take into account this offset. All other joints are collinear and/or coaxial where relevant.
+The only notable deviation from this structure on the Mv2 is that when the robot is in its rest position, there is an angled offset between joint 2 and joint 3. This can be seen in Figure~\ref{fig:j2_j3_offset}, which shows a side view of Mv2 with the aesthetic shell of its second link removed. The offset has been marked with distances $L_{2y}$ and $L_{2z}$, and $\theta$ as the resulting offset angle. As such, any kinematic models of the robot must take into account this offset. All other joints are collinear and/or coaxial where relevant.
 
 \subsubsection{Forward Kinematics}
 
-The forward kinematics of Mo-6 can be defined using the Power of Exponentials formula discussed by Lynch and Park in Modern Robotics, \cite{modernrobotics}.
+The forward kinematics of Mv2 can be defined using the Power of Exponentials formula discussed by Lynch and Park in Modern Robotics, \cite{modernrobotics}.
 
 As per Figure~\ref{fig:joint_diagram}, define:
 \begin{itemize}

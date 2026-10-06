@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1791241661.65815 "main.bcf" "main.bbl" "main" 1791241667.26145 0
-  "main.bcf" 1791241666 107871 e0b74e54f2a4b32c7932d1b2eae0b504 "lualatex"
+["biber main"] 1791241661.65815 "main.bcf" "main.bbl" "main" 1791304170.65364 0
+  "main.bcf" 1791304170 107871 e0b74e54f2a4b32c7932d1b2eae0b504 "lualatex"
   "references.bib" 1791234528 585 2be7f50a6a359c5ac333703b82cdcf8a ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["lualatex"] 1791241663.78149 "d:/1_repos/eng-repo/morris-v2/latex/main.tex" "main.pdf" "main" 1791241667.26238 0
+["lualatex"] 1791304166.67224 "d:/1_repos/eng-repo/morris-v2/latex/main.tex" "main.pdf" "main" 1791304170.65458 0
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1234365220 996 a18840b13b499c08ac2de96a99eda4bc ""
@@ -232,15 +232,16 @@
   "C:/Program Files/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/MESH User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1773703161 163260 f7138aa97b0a1dcae55100dabb7d9e7d ""
   "C:/Users/MESH User/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1774360769 127316 b53e13bdad2cd325178d12d8af25291f ""
-  "d:/1_repos/eng-repo/morris-v2/latex/main.tex" 1791241650 8498 42a90d75a9798e186be24550db50b65b ""
-  "img/mo6_joint-diagram.png" 1791234528 479432 42672a2c1cd4ab6105a21626dce0935d ""
-  "img/mo6_link2-offset.png" 1791234528 237303 860303e538909c87c03471920fe23fad ""
-  "main.aux" 1791241666 2527 607189fc701915938b8728df062515a7 "lualatex"
+  "d:/1_repos/eng-repo/morris-v2/latex/main.tex" 1791304165 8482 d488635f710955e4c8a955eaede3a88c ""
+  "img/mv2_cad.png" 1791303982 209301 791ea4459b3b098387b23e757e118bff ""
+  "img/mv2_joint-diagram.png" 1791234528 479432 42672a2c1cd4ab6105a21626dce0935d ""
+  "img/mv2_link2-offset.png" 1791234528 237303 860303e538909c87c03471920fe23fad ""
+  "main.aux" 1791304170 2737 10b333a928e4947762ba5d52d37fe7de "lualatex"
   "main.bbl" 1791241663 2025 0d7d50d070be129e1d1d61f6042ad924 "biber main"
-  "main.out" 1791241666 636 e3eda4d4dd0f49904dbf43425a718023 "lualatex"
-  "main.run.xml" 1791241666 2437 c81361f07ee8b285e6eff88de5a61f4b "lualatex"
-  "main.tex" 1791241650 8498 42a90d75a9798e186be24550db50b65b ""
-  "main.toc" 1791241666 407 d7b46efeb3d956a306fd8c008f9f01dc "lualatex"
+  "main.out" 1791304170 636 e3eda4d4dd0f49904dbf43425a718023 "lualatex"
+  "main.run.xml" 1791304170 2437 c81361f07ee8b285e6eff88de5a61f4b "lualatex"
+  "main.tex" 1791304165 8482 d488635f710955e4c8a955eaede3a88c ""
+  "main.toc" 1791304170 407 d7b46efeb3d956a306fd8c008f9f01dc "lualatex"
   (generated)
   "main.aux"
   "main.bcf"

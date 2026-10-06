@@ -8,7 +8,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
 #define SERVO_FREQ 50 // 50Hz servo refresh rate
 
-// Servo Limits
+// servo Limits
 #define usMS24_MIN 500
 #define usMS24_MAX 2500
 #define degMS24_RANGE 270
@@ -17,7 +17,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 #define usMG996R_MAX 2400
 #define degMG996R_RANGE 180
 
-// Motor to joint mapping (0 = MS24, 1 = MG996R)
+// motor to joint mapping (0 = MS24, 1 = MG996R)
 #define MOTOR_MS24 0
 #define MOTOR_MG996R 1
 
@@ -34,26 +34,25 @@ const ServoProfile SERVO_PROFILES[] = {
 
 const uint8_t NUM_SERVOS = 7;
 int motorTypes[NUM_SERVOS] = {
-  MOTOR_MS24, MOTOR_MS24,                                 // shoulder (ch 0, 1)
-  MOTOR_MG996R, MOTOR_MG996R, MOTOR_MG996R, MOTOR_MG996R, // elbow & wrist (ch 2, 3, 4, 5)
-  MOTOR_MG996R                                            // end-effector (ch 6)
+  MOTOR_MS24, MOTOR_MS24,                                 // shoulder      (0, 1)
+  MOTOR_MG996R, MOTOR_MG996R, MOTOR_MG996R, MOTOR_MG996R, // elbow & wrist (2, 3, 4, 5)
+  MOTOR_MG996R                                            // end-effector  (6)
 };
 
-// Initial Home Angles in Degrees for Channels 0 to 6
 const float HOME_POSITIONS[NUM_SERVOS] = {
-  90.0f, // Ch 0
-  0.0f,  // Ch 1
-  0.0f,  // Ch 2
-  90.0f, // Ch 3
-  90.0f, // Ch 4
-  90.0f, // Ch 5
-  0.0f   // Ch 6
+  90.0f, // base
+  0.0f,  // shoulder
+  0.0f,  // elbow
+  90.0f, // wrist roll 1
+  90.0f, // wrist pitch
+  90.0f, // wrist roll 2
+  0.0f   // end-effector
 };
 
 // ramp objects for all 7 servos
 rampInt servoRamps[NUM_SERVOS];
 
-// Serial Buffer Variables
+// serial buffer Variables
 String inputBuffer = "";
 
 
@@ -80,15 +79,15 @@ void moveServoToAngle(uint8_t channel, float targetDegrees, unsigned long moveDu
     return;
   }
 
-  // 1. Fetch motor profile based on channel type
+  // get motor profile based on channel type
   int motorType = motorTypes[channel];
   ServoProfile profile = SERVO_PROFILES[motorType];
 
-  // 2. Convert degrees -> us -> 12-bit PCA9685 ticks
+  // conversion: degrees -> us -> 12-bit PCA9685 ticks
   uint16_t targetUs    = degreesToUs(targetDegrees, profile.usMin, profile.usMax, profile.maxRangeDeg);
   uint16_t targetTicks = usToTicks(targetUs);
 
-  // 3. Start movement interpolating over moveDurationMs
+  // start movement interpolating over moveDurationMs
   servoRamps[channel].go(targetTicks, moveDurationMs, easing, ONCEFORWARD);
 
   Serial.print("Moving Ch ");
@@ -124,55 +123,57 @@ void updateServos() {
  * Command format: "joint [channel] [degrees] [duration_ms]"
  */
 void processSerialCommand(String command) {
-  command.trim(); // Clean leading/trailing spaces or newlines
+  command.trim(); // remove leading/trailing spaces or newlines
 
   if (command.startsWith("joint ")) {
-    // Remove "joint " prefix
+    // remove "joint " prefix
     String params = command.substring(6);
 
-    // Extract channel
+    // extract channel
     int firstSpace = params.indexOf(' ');
     if (firstSpace == -1) return;
     uint8_t channel = params.substring(0, firstSpace).toInt();
 
-    // Extract target degrees
+    // extract target degrees
     params = params.substring(firstSpace + 1);
     int secondSpace = params.indexOf(' ');
     if (secondSpace == -1) return;
     float targetDegrees = params.substring(0, secondSpace).toFloat();
 
-    // Extract move duration in milliseconds
+    // extract move duration in milliseconds
     unsigned long durationMs = params.substring(secondSpace + 1).toInt();
 
-    // Execute move
+    // execute movement
     moveServoToAngle(channel, targetDegrees, durationMs);
+
   } else if (command.startsWith("home")) {
-    // Default duration if no parameter is provided
+    // default duration if no parameter is provided
     unsigned long durationMs = 1000; 
 
-    // Check if a time parameter was passed (e.g., "home 2500")
+    // check if a time parameter was passed
     int spaceIndex = command.indexOf(' ');
     if (spaceIndex != -1) {
       unsigned long parsedTime = command.substring(spaceIndex + 1).toInt();
       if (parsedTime > 0) durationMs = parsedTime;
     }
 
-    // Move all joints to home positions
+    // move all joints to home positions
     for (uint8_t i = 0; i < NUM_SERVOS; i++) {
       moveServoToAngle(i, HOME_POSITIONS[i], durationMs);
     }
+
   } else if (command.startsWith("stance")) {
-    // Default duration if no parameter is provided
+    // default duration if no parameter is provided
     unsigned long durationMs = 1000;
 
-    // Check if a time parameter was passed (e.g., "stance 2000")
+    // check if a time parameter was passed
     int spaceIndex = command.indexOf(' ');
     if (spaceIndex != -1) {
       unsigned long parsedTime = command.substring(spaceIndex + 1).toInt();
       if (parsedTime > 0) durationMs = parsedTime;
     }
 
-    // Move all joints to stance preset angles
+    // move all joints to stance preset angles
     moveServoToAngle(0, 90.0f,  durationMs);
     moveServoToAngle(1, 45.0f,  durationMs);
     moveServoToAngle(2, 30.0f,  durationMs);
@@ -195,7 +196,7 @@ void checkSerial() {
     if (c == '\n' || c == '\r') {
       if (inputBuffer.length() > 0) {
         processSerialCommand(inputBuffer);
-        inputBuffer = ""; // Reset buffer after processing
+        inputBuffer = ""; // reset buffer after processing
       }
     } else {
       inputBuffer += c;
@@ -215,24 +216,24 @@ void setup() {
   pwm.begin();
   pwm.setPWMFreq(SERVO_FREQ);
 
-  // Set home position for each channel based on HOME_POSITIONS array
+  // set home position for each channel based on HOME_POSITIONS array
   for (uint8_t i = 0; i < NUM_SERVOS; i++) {
     ServoProfile p = SERVO_PROFILES[motorTypes[i]];
     uint16_t homeTicks = usToTicks(degreesToUs(HOME_POSITIONS[i], p.usMin, p.usMax, p.maxRangeDeg));
     
-    servoRamps[i].go(homeTicks); // Set internal ramp starting point
-    pwm.setPWM(i, 0, homeTicks); // Send initial home PWM pulse to PCA9685
+    servoRamps[i].go(homeTicks); // set internal ramp starting point
+    pwm.setPWM(i, 0, homeTicks); // send initial home PWM pulse to PCA9685
   }
 
-  delay(500); // Small pause to let hardware settle
+  delay(500); // let hardware settle
 
-  // Move initial sequence
+  // initial move sequence to stance position
   moveServoToAngle(1, 45.0f, 1000);
   moveServoToAngle(2, 30.0f, 1000);
   moveServoToAngle(4, 115.0f, 1000);
 }
 
 void loop() {
-  checkSerial();   // Parse incoming commands without blocking
-  updateServos();  // Advance ramp values and send PWM outputs
+  checkSerial();   // parse incoming commands without blocking
+  updateServos();  // advance ramp values and send PWM outputs
 }

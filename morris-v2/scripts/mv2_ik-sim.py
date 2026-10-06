@@ -1,7 +1,4 @@
-# MORRIS ROBOT MUJOCO INVERSE KINEMATICS SIMULATION
-# This script is used to simulate the inverse kinematics solver on the morris robot. It was developed
-# to test the code before implementing it on the hardware.
-
+# MORRIS V2 ROBOT MUJOCO INVERSE KINEMATICS SIMULATION
 
 # --- IMPORTS --------------------------------------------------------------------------------------
 import time
@@ -17,7 +14,7 @@ model = mujoco.MjModel.from_xml_path("../morris-v2_mujoco/scene.xml")
 data  = mujoco.MjData(model)
 
 # disable contact physics
-# model.opt.disableflags |= mujoco.mjtDisableBit.mjDSBL_CONTACT
+model.opt.disableflags |= mujoco.mjtDisableBit.mjDSBL_CONTACT
 
 # target frame
 target_mocap_id = model.body('target_frame').mocapid[0]
@@ -30,19 +27,17 @@ joint4 = model.actuator("j4").id
 joint5 = model.actuator("j5").id
 joint6 = model.actuator("j6").id
 
-def disable_collision_between_bodies(model, body1_name, body2_name):
-    body1_id = model.body(body1_name).id
-    body2_id = model.body(body2_name).id
+def disable_collision_on_body(model, body_name):
+    body1_id = model.body(body_name).id
     
-    # Iterate over all geoms attached to body1 and disable their contact properties
+    # iterate over all geoms attached to body and disable their contact properties
     for geom_id in range(model.ngeom):
         if model.geom_bodyid[geom_id] == body1_id:
-            # Setting contype and conaffinity to 0 prevents contact generation
+            # set contype and conaffinity to 0 to prevent contact generation
             model.geom_contype[geom_id] = 0
             model.geom_conaffinity[geom_id] = 0
 
-# Usage in your script:
-disable_collision_between_bodies(model, "m_v2_base", "m_v2_link1")
+disable_collision_on_body(model, "m_v2_base")
 
 
 # --- TARGET PARAMETERS ----------------------------------------------------------------------------
