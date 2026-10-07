@@ -1,5 +1,6 @@
 \contentsline {section}{\numberline {1}Overview}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Kinematics}{2}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Forward Kinematics}{2}{subsubsection.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.2}Workspace \& Joint Limits}{4}{subsubsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.2}Design}{5}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Kinematics}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Forward Kinematics}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Workspace \& Joint Limits}{5}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Electronics}{6}{section.3}%
+\contentsline {section}{\numberline {4}Software}{7}{section.4}%

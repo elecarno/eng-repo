@@ -67,10 +67,12 @@
 
 The Mv2 robot has been designed as a low-cost 6-axis serial manipulator that can be easily tailored to use different control systems and end-effectors. The robot follows the standard joint arrangement seen on many industrial 6-DOF manipulators, with a 2R open-chain attached to a rotating base used as the positioning system for a spherical wrist.
 
-\subsection{Kinematics}
+% --- KINEMATICS -----------------------------------------------------------------------------------
+\newpage
+\section{Kinematics}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\linewidth]{img/mv2_joint-diagram.png} 
+    \includegraphics[width=0.7\linewidth]{img/mv2_joint-diagram.png}
     \caption{Joint diagram of the Mv2 robot.}
     \label{fig:joint_diagram}
 \end{figure}
@@ -86,7 +88,7 @@ Figure~\ref{fig:joint_diagram} shows the joints of the Mv2 robot. $\theta_{1}$, 
 
 The only notable deviation from this structure on the Mv2 is that when the robot is in its rest position, there is an angled offset between joint 2 and joint 3. This can be seen in Figure~\ref{fig:j2_j3_offset}, which shows a side view of Mv2 with the aesthetic shell of its second link removed. The offset has been marked with distances $L_{2y}$ and $L_{2z}$, and $\theta$ as the resulting offset angle. As such, any kinematic models of the robot must take into account this offset. All other joints are collinear and/or coaxial where relevant.
 
-\subsubsection{Forward Kinematics}
+\subsection{Forward Kinematics}
 
 The forward kinematics of Mv2 can be defined using the Power of Exponentials formula discussed by Lynch and Park in Modern Robotics, \cite{modernrobotics}.
 
@@ -171,7 +173,7 @@ which can be used in the PoE formula:
 
 Table~\ref{tab:poe_values} shows the physical values of the parameters used in Equation~\ref{eq:poe_formula}.
 
-\subsubsection{Workspace \& Joint Limits}
+\subsection{Workspace \& Joint Limits}
 
 \begin{table}[htbp]
     \centering
@@ -194,9 +196,21 @@ Table~\ref{tab:poe_values} shows the physical values of the parameters used in E
 
 As the robot is constructed using servos for actuation, the joints are not continuous and have specific limits. These can be seen in Table~\ref{tab:joint_limits}. The reference axes and subsequent rest positions for each joint are based on the servos themselves rather than the mathematical model of Equation~\ref{eq:poe_formula}. The reference axes are defined as per the axes shown in Figure~\ref{fig:joint_diagram}.
 
-% --- DESIGN & ASSEMBLY -------------------------------------------------------------------------------------
+% --- ELECTRONICS ----------------------------------------------------------------------------------
 \newpage
-\subsection{Design}
+\section{Electronics}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/mv2_schematic.png}
+    \caption{Schematic of the basic Mv2 electronics.}
+    \label{fig:schematic}
+\end{figure}
+
+
+% --- SOFTWARE -------------------------------------------------------------------------------------
+\newpage
+\section{Software}
 
 
 % --- BIBLIOGRAPHY ---------------------------------------------------------------------------------
