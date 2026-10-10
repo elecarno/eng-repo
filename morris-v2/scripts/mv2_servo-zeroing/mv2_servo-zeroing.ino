@@ -3,19 +3,17 @@
 
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-#define SERVO_FREQ 50 // Standard 50Hz refresh rate
+#define SERVO_FREQ 50 // servo 50Hz refresh rate
 
-// -------------------------------------------------------------------
-// Servo Calibration Limits (in microseconds)
-// -------------------------------------------------------------------
+// servo Calibration Limits (in microseconds)
 
-// Miuzei 20kg Digital Servo Specs (Channels 0 & 1) - 270° Range
+// MS24 (channels 0 & 1) - 270° range
 #define MIUZEI_MIN  500   // 0° pulse width
 #define MIUZEI_90   1166  // 90° pulse width  (500 + (2000 * 90 / 270))
 #define MIUZEI_180  1833  // 180° pulse width (500 + (2000 * 180 / 270))
 #define MIUZEI_MAX  2500  // 270° max pulse width
 
-// MG996R Analog Servo Specs (Channels 2 to 6) - 180° Range
+// MG996R (channels 2 to 6) - 180° range
 #define MG996R_MIN  500   // 0° pulse width
 #define MG996R_MID  1450  // 90° center pulse width
 #define MG996R_MAX  2400  // 180° max pulse width
@@ -40,7 +38,7 @@ void setServoPosition(uint8_t channel, uint16_t angle) {
   const char* typeStr = "";
 
   if (channel <= 1) {
-    // Channels 0 & 1: Miuzei 20kg (270° Range)
+    // channels 0 & 1: MS24 (270° Range)
     typeStr = "Miuzei 270°";
     switch (angle) {
       case 0:   pulseUS = MIUZEI_MIN; break;
@@ -52,7 +50,7 @@ void setServoPosition(uint8_t channel, uint16_t angle) {
         return;
     }
   } else {
-    // Channels 2 to 6: MG996R (180° Range)
+    // channels 2 to 6: MG996R (180° Range)
     typeStr = "MG996R 180°";
     switch (angle) {
       case 0:   pulseUS = MG996R_MIN; break;
@@ -82,9 +80,9 @@ void setServoPosition(uint8_t channel, uint16_t angle) {
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("==========================================");
-  Serial.println("   7-Axis Arm Interactive Control Setup   ");
-  Serial.println("==========================================");
+  Serial.println("=====================================");
+  Serial.println("    7-DOF Arm Servo Zeroing Setup    ");
+  Serial.println("=====================================");
 
   pwm.begin();
   pwm.setOscillatorFrequency(27000000);
@@ -92,7 +90,7 @@ void setup() {
 
   delay(10);
 
-  // Initialize all channels to neutral position
+  // initialize all channels to neutral position
   Serial.println("Initializing channels to neutral centers...");
   setServoPosition(0, 90);
   setServoPosition(1, 90);

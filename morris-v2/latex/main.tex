@@ -40,14 +40,14 @@
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={HumanEd: Mv2},
+    pdftitle={HumanEd: MV2},
     pdfauthor={Benjamin McEwan}
 }
 
 % --- DOCUMENT -------------------------------------------------------------------------------------
 \begin{document}
 
-\title{\textbf{HumanEd: Mv2 "Morris" 6-Axis Serial Manipulator}}
+\title{\textbf{HumanEd: MV2 "Morris" 6-Axis Serial Manipulator}}
 \author{Benjamin McEwan}
 \date{\today}
 \maketitle
@@ -61,11 +61,11 @@
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{img/mv2_cad.png} 
-    \caption{The CAD model of Mv2.}
+    \caption{The CAD model of MV2.}
     \label{fig:mockup}
 \end{figure}
 
-The Mv2 robot has been designed as a low-cost 6-axis serial manipulator that can be easily tailored to use different control systems and end-effectors. The robot follows the standard joint arrangement seen on many industrial 6-DOF manipulators, with a 2R open-chain attached to a rotating base used as the positioning system for a spherical wrist.
+The MV2 robot has been designed as a low-cost 6-axis serial manipulator that can be easily tailored to use different control systems and end-effectors. The robot follows the standard joint arrangement seen on many industrial 6-DOF manipulators, with a 2R open-chain attached to a rotating base used as the positioning system for a spherical wrist.
 
 % --- KINEMATICS -----------------------------------------------------------------------------------
 \newpage
@@ -73,11 +73,11 @@ The Mv2 robot has been designed as a low-cost 6-axis serial manipulator that can
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{img/mv2_joint-diagram.png}
-    \caption{Joint diagram of the Mv2 robot.}
+    \caption{Joint diagram of the MV2 robot.}
     \label{fig:joint_diagram}
 \end{figure}
 
-Figure~\ref{fig:joint_diagram} shows the joints of the Mv2 robot. $\theta_{1}$, $\theta_{2}$, and $\theta_{3}$ comprise the positioning joints; $\theta_{4}$, $\theta_{5}$, and $\theta_{6}$ comprise the orienting joints, constructed in the spherical wrist configuration.
+Figure~\ref{fig:joint_diagram} shows the joints of the MV2 robot. $\theta_{1}$, $\theta_{2}$, and $\theta_{3}$ comprise the positioning joints; $\theta_{4}$, $\theta_{5}$, and $\theta_{6}$ comprise the orienting joints, constructed in the spherical wrist configuration.
 
 \begin{figure}[h!]
     \centering
@@ -86,11 +86,11 @@ Figure~\ref{fig:joint_diagram} shows the joints of the Mv2 robot. $\theta_{1}$, 
     \label{fig:j2_j3_offset}
 \end{figure}
 
-The only notable deviation from this structure on the Mv2 is that when the robot is in its rest position, there is an angled offset between joint 2 and joint 3. This can be seen in Figure~\ref{fig:j2_j3_offset}, which shows a side view of Mv2 with the aesthetic shell of its second link removed. The offset has been marked with distances $L_{2y}$ and $L_{2z}$, and $\theta$ as the resulting offset angle. As such, any kinematic models of the robot must take into account this offset. All other joints are collinear and/or coaxial where relevant.
+The only notable deviation from this structure on the MV2 is that when the robot is in its rest position, there is an angled offset between joint 2 and joint 3. This can be seen in Figure~\ref{fig:j2_j3_offset}, which shows a side view of MV2 with the aesthetic shell of its second link removed. The offset has been marked with distances $L_{2y}$ and $L_{2z}$, and $\theta$ as the resulting offset angle. As such, any kinematic models of the robot must take into account this offset. All other joints are collinear and/or coaxial where relevant.
 
 \subsection{Forward Kinematics}
 
-The forward kinematics of Mv2 can be defined using the Power of Exponentials formula discussed by Lynch and Park in Modern Robotics, \cite{modernrobotics}.
+The forward kinematics of MV2 can be defined using the Power of Exponentials formula discussed by Lynch and Park in Modern Robotics, \cite{modernrobotics}.
 
 As per Figure~\ref{fig:joint_diagram}, define:
 \begin{itemize}
@@ -157,7 +157,7 @@ which can be used in the PoE formula:
     \label{tab:poe_values}
     \begin{tabular}{|l|l|}
         \hline
-        \textbf{Parameter} & \textbf{Value (mm)} \\
+        Parameter & Value (mm) \\
         \hline
         $h$ & 65.35 \\
         $L_{1}$ & 50.30 \\
@@ -181,7 +181,7 @@ Table~\ref{tab:poe_values} shows the physical values of the parameters used in E
     \label{tab:joint_limits}
     \begin{tabular}{|l|l|l|l|}
         \hline
-        \textbf{Joint} & Reference Axis & Limit ($^{\circ}$) & Rest Position ($^{\circ}$) \\
+        Joint & Reference Axis & Limit ($^{\circ}$) & Rest Position ($^{\circ}$) \\
         \hline
         $\theta_{1}$ & $x$ & $180^{\circ}$\footnotemark & $90^{\circ}$ \\
         $\theta_{2}$ & $y$ & $180^{\circ}$\footref{fn:270_servo} & $0^{\circ}$ \\
@@ -198,19 +198,170 @@ As the robot is constructed using servos for actuation, the joints are not conti
 
 % --- ELECTRONICS ----------------------------------------------------------------------------------
 \newpage
-\section{Electronics}
+\section{Electronics \& Software}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{img/mv2_elec-mounts.png}
+    \caption{Positions of the electronics mounting holes.}
+    \label{fig:elec_mounts}
+\end{figure}
+
+MV2 has been designed such that it is not tied directly to one microcontroller platform. The base of MV2 has been designed with an open back, and four mounting holes, as seen in Figure~\ref{fig:elec_mounts}, which can be used to fit custom 3D printed baseplate extensions to hold whichever microcontroller and power boards the user may wish to use.
+
+The only electronics contained within the base link (aside from the joint 1 motor) is an Adafruit-style PCA9685 16-Channel 12-Bit PWM servo driver board. Mounting holes have been included for this board as it was considered the most basic element needed to control the robot, however should they wish, the open design of the base means that the user is free to forego this board in favour of an alternative.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1.0\linewidth]{img/mv2_schematic.png}
-    \caption{Schematic of the basic Mv2 electronics.}
+    \caption{Schematic of the MV2 UNO-R3 based electronics.}
     \label{fig:schematic}
 \end{figure}
 
+\subsection{UNO R3 Setup}
+As a basic "default" setup, the MV2 repository includes a mount and control script for controlling the robot using an Arduino UNO R3 microcontroller. The formal schematic for this is shown in Figure~\ref{fig:schematic}, however it may also be clearer to some users to simply state the connections, which are as follows:
+\begin{itemize}
+    \item UNO R3: 5V \rightarrow PCA9685: VCC
+    \item UNO R3: GND \rightarrow PCA9685: GND
+    \item UNO R3: SCL \rightarrow PCA9685: SCL
+    \item UNO R3: SDA \rightarrow PCA9685: SDA
+    \item Motors 1, 2, 3, 4, 5, 6 to PCA9685 channels 0, 1, 2, 3, 4, 5 respectively.
+\end{itemize}
 
-% --- SOFTWARE -------------------------------------------------------------------------------------
-\newpage
-\section{Software}
+Note that this setup assumes the UNO R3 model that includes dedicated SDA and SCL pins for I2C.
+
+A script is included in the UNO R3 setup, in the form of an Arduino IDE sketch named \texttt{mv2\_control\_uno-r3.ino}. This script allows the MV2 robot to be controlled using commands over serial, and makes use of acceleration ramps in order to reduce oscillations in the robot's movements. The script has three commands, which are:
+
+\begin{itemize}
+    \item \fbox{\texttt{joint [channel] [target angle] [time to move in milliseconds]}} \\
+    
+    Tells a specific joint motor (based on its PCA9685 channel) to move to a target angle in some set amount of time.
+    
+    Example: \texttt{joint 2 60 1500}
+    
+    The above will tell the elbow joint to move to $60^{\circ}$ in 1.5 seconds. It is recommended to try and keep movement times to a minimum of 1000 milliseconds.
+
+
+    \item \fbox{\texttt{home [time to move in milliseconds]}} \\
+    
+    Tells the robot to move to its rest, or home, position in some set amount of time.
+    
+    Example: \texttt{home 3000}
+    
+    The above will tell the robot to move to its rest position in 3 seconds. It is recommended that when writing serial control code (for example, in Python) that you use this command as the exit state of your script to avoid the robot jerking into its rest position each time you reset the control script.
+
+
+    \item \fbox{\texttt{stance [time to move in milliseconds]}} \\
+    
+    Tells the robot to move to its "stance" position in some set amount of time.
+    
+    Example: \texttt{stance 2000}
+    
+    The above will tell the robot to move to its rest position in 2 seconds. This can be a useful command for verifying that the robot's joints are working correctly.
+\end{itemize}
+
+
+% --- ASSEMBLY -------------------------------------------------------------------------------------
+\section{Assembly}
+
+MV2 is a 3D printed robot. The robot has been designed to be printed using PLA at 10\% to 20\% infill, however any reasonably hard filament should function as well. The \texttt{.stl} files for MV2 can be found in the \texttt{/parts/} folder of the MV2 repository. Assembly drawings can be found in the \texttt{.pdf} file named \texttt{mv2-drawings\_assembly.pdf}.
+
+Aside from 3D printed parts, MV2 uses various purchased components. The list of these can be seen in Table~\ref{tab:bom}
+
+When assembling motor and horn stabiliser pairs, the Arduino IDE sketch named \texttt{mv2\_servo-zeroing.ino} should be used to ensure that all servos are in their correct home positions when the links are all assembled together.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Bill of Materials}
+    \label{tab:bom}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Part Description} & \textbf{Type} & \textbf{Quantity} \\
+        \hline
+        Base Attachment & 3D Printed & 1 \\
+        \hline
+        Base Servo Mount & 3D Printed & 1 \\
+        \hline
+        Baseplate & 3D Printed & 1 \\
+        \hline
+        End Effector Mount & 3D Printed & 1 \\
+        \hline
+        Frontplate & 3D Printed & 1 \\
+        \hline
+        Horn Stabiliser (Link 1) & 3D Printed & 1 \\
+        \hline
+        Horn Stabiliser (MG996R) & 3D Printed & 3 \\
+        \hline
+        Horn Stabiliser (MS24) & 3D Printed & 1 \\
+        \hline
+        Link 1 Attachment & 3D Printed & 1 \\
+        \hline
+        Link 1 Base & 3D Printed & 1 \\
+        \hline
+        Link 1 Servo Mount & 3D Printed & 1 \\
+        \hline
+        Link 1 Shell & 3D Printed & 1 \\
+        \hline
+        Link 2 Attachment & 3D Printed & 1 \\
+        \hline
+        Link 2 Servo Mount & 3D Printed & 1 \\
+        \hline
+        Link 2 Shell & 3D Printed & 1 \\
+        \hline
+        Link 3 Attachment & 3D Printed & 1 \\
+        \hline
+        Link 3 Servo Mount & 3D Printed & 1 \\
+        \hline
+        Link 3 Shell & 3D Printed & 1 \\
+        \hline
+        Link 4 Attachment & 3D Printed & 1 \\
+        \hline
+        Link 4 Servo Mount & 3D Printed & 1 \\
+        \hline
+        Link 4 Shell & 3D Printed & 1 \\
+        \hline
+        Link 5 Attachment & 3D Printed & 1 \\
+        \hline
+        Link 5 Servo Mount & 3D Printed & 1 \\
+        \hline
+        Link 5 Shell & 3D Printed & 1 \\
+        \hline
+        Logo 1 & 3D Printed & 1 \\
+        \hline
+        Logo 2 & 3D Printed & 1 \\
+        \hline
+        Logo 3 & 3D Printed & 1 \\
+        \hline
+        Logo 4 & 3D Printed & 1 \\
+        \hline
+        6806 Bearing 42x30x7mm & Purchased & 4 \\
+        \hline
+        6815 Bearing 95x75x10mm & Purchased & 1 \\
+        \hline
+        MG996 Servo Motor & Purchased & 4 \\
+        \hline
+        MG996 Straight Horn & Purchased & 6 \\
+        \hline
+        MS24 Servo (Miuzei 20kg) & Purchased & 2 \\
+        \hline
+        PCA9685 16-Channel 12-Bit PWM Servo Driver Board & Purchased & 1 \\
+        \hline
+        M3 Stainless Steel Washer & Purchased & 16 \\
+        \hline
+        Pan head screw M3 x 10 Stainless Steel & Purchased & 41 \\
+        \hline
+        Pan head screw M3 x 12 Stainless Steel & Purchased & 12 \\
+        \hline
+        Pan head screw M3 x 6 Stainless Steel & Purchased & 9 \\
+        \hline
+        Pan head screw M3 x 8 Stainless Steel & Purchased & 6 \\
+        \hline
+        Pan head screw M4 x 10 Stainless Steel & Purchased & 18 \\
+        \hline
+        Pan head screw M4 x 20 Stainless Steel & Purchased & 2 \\
+        \hline
+    \end{tabular}
+\end{table}
 
 
 % --- BIBLIOGRAPHY ---------------------------------------------------------------------------------

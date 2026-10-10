@@ -2,5 +2,6 @@
 \contentsline {section}{\numberline {2}Kinematics}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Forward Kinematics}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Workspace \& Joint Limits}{5}{subsection.2.2}%
-\contentsline {section}{\numberline {3}Electronics}{6}{section.3}%
-\contentsline {section}{\numberline {4}Software}{7}{section.4}%
+\contentsline {section}{\numberline {3}Electronics \& Software}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}UNO R3 Setup}{7}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Assembly}{8}{section.4}%
