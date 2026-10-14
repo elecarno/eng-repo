@@ -3,7 +3,7 @@
 #include <SoftwareSerial.h>
 
 // --- Configuration ---
-const float TARGET_RPM = 30.0; // Set your desired RPM here
+const float TARGET_RPM = 45.0; // Set your desired RPM here
 const int MICROSTEPS = 16;      // Your driver jumper setting (1/16)
 const int STEPS_PER_REV = 200;  // 1.8 degree stepper default
 
