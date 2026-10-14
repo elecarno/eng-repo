@@ -1,8 +1,8 @@
 #include <AccelStepper.h>
 
 // --- Configuration Parameters ---
-const float TARGET_RPM_1 = 15.0;    // Target speed for Motor 1 in RPM
-const float TARGET_RPM_2 = 120.0;   // Target speed for Motor 2 in RPM
+const float TARGET_RPM_1 = 60.0;    // Target speed for Motor 1 in RPM
+const float TARGET_RPM_2 = 60.0;   // Target speed for Motor 2 in RPM
 
 const int STEPS_PER_REV = 200;      // Standard 1.8-degree stepper
 const int MICROSTEPS = 16;           // Change to match DIP switch setting (1, 2, 4, 8, 16, 32)
