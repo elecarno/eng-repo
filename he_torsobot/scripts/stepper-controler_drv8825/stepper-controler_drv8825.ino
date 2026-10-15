@@ -3,7 +3,7 @@
 // --- Configuration Parameters ---
 const int STEPS_PER_REV = 200;           // Standard 1.8-degree stepper
 const int MICROSTEPS = 16;               // Change to match DIP switch setting (1, 2, 4, 8, 16, 32)
-const float GEAR_REDUCTION_RATIO = 1.0; // Set your gearbox ratio here 
+const float GEAR_REDUCTION_RATIO = 30.0; // Set your gearbox ratio here 
 const float CORRECTION_FACTOR = 0.5;     // Fine-tune multiplier (set to 0.5 since 90deg currently gave 180deg)
 
 // --- Pin Definitions (Gravity Dual DRV8825 Shield) ---

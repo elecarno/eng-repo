@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/539f81b493ad362909251b2d/w/378992cc5cd3237fda9e1ad5/e/602e9e34916b9b5f157576c9 -->
+<mujoco model="arm-7dof_mujoco">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+  <default>
+    <default class="arm-7dof_mujoco">
+      <joint frictionloss="0.1" armature="0.005"/>
+      <position kp="50" dampratio="1"/>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom group="3"/>
+      </default>
+    </default>
+  </default>
+  <worldbody>
+    <!-- Link base -->
+    <body name="base" pos="0 0 0" quat="1 0 0 0" childclass="arm-7dof_mujoco">
+      <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+      <!-- Part base -->
+      <geom type="mesh" class="visual" pos="-0 0 0.16" quat="1 0 0 0" mesh="base" material="base_material"/>
+      <geom type="mesh" class="collision" pos="-0 0 0.16" quat="1 0 0 0" mesh="base" material="base_material"/>
+      <!-- Link link1 -->
+      <body name="link1" pos="-0 0 0.16" quat="0.5 -0.5 -0.5 0.5">
+        <!-- Joint from base to link1 -->
+        <joint axis="0 0 1" name="s1" type="hinge" range="0.0 6.283185307179586"/>
+        <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+        <!-- Part link1 -->
+        <geom type="mesh" class="visual" pos="0 0 -0.002" quat="0.5 0.5 0.5 -0.5" mesh="link1" material="link1_material"/>
+        <geom type="mesh" class="collision" pos="0 0 -0.002" quat="0.5 0.5 0.5 -0.5" mesh="link1" material="link1_material"/>
+        <!-- Link link2 -->
+        <body name="link2" pos="0.026 0 -0.034" quat="0.707107 -0 0.707107 -0">
+          <!-- Joint from link1 to link2 -->
+          <joint axis="0 0 1" name="s2" type="hinge" range="-3.141592653589787 6.217248937900877e-15"/>
+          <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+          <!-- Part link2 -->
+          <geom type="mesh" class="visual" pos="-0.032 0 -0.028" quat="0.707107 0.707107 0 -0" mesh="link2" material="link2_material"/>
+          <geom type="mesh" class="collision" pos="-0.032 0 -0.028" quat="0.707107 0.707107 0 -0" mesh="link2" material="link2_material"/>
+          <!-- Link link3 -->
+          <body name="link3" pos="0 0 -0.026" quat="0.707107 0.707107 0 -0">
+            <!-- Joint from link2 to link3 -->
+            <joint axis="0 0 1" name="s3" type="hinge" range="0.0 6.283185307179586"/>
+            <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+            <!-- Part link3 -->
+            <geom type="mesh" class="visual" pos="-0.032 -0.002 -0.002" quat="1 -0 -0 -0" mesh="link3" material="link3_material"/>
+            <geom type="mesh" class="collision" pos="-0.032 -0.002 -0.002" quat="1 -0 -0 -0" mesh="link3" material="link3_material"/>
+            <!-- Link link4 -->
+            <body name="link4" pos="-0 0 -0.079" quat="0.5 -0.5 -0.5 0.5">
+              <!-- Joint from link3 to link4 -->
+              <joint axis="0 0 1" name="e" type="hinge" range="0.0 1.5707963267948966"/>
+              <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+              <!-- Part link4 -->
+              <geom type="mesh" class="visual" pos="-0.002 -0.077 0.03" quat="0.5 0.5 0.5 -0.5" mesh="link4" material="link4_material"/>
+              <geom type="mesh" class="collision" pos="-0.002 -0.077 0.03" quat="0.5 0.5 0.5 -0.5" mesh="link4" material="link4_material"/>
+              <!-- Link link5 -->
+              <body name="link5" pos="-0 0.019 0" quat="0.5 0.5 0.5 -0.5">
+                <!-- Joint from link4 to link5 -->
+                <joint axis="0 0 1" name="w1" type="hinge" range="0.0 6.283185307179586"/>
+                <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+                <!-- Part link5 -->
+                <geom type="mesh" class="visual" pos="-0.03 -0.002 0.094" quat="1 0 0 0" mesh="link5" material="link5_material"/>
+                <geom type="mesh" class="collision" pos="-0.03 -0.002 0.094" quat="1 0 0 0" mesh="link5" material="link5_material"/>
+                <!-- Link link6 -->
+                <body name="link6" pos="0 -0 -0.023" quat="0.5 -0.5 -0.5 0.5">
+                  <!-- Joint from link5 to link6 -->
+                  <joint axis="0 0 1" name="w2" type="hinge" range="-1.5707963267948957 1.5707963267948974"/>
+                  <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+                  <!-- Part link6 -->
+                  <geom type="mesh" class="visual" pos="-0.002 -0.117 0.028" quat="0.5 0.5 0.5 -0.5" mesh="link6" material="link6_material"/>
+                  <geom type="mesh" class="collision" pos="-0.002 -0.117 0.028" quat="0.5 0.5 0.5 -0.5" mesh="link6" material="link6_material"/>
+                  <!-- Link end_effector -->
+                  <body name="end_effector" pos="0 0.019 0" quat="0.5 0.5 0.5 -0.5">
+                    <!-- Joint from link6 to end_effector -->
+                    <joint axis="0 0 1" name="w3" type="hinge" range="0.0 6.283185307179586"/>
+                    <inertial pos="0 0 0" mass="1e-09" fullinertia="1e-09 1e-09 1e-09 0 0 0"/>
+                    <!-- Part end_effector -->
+                    <geom type="mesh" class="visual" pos="-0.028 -0.002 0.134" quat="1 0 0 0" mesh="end_effector" material="end_effector_material"/>
+                    <geom type="mesh" class="collision" pos="-0.028 -0.002 0.134" quat="1 0 0 0" mesh="end_effector" material="end_effector_material"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <asset>
+    <mesh file="link2.stl"/>
+    <mesh file="link1.stl"/>
+    <mesh file="link3.stl"/>
+    <mesh file="base.stl"/>
+    <mesh file="end_effector.stl"/>
+    <mesh file="link6.stl"/>
+    <mesh file="link4.stl"/>
+    <mesh file="link5.stl"/>
+    <material name="base_material" rgba="0.498039 0.498039 0.498039 1"/>
+    <material name="link1_material" rgba="0.231373 0.380392 0.705882 1"/>
+    <material name="link2_material" rgba="0.231373 0.380392 0.705882 1"/>
+    <material name="link3_material" rgba="0.615686 0.811765 0.929412 1"/>
+    <material name="link4_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="link5_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="link6_material" rgba="0.972549 0.529412 0.00392157 1"/>
+    <material name="end_effector_material" rgba="0.980392 0.713725 0.00392157 1"/>
+  </asset>
+  <actuator>
+    <position class="arm-7dof_mujoco" name="s1" joint="s1" inheritrange="1"/>
+    <position class="arm-7dof_mujoco" name="s2" joint="s2" inheritrange="1"/>
+    <position class="arm-7dof_mujoco" name="s3" joint="s3" inheritrange="1"/>
+    <position class="arm-7dof_mujoco" name="e" joint="e" inheritrange="1"/>
+    <position class="arm-7dof_mujoco" name="w1" joint="w1" inheritrange="1"/>
+    <position class="arm-7dof_mujoco" name="w2" joint="w2" inheritrange="1"/>
+    <position class="arm-7dof_mujoco" name="w3" joint="w3" inheritrange="1"/>
+  </actuator>
+  <equality/>
+</mujoco>

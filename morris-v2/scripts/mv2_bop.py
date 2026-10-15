@@ -2,7 +2,7 @@ import serial
 import time
 
 # --- CONFIGURATION ---------------------------------------------------
-SERIAL_PORT = 'COM3'   # Update for your OS: 'COM3' (Windows) or '/dev/ttyUSB0' / '/dev/ttyACM0' (Linux/Mac)
+SERIAL_PORT = 'COM4'   # Update for your OS: 'COM3' (Windows) or '/dev/ttyUSB0' / '/dev/ttyACM0' (Linux/Mac)
 BAUD_RATE   = 9600
 
 # Joint 1 Configuration (Slower joint: 1 sweep = Min -> Max)
