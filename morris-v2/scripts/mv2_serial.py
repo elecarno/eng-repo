@@ -3,7 +3,7 @@ import time
 import random
 
 # --- CONFIGURATION ---------------------------------------------------
-SERIAL_PORT = 'COM4' 
+SERIAL_PORT = 'COM3' 
 BAUD_RATE   = 9600
 
 def main():

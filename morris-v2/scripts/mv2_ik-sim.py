@@ -1,5 +1,3 @@
-# MORRIS V2 ROBOT MUJOCO INVERSE KINEMATICS SIMULATION
-
 # --- IMPORTS --------------------------------------------------------------------------------------
 import time
 import mujoco
@@ -7,9 +5,7 @@ import mujoco.viewer
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 
-
 # --- VARIABLES ------------------------------------------------------------------------------------
-# load model -> path must be relative to location that script is being run from
 model = mujoco.MjModel.from_xml_path("../morris-v2_mujoco/scene.xml")
 data  = mujoco.MjData(model)
 
@@ -19,132 +15,115 @@ model.opt.disableflags |= mujoco.mjtDisableBit.mjDSBL_CONTACT
 # target frame
 target_mocap_id = model.body('target_frame').mocapid[0]
 
-# get joints
-joint1 = model.actuator("j1").id
-joint2 = model.actuator("j2").id
-joint3 = model.actuator("j3").id
-joint4 = model.actuator("j4").id
-joint5 = model.actuator("j5").id
-joint6 = model.actuator("j6").id
+# get actuator IDs and corresponding joint addresses
+actuator_names = ["j1", "j2", "j3", "j4", "j5", "j6"]
+actuator_ids = [model.actuator(name).id for name in actuator_names]
+joint_ids = [model.actuator_trnid[act_id, 0] for act_id in actuator_ids]
+qpos_addrs = [model.jnt_qposadr[j_id] for j_id in joint_ids]
+
+# Find end-effector body (typically the last link or tool body)
+ee_body_name = "m_v2_end_effector" if "m_v2_end_effector" in [model.body(i).name for i in range(model.nbody)] else model.body(model.nbody - 1).name
+ee_body_id = model.body(ee_body_name).id
 
 def disable_collision_on_body(model, body_name):
     body1_id = model.body(body_name).id
-    
-    # iterate over all geoms attached to body and disable their contact properties
     for geom_id in range(model.ngeom):
         if model.geom_bodyid[geom_id] == body1_id:
-            # set contype and conaffinity to 0 to prevent contact generation
             model.geom_contype[geom_id] = 0
             model.geom_conaffinity[geom_id] = 0
 
 disable_collision_on_body(model, "m_v2_base")
 
-
 # --- TARGET PARAMETERS ----------------------------------------------------------------------------
-t_pos = np.array([0.00, -0.1, 0.3])
-t_eul = np.array([0, 0, 90])
+t_pos = np.array([0.1, -0.1, 0.3]) # meters
+t_eul = np.array([0, 0, 90])        # degrees
 
 # Pre-compute target quaternion once (MuJoCo expects [w, x, y, z])
 t_quat_scipy = R.from_euler('ZYX', t_eul, degrees=True).as_quat()
 t_quat = np.array([t_quat_scipy[3], t_quat_scipy[0], t_quat_scipy[1], t_quat_scipy[2]])
 
-# --- IK SOLVER ------------------------------------------------------------------------------------
-print("BEGINNING IK SOLVER")
+# --- NUMERICAL JACOBIAN IK SOLVER ----------------------------------------------------------------
+print("RUNNING NUMERICAL JACOBIAN IK SOLVER FOR MUJOCO")
 
-# p_b = t_pos 
-# d6 = 95.350 / 1000  # 95.35 mm
-# R_sb = t_rot
+# Set initial guess to zeros
+for qpos_idx in qpos_addrs:
+    data.qpos[qpos_idx] = 0.0
+mujoco.mj_forward(model, data)
 
-# # 1. Wrist center position
-# # Tool approach vector is local Z (column 2 of R_sb)
-# p_w = p_b - d6 * R_sb[:, 2]
+target_rot = R.from_quat([t_quat_scipy[0], t_quat_scipy[1], t_quat_scipy[2], t_quat_scipy[3]]).as_matrix()
 
-# # 2. Joint 1 angle
-# theta1 = np.atan2(p_w[1], p_w[0])
+# Iterative Damped Least-Squares IK
+max_iterations = 300
+lambda_damping = 1e-2
+dt_ik = 0.1
 
-# # 3. Major joint dimensions
-# d1 = 110 / 1000
-# a2x = 179 / 1000
-# a2y = 11.85 / 1000
-# a2 = np.sqrt(a2x**2 + a2y**2)
-# theta2_offset = np.atan2(a2y, a2x)
-# a3 = 110.15 / 1000
+for iteration in range(max_iterations):
+    mujoco.mj_forward(model, data)
+    
+    # Current end-effector pose
+    curr_pos = data.xpos[ee_body_id]
+    curr_mat = data.xmat[ee_body_id].reshape(3, 3)
+    
+    # Position error
+    pos_err = t_pos - curr_pos
+    
+    # Orientation error: flipped target forward vector so tool +z aligns with target +z
+    curr_forward = curr_mat[:, 2]
+    target_forward = -target_rot[:, 2]  # Flipped from +z to point correctly
+    rot_err = np.cross(curr_forward, target_forward)
+    
+    # Combined error vector (6 DOF)
+    err = np.hstack((pos_err, rot_err))
+    
+    if np.linalg.norm(err) < 1e-4:
+        print(f"IK converged at iteration {iteration}!")
+        break
+        
+    # Compute Jacobians for the end-effector body
+    jac_pos = np.zeros((3, model.nv))
+    jac_rot = np.zeros((3, model.nv))
+    mujoco.mj_jacBody(model, data, jac_pos, jac_rot, ee_body_id)
+    
+    # Extract columns corresponding to our 6 active robot joints
+    nv_indices = [model.jnt_dofadr[j_id] for j_id in joint_ids]
+    
+    J_pos = jac_pos[:, nv_indices]
+    J_rot = jac_rot[:, nv_indices]
+    J = np.vstack((J_pos, J_rot))
+    
+    # Damped Least Squares pseudo-inverse
+    J_pinv = J.T @ np.linalg.inv(J @ J.T + (lambda_damping**2) * np.eye(6))
+    
+    # Joint velocity update
+    dq = J_pinv @ err
+    
+    # Update joint positions
+    for i, qpos_idx in enumerate(qpos_addrs):
+        data.qpos[qpos_idx] += dq[i] * dt_ik
 
-# r = np.sqrt(p_w[0]**2 + p_w[1]**2)
-# s = p_w[2] - d1
+# Final forward kinematics update with solved qpos
+mujoco.mj_forward(model, data)
 
-# # 4. Joint 3 angle
-# cos_theta3 = (r**2 + s**2 - a2**2 - a3**2) / (2 * a2 * a3)
-# cos_theta3 = np.clip(cos_theta3, -1.0, 1.0)
-# sin_theta3 = np.sqrt(1.0 - cos_theta3**2)
-# theta3 = np.atan2(sin_theta3, cos_theta3)
-
-# # 5. Joint 2 angle
-# k1 = a2 + a3 * cos_theta3
-# k2 = a3 * sin_theta3
-# theta2 = np.atan2(s, r) - np.atan2(k2, k1) - theta2_offset
-
-# # 6. Wrist orientation factoring in local Z -> global -Y rest state
-# # Transform rotation into the arm frame relative to the rest frame
-# R_30 = np.array([
-#     [ np.cos(theta1)*np.cos(theta2+theta3), -np.cos(theta1)*np.sin(theta2+theta3),  np.sin(theta1)],
-#     [ np.sin(theta1)*np.cos(theta2+theta3), -np.sin(theta1)*np.sin(theta2+theta3), -np.cos(theta1)],
-#     [ np.sin(theta2+theta3),                 np.cos(theta2+theta3),                 0]
-# ])
-
-# R_36 = R_30.T @ R_sb
-
-# # Extract ZYZ Euler angles from wrist rotation matrix R_36
-# theta5 = np.atan2(np.sqrt(R_36[0, 2]**2 + R_36[1, 2]**2), R_36[2, 2])
-
-# if np.isclose(np.sin(theta5), 0.0, atol=1e-5):
-#     theta4 = 0.0
-#     theta6 = np.atan2(R_36[1, 0], R_36[0, 0])
-# else:
-#     theta4 = np.atan2(R_36[1, 2], R_36[0, 2])
-#     theta6 = np.atan2(R_36[2, 1], -R_36[2, 0])
-
-# # joints_deg = np.degrees([theta1, theta2, theta3, theta4, theta5, theta6])
-# # print(f"Joint Angles (deg): {np.round(joints_deg, 2)}")
-# joints_rad = [theta1, theta2, theta3, theta4, theta5, theta6]
-# print(f"Joint Angles (rad): {np.round(joints_rad, 2)}")
-
-# # position to set joints to
-# joints = [
-#     theta1 + np.pi/2,
-#     -theta2,
-#     -(theta3 - np.pi/2),
-#     theta4 + np.pi,
-#     theta5 - np.pi/2,
-#     theta6
-# ]
-
-# print(f"Joint Angles (set): {np.round(joints, 2)}")
-
-# data.ctrl[joint1] = joints[0]
-# data.ctrl[joint2] = joints[1]
-# data.ctrl[joint3] = joints[2]
-# data.ctrl[joint4] = joints[3]
-# data.ctrl[joint5] = joints[4]
-# data.ctrl[joint6] = joints[5]
-
+# Extract solved joint positions
+solved_joints = [data.qpos[qpos_idx] for qpos_idx in qpos_addrs]
+print(f"Solved Joint Angles: {solved_joints}")
 
 # --- VISUALISER -----------------------------------------------------------------------------------
 with mujoco.viewer.launch_passive(model, data) as viewer:
-    # Set static mocap pose once before stepping
     data.mocap_pos[target_mocap_id] = t_pos
     data.mocap_quat[target_mocap_id] = t_quat
 
     while viewer.is_running():
         step_start = time.time()
+        
+        # Force the robot to hold the solved joint positions directly every step
+        for i, qpos_idx in enumerate(qpos_addrs):
+            data.qpos[qpos_idx] = solved_joints[i]
+            data.ctrl[actuator_ids[i]] = solved_joints[i]
 
-        # step physics forward
         mujoco.mj_step(model, data)
-
-        # refresh viewer each step
         viewer.sync()
 
-        # real-time sim sleep
         time_until_next_step = model.opt.timestep - (time.time() - step_start)
         if time_until_next_step > 0:
             time.sleep(time_until_next_step)

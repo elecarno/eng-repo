@@ -36,7 +36,7 @@ void setup() {
 
   // Calculate speeds
   float speed1 = rpmToStepsPerSec(TARGET_RPM_1, STEPS_PER_REV, MICROSTEPS);
-  float speed2 = rpmToStepsPerSec(TARGET_RPM_2, STEPS_PER_REV, MICROSTEPS);
+  float speed2 = rpmToStepsPerSec(TARGET_RPM_2, STEPS_PER_REV, MICROSTEPS);\
 
   // Set maximum limits and target constant speeds
   stepper1.setMaxSpeed(speed1);
