@@ -27,12 +27,6 @@ actuator_ids = [model.actuator(name).id for name in actuator_names]
 joint_ids = [model.actuator_trnid[act_id, 0] for act_id in actuator_ids]
 qpos_addrs = [model.jnt_qposadr[j_id] for j_id in joint_ids]
 
-# Extract joint limits directly from the MuJoCo model (in radians)
-joint_limits = [model.jnt_range[j_id] for j_id in joint_ids]
-print("--- EXTRACTED JOINT LIMITS (rad) ---")
-for idx, lim in enumerate(joint_limits):
-    print(f"Joint {idx+1} ({actuator_names[idx]}): Min = {lim[0]:.2f} rad, Max = {lim[1]:.2f} rad")
-
 # Find end-effector body
 ee_body_name = "m_v2_end_effector"
 if ee_body_name not in [model.body(i).name for i in range(model.nbody)]:
@@ -51,7 +45,7 @@ def disable_collision_on_body(model, body_name):
 
 disable_collision_on_body(model, "m_v2_base")
 
-# --- ROBOT PHYSICAL PARAMETERS (Converted from mm to meters) ---
+# --- ROBOT PHYSICAL PARAMETERS (Converted from mm to meters)[cite: 16, 17] ---
 h   = 65.35  / 1000.0
 L1  = 50.30  / 1000.0
 L2y = 179.00 / 1000.0
@@ -59,10 +53,10 @@ L2z = 55.30  / 1000.0
 L3  = 65.85  / 1000.0
 L4  = 44.30  / 1000.0
 L5  = 88.00  / 1000.0
-L6  = 0.0    # Set to your chosen end-effector length if applicable
+L6  = 0.0    # Set to your chosen end-effector length if applicable[cite: 16, 17]
 
 # --- TARGET PARAMETERS ----------------------------------------------------------------------------
-t_pos = np.array([0.0, -0.15, 0.2]) # meters
+t_pos = np.array([0.05, 0.05, 0.35]) # meters
 t_eul = np.array([0, 0, 90])        # degrees
 
 # Pre-compute target quaternion and rotation matrix
@@ -70,10 +64,10 @@ t_quat_scipy = R.from_euler('ZYX', t_eul, degrees=True).as_quat()
 t_quat = np.array([t_quat_scipy[3], t_quat_scipy[0], t_quat_scipy[1], t_quat_scipy[2]])
 target_rot = R.from_quat([t_quat_scipy[0], t_quat_scipy[1], t_quat_scipy[2], t_quat_scipy[3]]).as_matrix()
 
-# --- NUMERICAL JACOBIAN IK SOLVER WITH JOINT LIMIT ENFORCEMENT -------------------------------------
-print("\nRUNNING NUMERICAL JACOBIAN IK SOLVER...")
+# --- NUMERICAL JACOBIAN IK SOLVER ----------------------------------------------------------------
+print("RUNNING NUMERICAL JACOBIAN IK SOLVER...")
 
-# Set initial guess to zeros (or middle of limits)
+# Set initial guess to zeros
 for qpos_idx in qpos_addrs:
     data.qpos[qpos_idx] = 0.0
 mujoco.mj_forward(model, data)
@@ -113,13 +107,8 @@ for iteration in range(max_iterations):
     J_pinv = J.T @ np.linalg.inv(J @ J.T + (lambda_damping**2) * np.eye(6))
     dq = J_pinv @ err
     
-    # Update joint positions and immediately enforce XML joint limits
     for i, qpos_idx in enumerate(qpos_addrs):
         data.qpos[qpos_idx] += dq[i] * dt_ik
-        
-        # Clamp against the model's extracted range [min, max]
-        min_lim, max_lim = joint_limits[i]
-        data.qpos[qpos_idx] = np.clip(data.qpos[qpos_idx], min_lim, max_lim)
 
 mujoco.mj_forward(model, data)
 solved_joints_rad = np.array([data.qpos[qpos_idx] for qpos_idx in qpos_addrs])
@@ -133,7 +122,7 @@ print(f"Solved Joint Angles (deg): {solved_joints_deg}")
 servo_home_deg = np.array([90.0, 0.0, 0.0, 90.0, 90.0, 90.0])
 
 # DIRECTION MULTIPLIERS: Toggle any index between 1.0 and -1.0 if unclipped angles go out of [0, 180] bounds
-servo_directions = np.array([-1.0, -1.0, -1.0, 1.0, -1.0, 1.0])
+servo_directions = np.array([-1.0, -1.0, -1.0, -1.0, -1.0, 1.0])
 
 # Convert solved radians to degrees, apply direction multiplier, and add home position offsets
 raw_servo_deg = (solved_joints_deg * servo_directions) + servo_home_deg
@@ -141,7 +130,7 @@ print("--- SERVO ANGLE MAPPING ---")
 for i, val in enumerate(raw_servo_deg):
     print(f"Channel {i}: Unclipped = {val:.2f}°")
 
-# Clamp angles safely within physical servo limits (0° to 180°)
+# Clamp angles safely within physical servo limits (0° to 180°)[cite: 17, 19]
 solved_servo_deg = np.clip(raw_servo_deg, 0.0, 180.0)
 for i, val in enumerate(solved_servo_deg):
     print(f"Channel {i}: Clamped   = {val:.2f}°")
@@ -153,7 +142,7 @@ def main():
     ser = None
     try:
         ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
-        time.sleep(2)  # Wait for Arduino UNO reset on connection
+        time.sleep(2)  # Wait for Arduino UNO reset on connection[cite: 19]
     except Exception as e:
         print(f"Could not connect to serial port: {e} (Running simulation only)")
 
@@ -198,13 +187,14 @@ def main():
     except KeyboardInterrupt:
         print("\nInterrupted by user.")
     finally:
-        # 3. Clean up Serial Connection and Home Robot on Exit
+        # 3. Clean up Serial Connection and Home Robot on Exit (Triggered whether window is closed or Ctrl+C is pressed)
         if ser and ser.is_open:
             print(f"Returning robot to home position ({MOVE_TIME} ms)...")
             home_cmd = f"home {MOVE_TIME}\n"
             ser.write(home_cmd.encode('utf-8'))
             ser.flush()
             
+            # Allow full duration of movement time plus a buffer for the Arduino serial buffer to process
             h_sleep_time = (MOVE_TIME / 1000.0) + 1.5
             print(f"Waiting {h_sleep_time}s for homing sequence to finish...")
             time.sleep(h_sleep_time)
