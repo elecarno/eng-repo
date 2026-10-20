@@ -2,7 +2,7 @@ import serial
 import time
 
 # --- CONFIGURATION ---------------------------------------------------
-SERIAL_PORT = 'COM4'   # Update for your OS: 'COM3' (Windows) or '/dev/ttyUSB0' / '/dev/ttyACM0' (Linux/Mac)
+SERIAL_PORT = 'COM3'   # Update for your OS: 'COM3' (Windows) or '/dev/ttyUSB0' / '/dev/ttyACM0' (Linux/Mac)
 BAUD_RATE   = 9600
 
 # Joint 1 Configuration (Slower joint: 1 sweep = Min -> Max)
@@ -11,11 +11,11 @@ MIN_DEG_1   = 60.0     # Lower degree bound
 MAX_DEG_1   = 120.0    # Upper degree bound
 
 # Joint 2 Configuration (2x Faster joint: 1 full cycle = Min -> Max -> Min per Joint 1 sweep)
-JOINT_2     = 2        # Channel 2
-MIN_DEG_2   = 30.0     # Lower degree bound
-MAX_DEG_2   = 40.0     # Upper degree bound
+JOINT_2     = 4        # Channel 2
+MIN_DEG_2   = 90.0     # Lower degree bound
+MAX_DEG_2   = 120.0     # Upper degree bound
 
-BPM         = 57.5     # Oscillations per minute for Joint 1
+BPM         = 50.0     # Oscillations per minute for Joint 1
 # ---------------------------------------------------------------------
 
 
