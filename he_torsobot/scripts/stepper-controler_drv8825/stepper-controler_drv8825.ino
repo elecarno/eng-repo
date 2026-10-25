@@ -1,23 +1,33 @@
 #include <AccelStepper.h>
 
 // --- Configuration Parameters ---
+<<<<<<< HEAD
 const int STEPS_PER_REV = 200;           // Standard 1.8-degree stepper
 const int MICROSTEPS = 16;               // Change to match DIP switch setting (1, 2, 4, 8, 16, 32)
 const float GEAR_REDUCTION_RATIO = 30.0; // Set your gearbox ratio here 
 const float CORRECTION_FACTOR = 0.5;     // Fine-tune multiplier (set to 0.5 since 90deg currently gave 180deg)
+=======
+const int STEPS_PER_REV = 200;          // Standard 1.8-degree stepper
+const int MICROSTEPS = 16;              // Change to match DIP switch setting (1, 2, 4, 8, 16, 32)
+const float GEAR_REDUCTION_RATIO = 30.0;// Set your gearbox ratio here 
+const float CORRECTION_FACTOR = 0.5;    // Fine-tune multiplier (set to 0.5 since 90deg currently gave 180deg)
+>>>>>>> 8c335fbecd843be54a1c72e85e4079fdeaa994db
 
-// --- Pin Definitions (Gravity Dual DRV8825 Shield) ---
-#define M1_DIR_PIN     4
-#define M1_STEP_PIN    5
-#define M1_EN_PIN      6
+// --- Correct Pin Definitions (Gravity Dual DRV8825 Shield - DFRobot DRI0023) ---
+#define M1_DIR_PIN     7
+#define M1_STEP_PIN    6
+#define M1_EN_PIN      8
 
-#define M2_DIR_PIN     7
-#define M2_STEP_PIN    8
+#define M2_DIR_PIN     4
+#define M2_STEP_PIN    5
 #define M2_EN_PIN      12
 
 // Initialize AccelStepper instances in DRIVER mode (Type 1: Step + Direction)
 AccelStepper stepper1(AccelStepper::DRIVER, M1_STEP_PIN, M1_DIR_PIN);
 AccelStepper stepper2(AccelStepper::DRIVER, M2_STEP_PIN, M2_DIR_PIN);
+
+// Tracking variable to know when motors are actively moving
+bool motorsActive = false;
 
 void setup() {
   // Start Serial communication
@@ -27,19 +37,19 @@ void setup() {
   pinMode(M1_EN_PIN, OUTPUT);
   pinMode(M2_EN_PIN, OUTPUT);
   
-  // DRV8825 ENABLE pin is Active LOW (LOW = Enabled, HIGH = Disabled/Sleep)
-  digitalWrite(M1_EN_PIN, LOW);
-  digitalWrite(M2_EN_PIN, LOW);
+  // Idle by default on boot: DRV8825 ENABLE is Active LOW, so HIGH disables/sleeps them
+  digitalWrite(M1_EN_PIN, HIGH);
+  digitalWrite(M2_EN_PIN, HIGH);
 
-  // Set initial default limits
-  stepper1.setMaxSpeed(4000.0);
-  stepper1.setAcceleration(20000.0);
+  // Set safe initial default limits to prevent sudden stalls on boot
+  stepper1.setMaxSpeed(1500.0);
+  stepper1.setAcceleration(1000.0);
 
-  stepper2.setMaxSpeed(4000.0);
-  stepper2.setAcceleration(20000.0);
+  stepper2.setMaxSpeed(1500.0);
+  stepper2.setAcceleration(1000.0);
 
-  Serial.println("Gearbox Stepper Tester Ready.");
-  Serial.println("Send move command: <motor> <angle_deg> <time_ms> (e.g., 1 90 1000)");
+  Serial.println("Gearbox Stepper Tester Ready (Motors idling by default).");
+  Serial.println("Send move command: <motor> <angle_deg> <time_ms> (e.g., 2 90 3000)");
   Serial.println("Send stop command: stop <motor> (e.g., stop 1, or stop 0 for all)");
 }
 
@@ -54,6 +64,16 @@ void loop() {
   // Must be called continuously in loop to execute position moves
   stepper1.run();
   stepper2.run();
+
+  // Auto-Idling Check: If motors were active and have finished all steps, disable them to prevent overheating
+  if (motorsActive && stepper1.distanceToGo() == 0 && stepper2.distanceToGo() == 0) {
+    // DRV8825 ENABLE is Active LOW. Setting HIGH puts drivers to sleep and cuts coil power.
+    digitalWrite(M1_EN_PIN, HIGH);
+    digitalWrite(M2_EN_PIN, HIGH);
+    
+    Serial.println("Moves complete. Motors disabled (idling) to prevent overheating.");
+    motorsActive = false;
+  }
 }
 
 // Function to parse serial input and trigger motor movement or stopping
@@ -65,21 +85,30 @@ void parseCommand(String command) {
       // Just "stop" entered -> stop both motors
       stepper1.stop();
       stepper2.stop();
-      Serial.println("Stopping all motors.");
+      // Put them back to sleep when stopped manually
+      digitalWrite(M1_EN_PIN, HIGH);
+      digitalWrite(M2_EN_PIN, HIGH);
+      motorsActive = false;
+      Serial.println("Stopping all motors and setting to idle.");
       return;
     }
     
     int motorId = command.substring(spaceIndex + 1).toInt();
     if (motorId == 1) {
       stepper1.stop();
-      Serial.println("Stopping Motor 1.");
+      digitalWrite(M1_EN_PIN, HIGH);
+      Serial.println("Stopping Motor 1 and setting to idle.");
     } else if (motorId == 2) {
       stepper2.stop();
-      Serial.println("Stopping Motor 2.");
+      digitalWrite(M2_EN_PIN, HIGH);
+      Serial.println("Stopping Motor 2 and setting to idle.");
     } else if (motorId == 0) {
       stepper1.stop();
       stepper2.stop();
-      Serial.println("Stopping all motors.");
+      digitalWrite(M1_EN_PIN, HIGH);
+      digitalWrite(M2_EN_PIN, HIGH);
+      motorsActive = false;
+      Serial.println("Stopping all motors and setting to idle.");
     } else {
       Serial.println("Error: Invalid motor ID for stop command.");
     }
@@ -112,9 +141,19 @@ void parseCommand(String command) {
   float timeSec = timeMs / 1000.0;
   float requiredSpeed = abs(targetSteps) / timeSec;
 
+  // Safety ceiling: Cap max speed to prevent heavy gearboxes from instantly stalling/squealing
+  if (requiredSpeed > 3000.0) {
+    requiredSpeed = 3000.0;
+  }
+
+  // Wake up both drivers before issuing a movement command (Active LOW)
+  digitalWrite(M1_EN_PIN, LOW);
+  digitalWrite(M2_EN_PIN, LOW);
+  motorsActive = true;
+
   if (motorId == 1) {
     stepper1.setMaxSpeed(requiredSpeed);
-    stepper1.setAcceleration(requiredSpeed * 10.0); // High acceleration ensures near-constant speed profile
+    stepper1.setAcceleration(requiredSpeed * 2.0); // Smoother acceleration curve
     stepper1.move(targetSteps);
     
     Serial.print("Motor 1 -> Output Angle: "); Serial.print(angle);
@@ -122,7 +161,7 @@ void parseCommand(String command) {
   } 
   else if (motorId == 2) {
     stepper2.setMaxSpeed(requiredSpeed);
-    stepper2.setAcceleration(requiredSpeed * 10.0);
+    stepper2.setAcceleration(requiredSpeed * 2.0);
     stepper2.move(targetSteps);
     
     Serial.print("Motor 2 -> Output Angle: "); Serial.print(angle);
