@@ -7,7 +7,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R
 
 # --- SERIAL & MOVEMENT CONFIGURATION --------------------------------------------------------------
-SERIAL_PORT = 'COM3' 
+SERIAL_PORT = 'COM4' 
 BAUD_RATE   = 9600
 MOVE_TIME   = 2000  # Movement time in milliseconds
 
@@ -56,7 +56,7 @@ L5  = 88.00  / 1000.0
 L6  = 0.0    # Set to your chosen end-effector length if applicable[cite: 16, 17]
 
 # --- TARGET PARAMETERS ----------------------------------------------------------------------------
-t_pos = np.array([0.05, 0.05, 0.35]) # meters
+t_pos = np.array([-0.1, -0.1, 0.3]) # meters
 t_eul = np.array([0, 0, 90])        # degrees
 
 # Pre-compute target quaternion and rotation matrix
