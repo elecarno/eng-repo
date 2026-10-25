@@ -1,17 +1,15 @@
 #include <AccelStepper.h>
 
 // --- Configuration Parameters ---
-<<<<<<< HEAD
-const int STEPS_PER_REV = 200;           // Standard 1.8-degree stepper
-const int MICROSTEPS = 16;               // Change to match DIP switch setting (1, 2, 4, 8, 16, 32)
-const float GEAR_REDUCTION_RATIO = 30.0; // Set your gearbox ratio here 
-const float CORRECTION_FACTOR = 0.5;     // Fine-tune multiplier (set to 0.5 since 90deg currently gave 180deg)
-=======
-const int STEPS_PER_REV = 200;          // Standard 1.8-degree stepper
-const int MICROSTEPS = 16;              // Change to match DIP switch setting (1, 2, 4, 8, 16, 32)
-const float GEAR_REDUCTION_RATIO = 30.0;// Set your gearbox ratio here 
-const float CORRECTION_FACTOR = 0.5;    // Fine-tune multiplier (set to 0.5 since 90deg currently gave 180deg)
->>>>>>> 8c335fbecd843be54a1c72e85e4079fdeaa994db
+const int STEPS_PER_REV = 200;         // Standard 1.8-degree stepper
+const int MICROSTEPS = 16;             // Change to match DIP switch setting (1, 2, 4, 8, 16, 32)
+
+// --- Independent Gear Ratios & Correction Factors per Motor ---
+const float GEAR_REDUCTION_RATIO_1 = 35.0; // Gearbox ratio for Motor 1
+const float CORRECTION_FACTOR_1    = 0.5;  // Fine-tune multiplier for Motor 1
+
+const float GEAR_REDUCTION_RATIO_2 = 30.0; // Gearbox ratio for Motor 2 (Change as needed)
+const float CORRECTION_FACTOR_2    = 0.5;  // Fine-tune multiplier for Motor 2
 
 // --- Correct Pin Definitions (Gravity Dual DRV8825 Shield - DFRobot DRI0023) ---
 #define M1_DIR_PIN     7
@@ -133,18 +131,9 @@ void parseCommand(String command) {
     return;
   }
 
-  // Calculate total steps required, factoring in microsteps, gearbox ratio, and correction factor
-  float stepsPerDegreeOutput = (float)(STEPS_PER_REV * MICROSTEPS * GEAR_REDUCTION_RATIO) / 360.0;
-  long targetSteps = round(angle * stepsPerDegreeOutput * CORRECTION_FACTOR);
-
-  // Calculate required speed (steps/second) to finish within the requested time
+  long targetSteps = 0;
   float timeSec = timeMs / 1000.0;
-  float requiredSpeed = abs(targetSteps) / timeSec;
-
-  // Safety ceiling: Cap max speed to prevent heavy gearboxes from instantly stalling/squealing
-  if (requiredSpeed > 3000.0) {
-    requiredSpeed = 3000.0;
-  }
+  float requiredSpeed = 0;
 
   // Wake up both drivers before issuing a movement command (Active LOW)
   digitalWrite(M1_EN_PIN, LOW);
@@ -152,14 +141,26 @@ void parseCommand(String command) {
   motorsActive = true;
 
   if (motorId == 1) {
+    float stepsPerDegreeOutput = (float)(STEPS_PER_REV * MICROSTEPS * GEAR_REDUCTION_RATIO_1) / 360.0;
+    targetSteps = round(angle * stepsPerDegreeOutput * CORRECTION_FACTOR_1);
+
+    requiredSpeed = abs(targetSteps) / timeSec;
+    if (requiredSpeed > 3000.0) requiredSpeed = 3000.0;
+
     stepper1.setMaxSpeed(requiredSpeed);
-    stepper1.setAcceleration(requiredSpeed * 2.0); // Smoother acceleration curve
+    stepper1.setAcceleration(requiredSpeed * 2.0);
     stepper1.move(targetSteps);
     
     Serial.print("Motor 1 -> Output Angle: "); Serial.print(angle);
     Serial.print(" deg, Time: "); Serial.print(timeMs); Serial.println(" ms");
   } 
   else if (motorId == 2) {
+    float stepsPerDegreeOutput = (float)(STEPS_PER_REV * MICROSTEPS * GEAR_REDUCTION_RATIO_2) / 360.0;
+    targetSteps = round(angle * stepsPerDegreeOutput * CORRECTION_FACTOR_2);
+
+    requiredSpeed = abs(targetSteps) / timeSec;
+    if (requiredSpeed > 3000.0) requiredSpeed = 3000.0;
+
     stepper2.setMaxSpeed(requiredSpeed);
     stepper2.setAcceleration(requiredSpeed * 2.0);
     stepper2.move(targetSteps);
@@ -169,5 +170,6 @@ void parseCommand(String command) {
   } 
   else {
     Serial.println("Error: Invalid motor ID. Use 1 or 2.");
+    motorsActive = false; // Reset if invalid ID
   }
 }
